@@ -15,7 +15,7 @@
   --border-color: #dbdbdb;
   --gold-color: #ffce3c;
   --header-height: 90px;
-  --text-hover:#EE4D2D;
+  --text-hover: #EE4D2D;
 }
 
 html {
@@ -34,7 +34,7 @@ header {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  height: 80px;
+  height: var(--header-height);
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -54,7 +54,14 @@ header .menu {
 }
 
 header .menu a {
-  padding: 4px 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: var(--header-height);
+  padding: 0 12px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   text-decoration: none;
   color: var(--text-color);
   font-weight: 500;
@@ -76,12 +83,31 @@ header .header__group--btns {
 }
 
 header .header__group--btns .header__menu--right {
+  position: relative;
   font-size: 2.2rem;
   margin-right: 16px;
   cursor: pointer;
 }
 
-header .header__group--btns .header__menu--right:hover {
+header .header__group--btns .header__menu--right i:hover {
   color: var(--text-hover);
+}
+
+header .header__group--btns .header__menu--right .count__total {
+  position: absolute;
+  right: -6px;
+  top: -10px;
+  background-color: var(--primary-green-color);
+  display: inline-block;
+  width: 1.6rem;
+  height: 1.6rem;
+  line-height: 1.6rem;
+  font-size: 1.2rem;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: 500;
+  color: var(--while-color);
+  -webkit-box-shadow: 1px 2px 3px gray;
+          box-shadow: 1px 2px 3px gray;
 }
 /*# sourceMappingURL=header.css.map */

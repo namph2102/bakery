@@ -1,9 +1,10 @@
-*{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
-:root{
+
+:root {
     --while-color: #fff;
     --black-color: #000;
     --text-light-color: #878787;
@@ -12,53 +13,85 @@
     --primary-green-color: #56cfe1;
     --border-color: #dbdbdb;
     --gold-color: #ffce3c;
-    --header-height: 90px; --text-hover:#EE4D2D;
+    --header-height: 90px;
+    --text-hover: #EE4D2D;
 
 }
-html{
+
+html {
     font-size: 62.5%;
     font-family: 'Montserrat', sans-serif;
 }
-body{
+
+body {
     font-size: 1.6rem;
 }
 
-header{
+header {
     display: flex;
     justify-content: space-between;
-    height: 80px;
+    height: var(--header-height);
     align-items: center;
-    figure{
-        img{
+
+    figure {
+        img {
             width: 164px;
         }
     }
-    .menu{
+
+    .menu {
         display: flex;
         justify-content: center;
-        a{
-           padding: 4px 12px;
-           text-decoration: none;
-           color: var(--text-color);
-           font-weight: 500;
-           font-size: 1.6rem;
-           text-transform: capitalize;
-           &:hover{
-               color: var(--primary-color);
-           }
-        }
-    }
-    .header__group--btns{
-        display: flex;
-        justify-content: flex-end;
-        .header__menu--right{
-            font-size: 2.2rem;
-            margin-right:16px;
-            cursor: pointer;
-            &:hover{
-                color: var(--text-hover);
+
+        a {
+            display: flex;
+            height: var(--header-height);
+            padding: 0 12px;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 1.6rem;
+            text-transform: capitalize;
+
+            &:hover {
+                color: var(--primary-color);
             }
         }
     }
-  
+
+    .header__group--btns {
+        display: flex;
+        justify-content: flex-end;
+
+        .header__menu--right {
+            position: relative;
+            font-size: 2.2rem;
+            margin-right: 16px;
+            cursor: pointer;
+
+            i {
+                &:hover {
+                    color: var(--text-hover);
+                }
+            }
+            .count__total{
+                position: absolute;
+                right: -6px;
+                top: -10px;
+                background-color: var(--primary-green-color);
+                display: inline-block;
+                width: 1.6rem;
+                height: 1.6rem;
+                line-height: 1.6rem;
+                font-size: 1.2rem;
+                border-radius: 50%;
+                text-align: center;
+                font-weight: 500;
+                color: var(--while-color);
+                box-shadow: 1px 2px 3px gray;
+            }
+        }
+    }
+
 }
