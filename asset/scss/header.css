@@ -1,0 +1,87 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --while-color: #fff;
+  --black-color: #000;
+  --text-light-color: #878787;
+  --text-color: #222;
+  --primary-color: #ee4d2d;
+  --primary-green-color: #56cfe1;
+  --border-color: #dbdbdb;
+  --gold-color: #ffce3c;
+  --header-height: 90px;
+  --text-hover:#EE4D2D;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  font-size: 1.6rem;
+}
+
+header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 80px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header figure img {
+  width: 164px;
+}
+
+header .menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+header .menu a {
+  padding: 4px 12px;
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  font-size: 1.6rem;
+  text-transform: capitalize;
+}
+
+header .menu a:hover {
+  color: var(--primary-color);
+}
+
+header .header__group--btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+header .header__group--btns .header__menu--right {
+  font-size: 2.2rem;
+  margin-right: 16px;
+  cursor: pointer;
+}
+
+header .header__group--btns .header__menu--right:hover {
+  color: var(--text-hover);
+}
+/*# sourceMappingURL=header.css.map */
