@@ -17,15 +17,16 @@
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./asset/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" href="./asset/css/style.css">
-    <link rel="stylesheet" href="./asset/scss/header.css">
+    <link rel="stylesheet" href="./asset/scss/style.css">
+
     <title>Document</title>
 </head>
 
 <body>
     <div class="container">
         <header class="row">
-
             <figure class="col-2">
                 <img src="./image/logo.png" alt="">
             </figure>
@@ -35,7 +36,7 @@
                     <li><a href="" class="active"> Trang chủ</a></li>
                     <li>
                         <a href="">Cửa hàng</a>
-                    
+
                     </li>
                     <li><a href="">Giới thiệu</a></li>
                     <li><a href="">Tin Tức</a></li>
@@ -62,8 +63,51 @@
 
         </header>
     </div>
-</body>
 
+
+    <div class="sliders_container">
+        <div class="banner_sliders">
+            <figure>
+                <img class="slider" src="./image/slide1.jpg" alt="slider1 - HT Bakery">
+            </figure>
+            <figure>
+                <img class="slider" loading="lazy" src="./image/slide2.jpg" alt="slider2 - HT Bakery">
+            </figure>
+            <figure>
+                <img class="slider" loading="lazy" src="./image/slide3.jpg" alt="slider3 - HT Bakery">
+            </figure>
+            <figure>
+                <img class="slider" loading="lazy" src="./image/slide4.jpg" alt="slider4 - HT Bakery">
+            </figure>
+        </div>
+        <div class="slider_show-btns">
+            <div class="show__controler btn_silder_left">
+                <i class="fa-solid fa-angle-left"></i>
+            </div>
+
+            <div class="show__controler btn_silder_right">
+                <i class="fa-solid fa-angle-right"></i>
+            </div>
+            <div class="presentation__sliders">
+                <button class="active"></button>
+                <button class=""></button>
+                <button class=""></button>
+                <button class=""></button>
+            </div>
+        </div>
+       
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+</body>
+<script>
+    const $$=document.querySelector.bind(document);
+    const $$l=document.querySelectorAll.bind(document);
+    
+</script>
 <script src="./asset/js/style.js"></script>
+
 
 </html>
