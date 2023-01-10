@@ -26,54 +26,70 @@
 </head>
 
 <body>
-    <div class="container">
-        <header class="row">
-            <figure class="logo col-lg-2 col-4  order-lg-1 order-2">
-                <img src="./image/logo.png" alt="">
-            </figure>
-           
-            <nav class="col-lg-8 col-1 order-lg-2 order-1">
-                <div class="navbar hide__of__lg_important">
-                    <label for="openmenu"><i class="fa-solid fa-bars navbar_icons"></i></label>
-                </div>
-                <input type="checkbox"  hidden id="openmenu">
-                <ul class="menu">
-                    <li class="hide__of__lg">Menu  <button class="btn_close--menu">X</button></li>
-                    <li><a href="" class="active"> Trang chủ</a></li>
-                    <li>
-                        <a href="">Cửa hàng</a>
-                    </li>
-                    <li><a href="">Giới thiệu</a></li>
-                    <li><a href="">Tin Tức</a></li>
-                    <li><a href="">Liên Hệ</a></li>
-                    <li class="hide__of__lg_important"><a href=""><i class="fa-regular fa-user me-3 d-inline-block"></i> Đăng Ký/ Đăng Nhập</a></li>
-                    <li class="border-0 hide__of__lg_important mt-4 ps-3">
-                        <span>Cần Hỗ Trợ ?</span>
-                    </li>
-                    <li class="border-0 hide__of__lg_important"><a href="mailto:namph2102@gmail.com" class="contact__imformation"><i class="fa-regular fa-envelope me-3"></i>namph2102@gmail.com</a></li>
-                    <li class="border-0 hide__of__lg_important"><a href="tel:+84325024277" class="contact__imformation"><i class="fa-solid fa-mobile-screen-button me-3"></i> 0325024277</a></li>
-                </ul>
-            </nav>
 
-            <div class="header__group--btns col-lg-2 col-3 order-lg-3 order-3">
-                <div class="header__menu--right header-search d-sm-block d-none">
-                    <i class="fa-solid fa-magnifying-glass"></i>
+    <header class="menufixed">
+        <div class="container">
+            <div class="row header_container">
+                <figure class="logo col-lg-2 col-4  order-lg-1 order-2">
+                    <img src="./image/logo.png" alt="">
+                </figure>
+
+                <nav class="col-lg-8 col-1 order-lg-2 order-1">
+                    <div class="navbar hide__of__lg_important">
+                        <label for="openmenu"><i class="fa-solid fa-bars navbar_icons"></i></label>
+                    </div>
+                    <input type="checkbox" hidden id="openmenu">
+                    <ul class="menu">
+                        <li class="hide__of__lg">Menu <button class="btn_close--menu">X</button></li>
+                        <li><a href="" class="active"> Trang chủ</a></li>
+                        <li class="main__nav">
+                            <a href="">Sản phẩm</a>
+                            <ul class="sub__nav">
+                                <li><a href="">Bánh Sinh Nhật</a></li>
+                                <li><a href="">Đồ Uống / Kem Tươi</a></li>
+                                <li><a href="">Bánh Mì / Bánh Ngọt</a></li>
+                                <li><a href="">Ăn Nhẹ / Lạnh</a></li>
+
+                            </ul>
+                        </li>
+                        <li><a href="">Giới thiệu</a></li>
+                        <li><a href="">Tin Tức</a></li>
+                        <li><a href="">Liên Hệ</a></li>
+                        <li class="hide__of__lg_important"><a href=""><i
+                                    class="fa-regular fa-user me-3 d-inline-block"></i> Đăng Ký/ Đăng Nhập</a></li>
+                        <li class="border-0 hide__of__lg_important mt-4 ps-3">
+                            <span>Cần Hỗ Trợ ?</span>
+                        </li>
+                        <li class="border-0 hide__of__lg_important"><a href="mailto:namph2102@gmail.com"
+                                class="contact__imformation"><i
+                                    class="fa-regular fa-envelope me-3"></i>namph2102@gmail.com</a></li>
+                        <li class="border-0 hide__of__lg_important"><a href="tel:+84325024277"
+                                class="contact__imformation"><i class="fa-solid fa-mobile-screen-button me-3"></i>
+                                0325024277</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header__group--btns col-lg-2 col-3 order-lg-3 order-3">
+                    <div class="header__menu--right header-search d-sm-block d-none">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <div class="header__menu--right header-user d-sm-block d-none">
+                        <i class="fa-regular fa-user"></i>
+                    </div>
+                    <div class="header__menu--right header-heart">
+                        <i class="fa-regular fa-heart"></i>
+                        <span class="count__total header__products-like__count">2</span>
+                    </div>
+                    <div class="header__menu--right header-cart me-0">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="count__total">2</span>
+                    </div>
                 </div>
-                <div class="header__menu--right header-user d-sm-block d-none">
-                    <i class="fa-regular fa-user"></i>
-                </div>
-                <div class="header__menu--right header-heart">
-                    <i class="fa-regular fa-heart"></i>
-                    <span class="count__total header__products-like__count">2</span>
-                </div>
-                <div class="header__menu--right header-cart me-0">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <span class="count__total">2</span>
-                </div>
+
             </div>
+        </div>
+    </header>
 
-        </header>
-    </div>
 
 
     <div class="sliders_container">
@@ -101,22 +117,101 @@
             </div>
             <div class="presentation__sliders">
                 <button class="btn_banner active"></button>
-               
+
                 <button class="btn_banner"></button>
                 <button class="btn_banner"></button>
             </div>
         </div>
-       
-    </div>
 
+    </div>
+    <main>
+        <div class="container">
+            <div class="row category__products">
+                <div class="col-lg-6 col-12 row me-lg-1">
+                    <a href="#!" class="category__item--content">
+                        <div class="category__item category__item_height__full"
+                            style="background-image: url('/image/category1.jpg');">
+                            <div class="category__item--effects">
+                                <div class="category__item--effects__overlays">
+
+                                </div>
+                                <div class="category__item--effects__border slide__leftright">
+                                </div>
+                                <div class="category__item--effects__border slide__topbottom">
+                                </div>
+                            </div>
+                            <div class="category__item--des">
+                                <h3 class="">Bánh sinh nhật</h3>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#!" class="category__item--content">
+                        <div class="category__item category__item_height__haf"
+                            style="background-image: url('/image/category2.jpg');">
+                            <div class="category__item--effects">
+                                <div class="category__item--effects__overlays">
+
+                                </div>
+                                <div class="category__item--effects__border slide__leftright">
+                                </div>
+                                <div class="category__item--effects__border slide__topbottom">
+                                </div>
+                            </div>
+                            <div class="category__item--des">
+                                <h3 class="">Đồ Uống / kem tươi</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-6 col-12 row ms-lg-1">
+                    <a href="#!" class="category__item--content ">
+                        <div class="category__item category__item_height__haf"
+                            style="background-image: url('/image/category3.jpg');">
+                            <div class="category__item--effects">
+                                <div class="category__item--effects__overlays">
+
+                                </div>
+                                <div class="category__item--effects__border slide__leftright">
+                                </div>
+                                <div class="category__item--effects__border slide__topbottom">
+                                </div>
+                            </div>
+                            <div class="category__item--des">
+                                <h3 class="">Bánh mỳ / Bánh ngọt</h3>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#!" class="category__item--content">
+                        <div class="category__item category__item_height__full"
+                            style="background-image: url('/image/category4.jpg');">
+                            <div class="category__item--effects">
+                                <div class="category__item--effects__overlays">
+
+                                </div>
+                                <div class="category__item--effects__border slide__leftright">
+                                </div>
+                                <div class="category__item--effects__border slide__topbottom">
+                                </div>
+                            </div>
+                            <div class="category__item--des">
+                                <h3 class="">Đồ Ăn nhẹ</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </body>
 <script>
-    const $$=document.querySelector.bind(document);
-    const $$l=document.querySelectorAll.bind(document);
-    
+    const $$ = document.querySelector.bind(document);
+    const $$l = document.querySelectorAll.bind(document);
+
 </script>
 <script src="./asset/js/style.js"></script>
 
