@@ -15,6 +15,15 @@ header figure img {
   width: 164px;
 }
 
+header .navbar .navbar_icons {
+  font-size: 2.4rem;
+  cursor: pointer;
+}
+
+header .navbar .navbar_icons:hover {
+  color: var(--text-hover);
+}
+
 header .menu {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -42,6 +51,11 @@ header .menu a {
 
 header .menu a:hover {
   color: var(--primary-color);
+}
+
+header .menu .contact__imformation {
+  display: inline-block;
+  font-size: 1.2rem;
 }
 
 header .header__group--btns {
@@ -121,6 +135,11 @@ body {
   position: relative;
 }
 
+.sliders_container .banner_sliders {
+  height: 500px;
+  overflow: hidden;
+}
+
 .sliders_container .banner_sliders figure .slider {
   width: 100%;
   height: 500px;
@@ -138,7 +157,9 @@ body {
 
 .sliders_container .slider_show-btns .show__controler {
   position: absolute;
-  top: 250px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -175,7 +196,7 @@ body {
   text-align: center;
 }
 
-.sliders_container .presentation__sliders button {
+.sliders_container .presentation__sliders .btn_banner {
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -185,7 +206,7 @@ body {
           box-shadow: 1px 2px 3px gray;
 }
 
-.sliders_container .presentation__sliders button.active {
+.sliders_container .presentation__sliders .btn_banner.active {
   background-color: var(--primary-green-color);
 }
 /*# sourceMappingURL=style.css.map */

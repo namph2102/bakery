@@ -20,6 +20,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" href="./asset/css/style.css">
     <link rel="stylesheet" href="./asset/scss/style.css">
+    <link rel="stylesheet" href="./asset/css/resposive.css">
 
     <title>Document</title>
 </head>
@@ -27,35 +28,45 @@
 <body>
     <div class="container">
         <header class="row">
-            <figure class="col-2">
+            <figure class="logo col-lg-2 col-4  order-lg-1 order-2">
                 <img src="./image/logo.png" alt="">
             </figure>
-
-            <nav class="col-6">
+           
+            <nav class="col-lg-8 col-1 order-lg-2 order-1">
+                <div class="navbar hide__of__lg_important">
+                    <label for="openmenu"><i class="fa-solid fa-bars navbar_icons"></i></label>
+                </div>
+                <input type="checkbox"  hidden id="openmenu">
                 <ul class="menu">
+                    <li class="hide__of__lg">Menu  <button class="btn_close--menu">X</button></li>
                     <li><a href="" class="active"> Trang chủ</a></li>
                     <li>
                         <a href="">Cửa hàng</a>
-
                     </li>
                     <li><a href="">Giới thiệu</a></li>
                     <li><a href="">Tin Tức</a></li>
                     <li><a href="">Liên Hệ</a></li>
+                    <li class="hide__of__lg_important"><a href=""><i class="fa-regular fa-user me-3 d-inline-block"></i> Đăng Ký/ Đăng Nhập</a></li>
+                    <li class="border-0 hide__of__lg_important mt-4 ps-3">
+                        <span>Cần Hỗ Trợ ?</span>
+                    </li>
+                    <li class="border-0 hide__of__lg_important"><a href="mailto:namph2102@gmail.com" class="contact__imformation"><i class="fa-regular fa-envelope me-3"></i>namph2102@gmail.com</a></li>
+                    <li class="border-0 hide__of__lg_important"><a href="tel:+84325024277" class="contact__imformation"><i class="fa-solid fa-mobile-screen-button me-3"></i> 0325024277</a></li>
                 </ul>
             </nav>
 
-            <div class="header__group--btns col-2">
-                <div class="header__menu--right header-search">
+            <div class="header__group--btns col-lg-2 col-3 order-lg-3 order-3">
+                <div class="header__menu--right header-search d-sm-block d-none">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
-                <div class="header__menu--right header-user">
+                <div class="header__menu--right header-user d-sm-block d-none">
                     <i class="fa-regular fa-user"></i>
                 </div>
                 <div class="header__menu--right header-heart">
                     <i class="fa-regular fa-heart"></i>
                     <span class="count__total header__products-like__count">2</span>
                 </div>
-                <div class="header__menu--right header-cart">
+                <div class="header__menu--right header-cart me-0">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span class="count__total">2</span>
                 </div>
@@ -89,10 +100,10 @@
                 <i class="fa-solid fa-angle-right"></i>
             </div>
             <div class="presentation__sliders">
-                <button class="active"></button>
-                <button class=""></button>
-                <button class=""></button>
-                <button class=""></button>
+                <button class="btn_banner active"></button>
+               
+                <button class="btn_banner"></button>
+                <button class="btn_banner"></button>
             </div>
         </div>
        

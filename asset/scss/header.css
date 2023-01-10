@@ -15,6 +15,15 @@ header figure img {
   width: 164px;
 }
 
+header .navbar .navbar_icons {
+  font-size: 2.4rem;
+  cursor: pointer;
+}
+
+header .navbar .navbar_icons:hover {
+  color: var(--text-hover);
+}
+
 header .menu {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -42,6 +51,11 @@ header .menu a {
 
 header .menu a:hover {
   color: var(--primary-color);
+}
+
+header .menu .contact__imformation {
+  display: inline-block;
+  font-size: 1.2rem;
 }
 
 header .header__group--btns {

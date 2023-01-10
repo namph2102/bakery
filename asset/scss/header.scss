@@ -11,7 +11,16 @@ header {
             width: 164px;
         }
     }
-
+    .navbar{
+        .navbar_icons{
+            font-size: 2.4rem;
+            cursor: pointer;
+            &:hover{
+                color: var(--text-hover);
+            }
+        }
+         
+    }
     .menu {
         display: flex;
         justify-content: center;
@@ -30,6 +39,10 @@ header {
             &:hover {
                 color: var(--primary-color);
             }
+        }
+        .contact__imformation{
+            display: inline-block;
+            font-size: 1.2rem;
         }
     }
 
