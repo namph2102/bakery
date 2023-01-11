@@ -147,3 +147,15 @@
 .category__item_height__full{
     height: 600px;
 }
+@media screen  and (max-width: 768px) {
+    .product__item--avata{
+        height: 200px !important;
+    }
+    .product__item--avata img{
+        height: 200px !important;
+    }
+    .category__products .category__item .category__item--des{
+      
+        font-size: 1.8rem;
+    }
+}

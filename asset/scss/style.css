@@ -246,7 +246,7 @@ body {
 
 main {
   margin-top: 2.4rem;
-  height: 1000px;
+  margin-bottom: 100px;
 }
 
 .category__products {
@@ -322,21 +322,31 @@ main {
   text-shadow: 1px 2px var(--text-color);
 }
 
-.products__container--shows .products__kind {
-  text-align: center;
+.products__kind {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-top: 32px;
+  position: relative;
 }
 
-.products__container--shows .products__kind .products__kind--title {
+.products__kind .products__kind--title {
   position: relative;
-  display: inline-block;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
   font-size: 2.2rem;
   text-transform: uppercase;
   font-weight: 500;
   color: var(--text-color);
 }
 
-.products__container--shows .products__kind .products__kind--title::before, .products__container--shows .products__kind .products__kind--title::after {
+.products__kind .products__kind--title::before, .products__kind .products__kind--title::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -348,12 +358,12 @@ main {
   background-color: var(--text-color);
 }
 
-.products__container--shows .products__kind .products__kind--title::before {
-  right: -40%;
+.products__kind .products__kind--title::before {
+  right: -90px;
 }
 
-.products__container--shows .products__kind .products__kind--title::after {
-  left: -40%;
+.products__kind .products__kind--title::after {
+  left: -90px;
 }
 
 .products__container--shows .product-content {
@@ -404,6 +414,10 @@ main {
   color: var(--text-color);
   font-weight: 500;
   font-size: 1.8rem;
+}
+
+.products__container--shows .product__item .product__item--des .product__item--title a:hover {
+  color: var(--text-hover);
 }
 
 .products__container--shows .product__item .product__item--des .product__item--price {
@@ -533,5 +547,175 @@ main {
   color: var(--while-color);
   background-color: var(--primary-green-color);
   border-radius: 50px;
+}
+
+.products__container--shows .products__container--seeall a:hover {
+  opacity: 0.76;
+}
+
+.news__container--content .news__item {
+  overflow: hidden;
+  margin: 6px 0;
+}
+
+.news__container--content .news__item figure {
+  position: relative;
+  cursor: pointer;
+}
+
+.news__container--content .news__item figure .news__item--box__avata {
+  height: 220px;
+  overflow: hidden;
+}
+
+.news__container--content .news__item figure img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-transition: .3s linear;
+  transition: .3s linear;
+}
+
+.news__container--content .news__item figure img:hover {
+  -webkit-transform: scale(1.01);
+          transform: scale(1.01);
+}
+
+.news__container--content .news__item figure .news__item--title a {
+  display: block;
+  font-weight: 500;
+  font-size: 1.4rem;
+  margin-top: 6px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-transform: capitalize;
+  text-align: center;
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.news__container--content .news__item figure .news__item--title a:hover {
+  color: var(--text-hover);
+}
+
+.news__container--content .news__item figure .news__item--des {
+  margin: 4px;
+  font-size: 1.3rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.news__container--content .news__item figure .news__item--des::first-letter {
+  text-transform: uppercase;
+}
+
+.news__container--content .news__item figure:hover .news__item---open {
+  color: var(--while-color);
+  background-color: var(--text-hover);
+}
+
+.news__container--content .news__item figure:hover .news__item---open::before {
+  background-color: var(--text-hover);
+}
+
+.news__container--content .news__item figure:hover .overlay_news {
+  -webkit-animation-delay: .1s;
+          animation-delay: .1s;
+  -webkit-animation: ovelaytouch 0.4s ease-in-out;
+          animation: ovelaytouch 0.4s ease-in-out;
+}
+
+.news__container--content .news__item figure .overlay_news {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.news__container--content .news__item .news__item---open {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: var(--border-color);
+  width: 60px;
+  text-align: center;
+  padding: 8px 0;
+  border-radius: 2px;
+  font-weight: 500;
+  font-size: 1.4rem;
+  color: var(--text-light-color);
+  cursor: pointer;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.news__container--content .news__item .news__item---open::before {
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  content: "";
+  position: absolute;
+  top: 104%;
+  right: 0;
+  width: 60px;
+  height: 2px;
+  background-color: var(--border-color);
+}
+
+.news__container--content .news__item .news__item--seeall {
+  text-align: center;
+}
+
+.news__container--content .news__item .news__item--seeall a {
+  font-size: 400;
+  display: inline-block;
+  padding: 4px 8px;
+  color: var(--black-color);
+  text-decoration: none;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.news__container--content .news__item .news__item--seeall a:hover {
+  border-bottom: 2px solid var(--text-hover);
+  color: var(--text-hover);
+}
+
+.map__container {
+  margin-top: 24px;
+  width: 100%;
+}
+
+.map__container iframe {
+  width: 100%;
+}
+
+@-webkit-keyframes ovelaytouch {
+  0% {
+    width: 0;
+    height: 0;
+  }
+  100% {
+    width: 90%;
+    height: 60%;
+  }
+}
+
+@keyframes ovelaytouch {
+  0% {
+    width: 0;
+    height: 0;
+  }
+  100% {
+    width: 90%;
+    height: 60%;
+  }
 }
 /*# sourceMappingURL=style.css.map */
