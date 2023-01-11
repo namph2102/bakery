@@ -20,6 +20,7 @@ fetch(URL_BANNER)
         $$('.presentation__sliders').innerHTML = HTML_BTN_BANNER;
         banner_sliders(lengthBanner);
     })
+
 // Banner slider
 const banner_sliders = (lengthBanner=0) => {
     const btn_left = $$('.btn_silder_left');
@@ -76,6 +77,99 @@ const banner_sliders = (lengthBanner=0) => {
     });
 
 }
+
+//api
+// const api=[
+//     {
+//         id:1,
+//         name:"Bánh Kem Thảo Cẩm Viên",
+//         avatar:'/image/sn1.jpeg',
+//         kind:1,
+//         priceOrigin:180,
+//         priceSale:160,
+//         size:'fullsize',
+//         love:false,
+//         material:["Socola","Kem phomai vị coffee","Ca Cao"],
+//         des:'Bánh làm từ 3 lớp gato TRẮNG xen giữa 3 lớp kem TƯƠI PHOMAI, VỊ COFFEE. Bên ngoài phủ 1 lớp bột cacao VÀ DECOR HOA QUẢ. ',
+//         Sales:150,
+//     },
+//     {
+//         id:2,
+//         name:"Bánh Nhung Đỏ Hình Trái Tim",
+//         avatar:'/image/cakes/id2.jpg',
+//         kind:1,
+//         priceOrigin:680,
+//         priceSale:560,
+//         size:['M','L'],
+//         love:false,
+//         material:["Cream cheese", "Bơ New zealand", "Whipping Cream", "Gateaux"],
+//         des:'Lớp phủ kem phô mai thơm và ngọt ngào. Với kết cấu mềm mịn như nhung và lớp sương bông xốp',
+//         Sales:15,
+//     },
+//     {
+//         id:3,
+//         name:"Bánh sinh nhật Gato chuối",
+//         avatar:'/image/cakes/id3.jpg',
+//         kind:1,
+//         priceOrigin:350,
+//         priceSale:260,
+//         size:['M','L'],
+//         love:false,
+//         material:["Gato", "Kem Whipping", "Bơ Newzea land"],
+//         des:'Lớp phủ kem bơ Newzea land thơm và ngọt ngào hài hòa giữa thiên nhiên đất trời',
+//         Sales:15,
+//     },
+//     {
+//         id:4,
+//         name:"Bánh sinh nhật phát tài",
+//         avatar:'/image/sn2.jpg',
+//         kind:1,
+//         priceOrigin:850,
+//         priceSale:750,
+//         size:'fullsize',
+//         love:false,
+//         material:["Socola", "Kem Chease", "Whipping Cream", "Gateaux"],
+//         des:'Lớp phủ kem Chease thơm và ngọt ngào. Với kết cấu mềm mịn như nhung và lớp sương bông xốp',
+//         Sales:65,
+//     },
+//     {
+//         id:5,
+//         name:"Bánh Sinh Nhật Opera",
+//         avatar:'/image/cakes/id5.jpg',
+//         kind:1,
+//         priceOrigin:450,
+//         priceSale:400,
+//         size:'',
+//         love:false,
+//         material:["Gateau", "Hạt điều", "Chocolate",'Whipping cream'],
+//         des:'Bánh Sinh Nhật, Địa chỉ mua bánh sinh nhật tại Hà Nội, Bánh Sinh Nhật Công Ty, Bánh Sinh Nhật Cho Bé, Bánh Sinh Nhật Đẹp',
+//         Sales:44,
+//     },
+//     {
+//         id:6,
+//         name:"Bánh Cream cheese 3 lớp",
+//         avatar:'/image/cakes/id6.jpg',
+//         kind:1,
+//         priceOrigin:550,
+//         priceSale:500,
+//         size:'',
+//         love:false,
+//         material:["Gateau", "gateaux", "Chocolate"],
+//         des:'Bánh Sinh Nhật, Địa chỉ mua bánh sinh nhật tại Hà Nội, Bánh Sinh Nhật Công Ty, Bánh Sinh Nhật Cho Bé, Bánh Sinh Nhật Đẹp',
+//         Sales:15,
+//     },
+// ]
+const API_PRODUCTS='/asset/json/products.json';
+
+showProductsViewHome();
+const showProductsViewHome=()=>{
+    fetch(API_PRODUCTS)
+    .then(res=>res.json())
+    .then(data=>{
+        console.log(data);
+    })
+}
+// turn off menu
 $$('.btn_close--menu').onclick=()=>{
     $$("#openmenu").click();
 }
