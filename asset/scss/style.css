@@ -697,6 +697,16 @@ main {
   width: 100%;
 }
 
+footer .footer--title {
+  border-bottom: 3px solid var(--border-color);
+}
+
+footer .footer--title h5 {
+  padding: 8px 12px;
+  border-bottom: 4px solid var(--text-hover);
+  display: inline-block;
+}
+
 @-webkit-keyframes ovelaytouch {
   0% {
     width: 0;
