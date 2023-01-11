@@ -161,14 +161,72 @@ const banner_sliders = (lengthBanner=0) => {
 // ]
 const API_PRODUCTS='/asset/json/products.json';
 
-showProductsViewHome();
-const showProductsViewHome=()=>{
+
+const showProductsViewHome=(lenProduct=4)=>{
     fetch(API_PRODUCTS)
     .then(res=>res.json())
     .then(data=>{
-        console.log(data);
+        let HTML_BAKERY='';
+        let dataBakery=data
+        .filter(bakery=>bakery.kind==1)
+        .sort((a,b)=>b.Sales-a.Sales)    
+        console.log(dataBakery);
+        lenProduct=lenProduct>dataBakery.length?dataBakery.length:lenProduct;
+        for(let i=0;i<lenProduct;i++){
+            const {id,name,avatar,priceSale,priceOrigin,size}=dataBakery[i];
+            HTML_BAKERY+=`<div class="product-content col-lg-3 col-md-4 col-6">
+            <figure class="product__item--des">
+                <a href="" class="product__item--avata">
+                    <img  loading="lazy" src="${avatar}" alt="${name}">
+                </a>
+                <figcaption>
+                    <h3 class="product__item--title"><a href="http://">${name}</a></h3>
+                    <div class="product__item--price">${formatNumber(priceSale)} đ <del class="price--del">${formatNumber(priceOrigin)}đ</del>
+                    </div>
+                    <div class="product__item--size">${size=="fullsize"?"S, M, L":size}</div>
+                </figcaption>
+                <div class="product-item--stickers__love">
+                    <i class="fa-regular fa-heart"></i>
+                    <span class="stickers--des">Thêm vào yêu thích</span>
+                </div>
+                <div class="product-item--stickers__del ${percentReduce(priceOrigin,priceSale) || "hidden"}">
+                    -${percentReduce(priceOrigin,priceSale)}%
+                </div>
+                <div class="product-item--buttons d-md-block d-none">
+                    <div class="product-item__btn product-item--button__show">
+                        <div class="item__btn--view"> Xem nhanh</div>
+                        <div class="item__btn--view item__btn--sub_view"><i
+                                class="fa-regular fa-eye"></i></div>
+                    </div>
+                    <div class="product-item__btn product-item--button__buy">
+                        <div class="item__btn--view"> Mua Hàng</div>
+                        <div class="item__btn--view item__btn--sub_view">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-item--buttons__mobiles d-md-none d-flex">
+                    <div class="item__btn--view"><i class="fa-regular fa-eye"></i></div>
+                    <div class="item__btn--view"><i class="fa-solid fa-cart-plus"></i></div>
+                </div>
+
+            </figure>
+        </div>`;
+        }
+        document.querySelector("#bakery").innerHTML=HTML_BAKERY;
+
     })
 }
+showProductsViewHome(6);
+const formatNumber=(number)=>{
+    if(!Number(number)) return 0;
+    return new Intl.NumberFormat().format(number*1000);
+}
+const percentReduce=(a,b)=>{
+    if(b>=a) return false;
+    return ((1-b/a)*100).toFixed(2)
+}
+console.log(percentReduce(785,150));
 // turn off menu
 $$('.btn_close--menu').onclick=()=>{
     $$("#openmenu").click();
