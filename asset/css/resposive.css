@@ -82,7 +82,27 @@
     .category__products  .category__item{
         height: 300px !important;
     }
- 
+  
+    .products__views-container__modal{
+        width: 98%;
+    }
+}
+@media screen and (max-width:776px){
+    .products__views-container__modal figure{
+        box-shadow: none;
+        width: 98%;
+        height: 300px;
+    }
+    
+}
+@media screen and (max-width:576px){
+    .products__views-container__modal .modal__dialog--close{
+        top: 45%;
+    }
+    .products__views-container__modal{
+        width: 100%;
+    }
+    
 }
 
 @keyframes rorateHover {
@@ -157,5 +177,14 @@
     .category__products .category__item .category__item--des{
       
         font-size: 1.8rem;
+    }
+    
+}
+@media screen  and (max-width: 576px) {
+    .footer_copyright{
+        text-align: center !important;
+    }
+    .text-end,.text-start{
+        text-align: center !important;
     }
 }

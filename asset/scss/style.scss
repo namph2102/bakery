@@ -14,6 +14,7 @@ html {
 body {
     font-size: 1.6rem;
     background-color: #ede8e8;
+    overflow-x: hidden;
 }
 
 :root {
@@ -277,6 +278,7 @@ main {
                 text-overflow: ellipsis;
                 white-space: nowrap;
                 overflow: hidden;
+
                 a {
                     text-decoration: none;
                     text-transform: capitalize;
@@ -294,15 +296,18 @@ main {
                 margin: 6px 0;
                 font-weight: 400;
                 cursor: auto;
+
                 .price--del {
                     color: var(--primary-color);
                     margin-left: 4px;
                     letter-spacing: 1.5px;
                 }
             }
-            .product__item--size{
+
+            .product__item--size {
                 cursor: auto;
             }
+
             .product-item--stickers__love {
                 position: absolute;
                 top: 10px;
@@ -410,12 +415,13 @@ main {
             top: 45%;
             left: 50%;
             width: 50%;
-            transform: translate(-50%,50%);
+            transform: translate(-50%, 50%);
             background-color: rgba(0, 0, 0, 0.4);
             display: flex;
             justify-content: center;
             padding: 8px 12px;
             border-radius: 40px;
+
             i {
                 margin: 0 12px;
                 font-size: 2.4rem;
@@ -691,16 +697,168 @@ footer {
     }
 
     .footer_copyright {
-        text-align: center;
+        // text-align: center;
         padding: 12px 0;
         background-color: var(--border-color);
         font-size: 1.4rem;
     }
 }
 
-.hidden{
+// modal
+.modal__dialog {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, .3);
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    &::-webkit-scrollbar{
+        width: 0;
+    }
+    scroll-behavior: inherit;
+
+}
+
+.products__views-container__modal {
+    position: relative;
+    background-color: var(--while-color);
+    width: 75%;
+    max-width: 1000px;
+   
+    figure {
+        height: 450px;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        box-shadow: 6px 0px 4px #a3a3a3;
+    }
+
+    .product__views--modal__item {
+        padding: 8px 24px;
+        font-size: 1.8rem;
+    }
+
+    .product__views-des__title {
+        display: inline-block;
+        min-width: 120px;
+    }
+
+    .product__views--item__head {
+        .modal__item--title {
+            font-weight: 500;
+
+            a {
+                text-decoration: none;
+                color: var(--text-color);
+
+                &:hover {
+                    color: var(--text-hover);
+                }
+            }
+        }
+
+        .product__views-des__price--origin {
+            color: red;
+        }
+
+        .product__views-des__price--sale {
+            margin-right: 8px;
+        }
+
+    }
+
+    .product__views--item__des {
+        color: var(--text-light-color);
+        font-size: 1.4rem;
+        line-height: 2rem;
+        word-spacing: 4px;
+    }
+
+    .product__views--item__footer {
+        .modal__item--product_size {
+            input {
+                width: 20px;
+                height: 20px;
+                margin-right: 6px;
+                cursor: pointer;
+            }
+
+            label {
+                font-size: 2rem;
+                font-weight: 500;
+                margin-right: 8px;
+            }
+        }
+
+        .modal__item--product_amount {
+            width: 150px;
+            display: inline-flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid var(--black-color);
+            border-radius: 40px;
+
+            button {
+                background-color: transparent;
+                border: none;
+                outline: none;
+                font-size: 2rem;
+                font-weight: 500;
+                padding: 12px 12px;
+                color: var(--text-light-color);
+
+                &:hover {
+                    color: var(--text-hover);
+                }
+            }
+        }
+
+        .product_add--cart {
+            margin-top: 24px;
+            width: 100%;
+            color: var(--while-color);
+            background-color: #38a4b4;
+            border: none;
+            border-radius: 20px;
+            padding: 12px;
+            transition: 0.3s linear;
+
+            &:hover {
+                background-color: #3fc5da;
+            }
+        }
+    }
+
+    .modal__dialog--close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        font-size: 3.2rem;
+        cursor: pointer;
+        font-weight: 600;
+        
+        &:hover {
+        animation: rorateHover linear 0.3s;
+         color: var(--text-hover);
+        }
+    }
+}
+
+.hidden {
     display: none !important;
 }
+
 @keyframes ovelaytouch {
     0% {
         width: 0;

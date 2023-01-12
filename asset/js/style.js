@@ -170,7 +170,6 @@ const showProductsViewHome=(lenProduct=4)=>{
         let dataBakery=data
         .filter(bakery=>bakery.kind==1)
         .sort((a,b)=>b.Sales-a.Sales)    
-        console.log(dataBakery);
         lenProduct=lenProduct>dataBakery.length?dataBakery.length:lenProduct;
         for(let i=0;i<lenProduct;i++){
             const {id,name,avatar,priceSale,priceOrigin,size}=dataBakery[i];
@@ -217,7 +216,7 @@ const showProductsViewHome=(lenProduct=4)=>{
 
     })
 }
-showProductsViewHome(6);
+showProductsViewHome();
 const formatNumber=(number)=>{
     if(!Number(number)) return 0;
     return new Intl.NumberFormat().format(number*1000);
@@ -226,7 +225,6 @@ const percentReduce=(a,b)=>{
     if(b>=a) return false;
     return ((1-b/a)*100).toFixed(2)
 }
-console.log(percentReduce(785,150));
 // turn off menu
 $$('.btn_close--menu').onclick=()=>{
     $$("#openmenu").click();

@@ -454,6 +454,61 @@
         </div>
     </main>
 
+    <div class="modal__dialog hidden">
+        <div class="row products__views-container__modal">
+            <div class="col-md-6 col-12">
+                <figure>
+                    <img src="./image/cakes/id2.jpg" alt="">
+                </figure>
+            </div>
+            <div class="product__views--modal__item col-md-6 col-12" >
+                <div class="product__views--item__head">
+                    <div>
+                        <span class="product__views-des__title">Tên:</span> 
+                        <span class="modal__item--title"><a href="http://">Bánh Sinh Nhật</a></span>
+                    </div>
+                    <div class="mt-4">
+                        <span class="product__views-des__title">Giá:</span>
+                        <span class="product__views-des__price--sale">250.000 đ</span> <del
+                            class="product__views-des__price--origin">250.000 đ</del>
+                    </div>
+                </div>
+                <p class="product__views--item__des mt-4">
+                    "Dưới bàn tay của nghệ nhân nhiều kinh nghiệm làm bánh, từ những nguyên liệu như bột, kem,... đã
+                    được
+                    nhào nặn tạo lên những hình khối đặc biệt, với rất nhiều chi tiết nhỏ đòi hỏi sự tỉ mỉ cao, đem lại
+                    sự đặc biệt trong 1 ngày đặc biệt"
+                </p>
+                <div class="product__views--item__footer">
+                    <div class="mt-4">
+                        <span class="product__views-des__title">Kích Thước:</span>
+                        <span class="modal__item--title modal__item--product_size">
+                            <input type="radio" name="size" id="sizeS"> <label for="sizeS">S</label>
+                            <input type="radio" name="size" id="sizeM"> <label for="sizeM">M</label>
+                            <input type="radio" name="size" id="sizeL"> <label for="sizeL">L</label>
+                        </span>
+                    </div>
+                    <div class="mt-4">
+                        <span class="product__views-des__title">Số Lượng:</span>
+                        <span class="modal__item--product_amount">
+                            <button class="product_amount--reduce"><i class="fa-solid fa-minus"></i></button>
+                            <span>1 </span>
+                            <button class="product_amount--increase"><i class="fa-solid fa-plus"></i></button>
+                        </span>
+                    </div>
+                    <div >
+                        <button class="product_add--cart">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal__dialog--close">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+        </div>
+
+        
+    </div>
+
     <footer>
         <div class="container">
             <div class="row footer_content">
@@ -545,8 +600,9 @@
                 </div>
             </div>
         </div>
-        <div class="footer_copyright col-12">
-            © Copyright 10/01/2023 · Bản quyền thuộc Phạm Hoài Nam
+        <div class="footer_copyright col-12 row">
+            <span class="col-sm-6 col-12 text-end">   © Copyright 10/01/2023</span>
+          <span class="col-sm-6 col-12 text-start">· Bản quyền thuộc Phạm Hoài Nam</span>
         </div>
     </footer>
 
