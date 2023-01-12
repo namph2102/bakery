@@ -118,7 +118,7 @@ body {
 // css main
 main {
     margin-top: 2.4rem;
-    margin-bottom: 100px;
+    margin-bottom: 20px;
 }
 
 .category__products {
@@ -534,7 +534,7 @@ main {
 
             .overlay_news {
                 position: absolute;
-                top: 50%;
+                top: 40%;
                 left: 50%;
                 transform: translate(-50%, -50%);
                 width: 0;
@@ -834,7 +834,20 @@ footer {
             }
         }
     }
-
+    .modal__product__view--reducer{
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 80px;
+        height: 36px;
+        font-size: 13px;
+        background-color: var(--primary-color);
+        color: var(--while-color);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     .modal__dialog--close {
         position: absolute;
         top: 0;

@@ -364,7 +364,7 @@
                 <div class="products__kind">
                     <h2 class="products__kind--title">Tin Tức</h2>
                 </div>
-                <div class="row news__container--content">
+                <div id="news" class="row news__container--content">
                     <div class="news__item col-lg-4 col-6">
                         <a class="news__item--link__container" href="">
                             <figure>
@@ -458,14 +458,17 @@
         <div class="row products__views-container__modal">
             <div class="col-md-6 col-12">
                 <figure>
-                    <img src="./image/cakes/id2.jpg" alt="">
+                    <img class="product-modal--avata" src="./image/cakes/id2.jpg" alt="">
                 </figure>
+            </div>
+            <div class="modal__product__view--reducer">
+                -15%
             </div>
             <div class="product__views--modal__item col-md-6 col-12" >
                 <div class="product__views--item__head">
                     <div>
                         <span class="product__views-des__title">Tên:</span> 
-                        <span class="modal__item--title"><a href="http://">Bánh Sinh Nhật</a></span>
+                        <span class="modal__item--title"><a id="productName" href="">Bánh Sinh Nhật</a></span>
                     </div>
                     <div class="mt-4">
                         <span class="product__views-des__title">Giá:</span>
@@ -615,6 +618,7 @@
     const $$l = document.querySelectorAll.bind(document);
 
 </script>
+<script src="./asset/js/function.js"></script>
 <script src="./asset/js/style.js"></script>
 
 
