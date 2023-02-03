@@ -132,7 +132,6 @@ const banner_sliders = (lengthBanner = 0) => {
 }
 
 
-
 //show product at home
 const showProductsViewHome = (lenProduct = 4) => {
     fetch(API_PRODUCTS)

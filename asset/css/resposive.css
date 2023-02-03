@@ -102,6 +102,9 @@
     .products__views-container__modal{
         width: 100%;
     }
+    .products__views-container__modal .product__views-des__title{
+        min-width: 105px;
+    }
     
 }
 

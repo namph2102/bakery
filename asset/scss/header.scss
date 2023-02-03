@@ -60,9 +60,11 @@
                 background-color: var(--while-color);
                 width: 250px;
                 box-shadow:0px 0px 4px #b7abab;
+               
                  a{
                     height: unset;
                     padding: 12px 16px;
+                   
                 }
                 li{
                     transition: all 0.4s ease-in-out;
@@ -110,3 +112,5 @@
     }
 
 }
+
+

@@ -15,6 +15,7 @@ body {
     font-size: 1.6rem;
     background-color: #ede8e8;
     overflow-x: hidden;
+    overscroll-behavior: none;
 }
 
 :root {
@@ -432,22 +433,27 @@ main {
     }
 
     .products__container--seeall {
-        text-align: center;
-        margin: 16px 0;
-
         a {
             min-width: 180px;
-            display: inline-block;
-            text-decoration: none;
-            font-size: 1.6rem;
-            padding: 12px 0;
-            color: var(--while-color);
-            background-color: var(--primary-green-color);
-            border-radius: 50px;
+        }
+    }
 
-            &:hover {
-                opacity: 0.76;
-            }
+}
+
+.button__green {
+    text-align: center;
+    margin: 16px 0;
+
+    a {
+        display: inline-block;
+        text-decoration: none;
+        font-size: 1.6rem;
+        padding: 12px 0;
+        color: var(--while-color);
+        background-color: var(--primary-green-color);
+        border-radius: 50px;
+        &:hover {
+            opacity: 0.76;
         }
     }
 }
@@ -715,9 +721,11 @@ footer {
     align-items: center;
     overflow-y: scroll;
     overflow-x: hidden;
-    &::-webkit-scrollbar{
+
+    &::-webkit-scrollbar {
         width: 0;
     }
+
     scroll-behavior: inherit;
 
 }
@@ -727,9 +735,10 @@ footer {
     background-color: var(--while-color);
     width: 75%;
     max-width: 1000px;
-   
+
     figure {
         height: 450px;
+
         img {
             width: 100%;
             height: 100%;
@@ -740,8 +749,8 @@ footer {
     }
 
     .product__views--modal__item {
-        padding: 8px 24px;
-        font-size: 1.8rem;
+        padding: 24px;
+        font-size: 1.6rem;
     }
 
     .product__views-des__title {
@@ -783,21 +792,21 @@ footer {
     .product__views--item__footer {
         .modal__item--product_size {
             input {
-                width: 20px;
-                height: 20px;
+                width: 1.6rem;
+                height: 1.6rem;
                 margin-right: 6px;
                 cursor: pointer;
             }
 
             label {
-                font-size: 2rem;
+                font-size: 1.8rem;
                 font-weight: 500;
                 margin-right: 8px;
             }
         }
 
         .modal__item--product_amount {
-            width: 150px;
+            width: 120px;
             display: inline-flex;
             justify-content: space-between;
             align-items: center;
@@ -810,7 +819,7 @@ footer {
                 outline: none;
                 font-size: 2rem;
                 font-weight: 500;
-                padding: 12px 12px;
+                padding: 8px 12px;
                 color: var(--text-light-color);
 
                 &:hover {
@@ -834,7 +843,8 @@ footer {
             }
         }
     }
-    .modal__product__view--reducer{
+
+    .modal__product__view--reducer {
         position: absolute;
         top: 10px;
         left: 10px;
@@ -848,6 +858,7 @@ footer {
         justify-content: center;
         align-items: center;
     }
+
     .modal__dialog--close {
         position: absolute;
         top: 0;
@@ -860,11 +871,133 @@ footer {
         font-size: 3.2rem;
         cursor: pointer;
         font-weight: 600;
-        
+
         &:hover {
-        animation: rorateHover linear 0.3s;
-         color: var(--text-hover);
+            animation: rorateHover linear 0.3s;
+            color: var(--text-hover);
         }
+    }
+}
+
+.modal__container {
+    position: fixed;
+    inset: 0;
+    z-index: 11;
+    background-color: rgba(0, 0, 0, 0.4);
+
+    .modal__love {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 400px;
+        background-color: var(--while-color);
+    }
+
+    .modal__head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px;
+        font-size: 22px;
+        box-shadow: 2px 3px 2px #d0c7c7;
+
+        .modal__head--close {
+            font-size: 30px;
+            cursor: pointer;
+            font-weight: 600;
+
+            &:hover {
+                animation: rorateHover linear 0.3s;
+                color: var(--text-hover);
+            }
+        }
+
+    }
+
+    .modal__body {
+        padding: 20px;
+        height: 100vh;
+        overflow-y: auto;
+        overscroll-behavior:contain;
+        &::-webkit-scrollbar{
+            width: 5px;
+        }
+        &::-webkit-scrollbar-thumb{
+            height: 20px;
+            border-radius: 8px;
+           background-color: var(--primary-green-color);
+        }
+         &::-webkit-scrollbar-track{
+           background-color: rgb(228, 222, 222);
+        }
+        .modal__body--product {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            transition: 0.3s linear;
+            &:hover{
+                padding-left: 12px;
+            }
+            .modal__body--product__des {
+                margin-left: 20px;
+                .product__des--title {
+                   a{
+                    color: #222;
+                    text-decoration: none;
+                    transition: 0.3s ease;
+                    &:hover{
+                        color: var(--primary-green-color);
+                    }
+                   }
+                   
+                }
+                .product__des--price{
+                    color: var(--text-light-color);
+                    span{
+                        color: red;
+                        font-size: 14px;
+                    }
+                }
+                .button__green{
+                    a{
+                        min-width: 120px;
+                    }
+                }
+            }
+        }
+
+        .modal__body--product__avata {
+            img {
+                width: 100px;
+                height: 100px;
+                object-fit: cover;
+                border-radius: 4px;
+                box-shadow: 2px 3px 4px gray;
+            }
+        }
+    }
+    .product__des--controller{
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid #333;
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-size: 18px;
+        margin-top: 12px;
+        width: 150px;
+        .product__des--controller__amount{
+            width: 50%;
+            text-align: center;
+            outline: none;
+            border: none;
+        }
+        button{
+            border: none;
+            padding: 4px;
+        }
+    }
+    .modal__body__add--total{
+       
     }
 }
 

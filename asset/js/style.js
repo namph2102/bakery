@@ -1,6 +1,4 @@
 
-
-
 showProductsViewHome();
 showNewsHomePage();
 
@@ -22,3 +20,4 @@ function openViews(id) {
         $$(".modal__dialog").classList.add("hidden");
     }
 }())
+
