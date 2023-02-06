@@ -1182,13 +1182,27 @@ footer .footer_copyright {
 }
 
 .modal__userlog .userlog__container {
+  margin: auto;
   width: 400px;
   height: 500px;
-  margin: auto;
-  margin-top: 12px;
-  padding: 12px;
+  padding: 20px 12px;
   background-color: white;
   border-radius: 12px;
+  position: relative;
+}
+
+.modal__userlog .userlog__container .modal__head--close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  display: inline-block;
+  font-size: 32px;
+}
+
+.modal__userlog .userlog__container .modal__head--close:hover {
+  -webkit-animation: rorateHover 0.3s linear;
+          animation: rorateHover 0.3s linear;
+  cursor: pointer;
 }
 
 .modal__userlog .userlog__container .log__title {

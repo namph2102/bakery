@@ -1007,13 +1007,26 @@ footer {
     background-color: rgba(0, 0, 0, .3);
     display: flex;
     .userlog__container{
+        margin: auto;
         width: 400px;
         height: 500px;
-        margin: auto;
-        margin-top: 12px;
-        padding: 12px;
+      
+        padding: 20px 12px;
         background-color: white;
         border-radius: 12px;
+        position: relative;
+        .modal__head--close{
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            display: inline-block;
+            font-size: 32px;
+         &:hover{
+            animation: rorateHover 0.3s linear;
+            cursor: pointer;
+           
+         }
+        }
         .log__title{
             text-align: center;
             font-weight: 600;
