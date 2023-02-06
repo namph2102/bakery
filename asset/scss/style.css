@@ -1171,6 +1171,77 @@ footer .footer_copyright {
   padding: 4px;
 }
 
+.modal__userlog {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.modal__userlog .userlog__container {
+  width: 400px;
+  height: 500px;
+  margin: auto;
+  margin-top: 12px;
+  padding: 12px;
+  background-color: white;
+  border-radius: 12px;
+}
+
+.modal__userlog .userlog__container .log__title {
+  text-align: center;
+  font-weight: 600;
+}
+
+.modal__userlog .form__user label {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.modal__userlog .form__user .form__input {
+  margin: 8px 0;
+}
+
+.modal__userlog .form__user .form__input input {
+  padding: 8px 4px;
+  width: 100%;
+  font-size: 16px;
+}
+
+.modal__userlog .form__user .form__input p {
+  color: red;
+  height: 18px;
+}
+
+.modal__userlog .form__user .form__input.error input {
+  border: 0.5px solid red;
+}
+
+.modal__userlog .form__user .form--group__footer a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.modal__userlog .form__user .form--group__footer a:hover {
+  color: var(--primary-green-color);
+}
+
+.modal__userlog .form__user .form--group__footer button {
+  width: 100%;
+  background-color: var(--primary-green-color);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--while-color);
+  border-radius: 12px;
+}
+
+.modal__userlog .form__user .form--group__footer button:hover {
+  opacity: 0.8;
+}
+
 .hidden {
   display: none !important;
 }

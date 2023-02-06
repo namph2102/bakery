@@ -1000,7 +1000,70 @@ footer {
        
     }
 }
-
+.modal__userlog{
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, .3);
+    display: flex;
+    .userlog__container{
+        width: 400px;
+        height: 500px;
+        margin: auto;
+        margin-top: 12px;
+        padding: 12px;
+        background-color: white;
+        border-radius: 12px;
+        .log__title{
+            text-align: center;
+            font-weight: 600;
+        }
+    }
+    .form__user{
+        label{
+            font-weight: 500;
+            font-size: 16px;
+        }
+        .form__input{
+            margin: 8px 0;
+            input{
+                padding: 8px 4px;
+                width: 100%;
+                font-size: 16px;
+            }
+           p{
+            color: red;
+            height: 18px;
+           }
+        }
+        .form__input.error{
+            input{
+                border:0.5px solid red;
+            }
+            
+        }
+        .form--group__footer{
+            a{
+                text-decoration: none;
+                color: var(--text-color);
+                &:hover{
+                    color: var(--primary-green-color);
+                }
+            }
+            button{
+                width: 100%;
+                background-color: var(--primary-green-color);
+                font-size: 16px;
+                font-weight: 500;
+                color: var(--while-color);
+                border-radius: 12px;
+                &:hover{
+                    opacity: 0.8;
+                }
+            }
+        }
+    }
+}
 .hidden {
     display: none !important;
 }
