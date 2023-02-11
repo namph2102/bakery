@@ -2,14 +2,17 @@
 const URL_BANNER = "./asset/json/banner.json"
 const API_PRODUCTS = './asset/json/products.json';
 const API_KIND = './asset/json/kind.json';
-let API=[];
+const totalBox=$$(".modal__body__add--total .total__cart");
+let API = [];
+
+
 // show san phẩm ở modal
 function showProductModal({ name, avatar, priceOrigin, priceSale, des }) {
     const box_reducer = $$(".modal__product__view--reducer");
     box_reducer.classList.remove("hidden");
     $$("#productName").innerHTML = name;
-    $$(".product__views-des__price--sale").innerHTML = formatNumber(priceSale) + " đ";
-    $$("del.product__views-des__price--origin").innerHTML = (priceOrigin > priceSale) ? formatNumber(priceOrigin) + " đ" : "";
+    $$(".product__views-des__price--sale").innerHTML = coverPrice(priceSale) + " đ";
+    $$("del.product__views-des__price--origin").innerHTML = (priceOrigin > priceSale) ? coverPrice(priceOrigin) + " đ" : "";
     $$(".product__views--item__des").innerHTML = des;
     // $$(".modal__item--product_size").innerHTML;
     const redusePrice = percentReduce(priceOrigin, priceSale);
@@ -21,11 +24,11 @@ function showProductModal({ name, avatar, priceOrigin, priceSale, des }) {
 }
 
 //Show trang tin tuc 
-function showNewsHomePage(len=3) {
+function showNewsHomePage(len = 3) {
     fetch("/asset/json/news.json")
         .then(res => res.json())
         .then(news => {
-            if(news.length>len) news.length=len;
+            if (news.length > len) news.length = len;
             const HTML__NEWS = news
                 .map(newItem => {
                     const { date, name, des, avata } = newItem;
@@ -137,11 +140,11 @@ const banner_sliders = (lengthBanner = 0) => {
 //show product at home
 async function showProductsViewHome(lenProduct = 4, kind = 1) {
     const res__products = await fetch(API_PRODUCTS);
-    const data = API=await res__products.json();
-    const res__kind=await fetch(API_KIND)
-    const kinds=await res__kind.json();
-    const {title}=kinds.find(item=>item.id==kind) ?? false;
-    if(!title) return false;
+    const data = API = await res__products.json();
+    const res__kind = await fetch(API_KIND)
+    const kinds = await res__kind.json();
+    const { title } = kinds.find(item => item.id == kind) ?? false;
+    if (!title) return false;
 
     let HTML_BAKERY = '';
     const dataBakery = data
@@ -157,7 +160,7 @@ async function showProductsViewHome(lenProduct = 4, kind = 1) {
                 </a>
                 <figcaption>
                     <h3 class="product__item--title"><a href="http://">${name}</a></h3>
-                    <div class="product__item--price">${formatNumber(priceSale)} đ <del class="price--del">${formatNumber(priceOrigin)}đ</del>
+                    <div class="product__item--price">${coverPrice(priceSale)} đ <del class="price--del">${coverPrice(priceOrigin)}đ</del>
                     </div>
                     <div class="product__item--size">${size == "fullsize" ? "S, M, L" : size}</div>
                 </figcaption>
@@ -176,21 +179,21 @@ async function showProductsViewHome(lenProduct = 4, kind = 1) {
                     </div>
                     <div class="product-item__btn product-item--button__buy">
                         <div class="item__btn--view" data-id="${id}"> Mua Hàng</div>
-                        <div class="item__btn--view item__btn--sub_view">
-                            <i class="fa-solid fa-cart-plus"></i>
+                        <div data-id="${id}" class="item__btn--view item__btn--sub_view addcart">
+                            <i data-id="${id}" class="fa-solid fa-cart-plus"></i>
                         </div>
                     </div>
                 </div>
                 <div class="product-item--buttons__mobiles d-md-none d-flex">
                     <div onclick="openViews(${id})" class="item__btn--view"><i class="fa-regular fa-eye"></i></div>
-                    <div class="item__btn--view" data-id="${id}"><i class="fa-solid fa-cart-plus"></i></div>
+                    <div class="item__btn--view addcart" data-id="${id}"><i data-id="${id}" class="fa-solid fa-cart-plus"></i></div>
                 </div>
 
             </figure>
         </div>`;
     }
- 
-    
+
+
     const products__kind = `
     <div class="products__container--shows">
         <div class="products__container">
@@ -206,17 +209,133 @@ async function showProductsViewHome(lenProduct = 4, kind = 1) {
          </div>
     </div>
     `;
-    const container=$$("#show__products");
+    const container = $$("#show__products");
     if(container.innerHTML){
-        container.insertAdjacentHTML('beforeend',products__kind)  ;
+        container.insertAdjacentHTML('beforeend', products__kind);
     }else container.innerHTML=products__kind;
+    
+    //  HandleCart();
+
 
 }
+// xem sản phẩm views
+function openViews(id) {
+    const product = API.find(item => item.id == id);
+    showProductModal(product)
+}
+
+//xừ lý giỏ hàng Cart;
+function HandleCart() {
+    const list__btn_adds = $$l('.addcart');
+    const modal__container_cart = $$(".modal__container");
+    const btn__close = $$('.modal__head--close');
+   // Dóng mở modal
+    modal__container_cart.addEventListener('click', () => {
+        modal__container_cart.classList.add("hidden");
+    })
+    $$(".modal__love").addEventListener('click',e=>{
+        e.stopPropagation();
+    })
+
+    btn__close.addEventListener('click', (e) => {
+        modal__container_cart.classList.add("hidden");
+    })
+    list__btn_adds.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const id=e.target.getAttribute('data-id');
+            if(carts.check(id)){
+                carts.update(id,Number(carts.getItem(id).amount)+1);
+            }
+            else {
+                carts.add(id);
+            }
+            showCart();
+            modal__container_cart.classList.remove("hidden");
+          
+        })
+    })
+    showCart();
+}
+// Display sản phẩm
+function showCart(){
+    const CartProductsBox=$$(".modal__body--product__list");
+    const listCartItems= carts.show();
+    let total=0;
+    
+    
+    const HTML__CART=listCartItems.map(cart=>{
+        const {id,name,avatar,priceSale}=items=API.find(item=>item.id==cart.id);
+        total+=priceSale*cart.amount;
+        return `<div class="modal__body--product">
+        <a href="" class="modal__body--product__avata">
+            <img loading="lazy" src="${avatar}" alt="${name}">
+        </a>
+        <div class="modal__body--product__des">
+            <h3 class="product__des--title pb-2"><a href="http://">${name}</a></h3>
+            <p class="product__des--price">${coverPrice(priceSale)} x <span class="product__des--amount"> ${cart.amount}</span><span> ₫</span></p>
+            <div class="product__des--controller">
+                <button data-id=${id} data-type="decrease" class="handleAmounts"><i class="fa-solid fa-minus"></i></button>
+                <input class="product__des--controller__amount" type="number" value="${cart.amount}">
+                <button data-id=${id} data-type="increase" class="handleAmounts"><i class="fa-solid fa-plus"></i></button>
+            </div>
+        </div>
+    </div>`;
+    }).join('');
+    CartProductsBox.innerHTML=HTML__CART;
+    $$(".total__cart").innerText=coverPrice(total);
+    controllerCartProducts();
+}
+// Điều chỉnh sử lý tăng giảm số lượng sản phẩm trong giỏ hàng;
+function controllerCartProducts(){
+    const listBtnHandleAmounts=$$l('.handleAmounts');
+    listBtnHandleAmounts.forEach(item=>{
+        item.onclick=()=>{
+            const parentBox=item.closest('.modal__body--product');
+            const id=item.getAttribute('data-id');
+            const typeButton=item.getAttribute('data-type');
+            console.log(id);
+            let amount= carts.getItem(id)?.amount ?? 1;
+            
+            let totalProduct=coverNumber(totalBox.innerText)/1000;
+            const priceSale=Number(API.find(product=>product.id==id).priceSale);
+           
+            if(typeButton=='increase'){
+                totalProduct+=priceSale;
+                amount=amount<10?++amount:10;
+            }else {
+                totalProduct-=priceSale;
+                --amount;
+                if(amount<=0) {
+                    carts.delete(id);
+                    parentBox.classList.add('hidden');
+                    totalBox.innerHTML=coverPrice(totalProduct);
+                    return true;
+                }
+            }
+   
+            carts.update(id,amount)
+            parentBox.querySelector('.product__des--amount').innerText=amount;
+            parentBox.querySelector('.product__des--controller__amount').value=amount;
+            totalBox.innerHTML=coverPrice(totalProduct);
+            console.log(totalProduct);
+        }
+    })
+   
+}
 // format number đạng 100.000
-const formatNumber = (number) => {
+const coverPrice = (number) => {
     if (!Number(number)) return 0;
     return new Intl.NumberFormat().format(number * 1000);
 }
+const coverNumber = (price) => {
+    if(price.includes(',')){
+        return Number(price.replaceAll(',',''));
+    }
+    if(price.includes('.')){
+        return Number(price.replaceAll('.',''));
+    }
+}
+
 // sử lý %
 const percentReduce = (a, b) => {
     if (b >= a) return false;

@@ -515,7 +515,7 @@
     <div class="modal__container hidden">
         <div class="modal__love">
             <div class="modal__head">
-                <h2 class="modal__head--title">Yêu thích</h2>
+                <h2 class="modal__head--title">Giỏ Hàng</h2>
                 <div class="modal__head--close">
                     <i class="fa-solid fa-xmark"></i>
                 </div>
@@ -559,24 +559,27 @@
                 </div>
             </div>
             <div class="modal__body modal__body__add">
-                <div class="modal__body--product">
+                <div class="modal__body--product__list">
+
+                </div>
+                <!-- <div class="modal__body--product">
                     <a href="" class="modal__body--product__avata">
                         <img src="./image/category1.jpg" alt="">
                     </a>
                     <div class="modal__body--product__des">
                         <h3 class="product__des--title pb-2"><a href="http://">Bánh Sinh Nhật</a></h3>
-                        <p class="product__des--price">150.000<span>₫</span></p>
+                      <p class="product__des--price">500,0000 x <span class="product__des--amount"> 1</span><span> ₫</span></p>
                         <div class="product__des--controller">
-                            <button><i class="fa-solid fa-minus"></i></button>
-                            <input class="product__des--controller__amount" type="number" value="1">
-                            <button><i class="fa-solid fa-plus"></i></button>
+                            <button data-id="1" class="cart__decrease"><i class="fa-solid fa-minus"></i></button>
+                            <input class="product__des--controller__amount" type="number" value="12">
+                            <button data-id="1"  class="cart__increase"><i class="fa-solid fa-plus"></i></button>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="modal__body__add--total">
                     <div class="d-flex justify-content-between">
                         <h5 class="fs-3 mt-2 mb-2 fw-bold">Thành Tiền</h5>
-                        <p class="fs-3 fw-border">500.000 <span class="text-danger">₫</span> </p>
+                        <p class="fs-3 fw-border"><span class="total__cart">500.000 </span><span class="text-danger">₫</span> </p>
                     </div>
                     <div class="button__green">
                         <a class="w-100" href="">Xem Thêm</a>
@@ -789,8 +792,10 @@
     const $$l = document.querySelectorAll.bind(document);
 
 </script>
+<script src="./asset/js/sessionHandle.js"></script>
 <script src="./asset/js/data.js"></script>
 <script src="./asset/js/style.js"></script>
-<script src="./asset/js/sessionHandle.js"></script>
+
+
 
 </html>
