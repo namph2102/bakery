@@ -1,9 +1,10 @@
 
 const URL_BANNER = "./asset/json/banner.json"
-const API_PRODUCTS = '/asset/json/products.json';
-let API = [];
+const API_PRODUCTS = './asset/json/products.json';
+const API_KIND = './asset/json/kind.json';
+let API=[];
 // show san phẩm ở modal
-const showProductModal = ({ name, avatar, priceOrigin, priceSale, des }) => {
+function showProductModal({ name, avatar, priceOrigin, priceSale, des }) {
     const box_reducer = $$(".modal__product__view--reducer");
     box_reducer.classList.remove("hidden");
     $$("#productName").innerHTML = name;
@@ -20,14 +21,15 @@ const showProductModal = ({ name, avatar, priceOrigin, priceSale, des }) => {
 }
 
 //Show trang tin tuc 
-const showNewsHomePage = () => {
+function showNewsHomePage(len=3) {
     fetch("/asset/json/news.json")
         .then(res => res.json())
-        .then(news=>{
-           const HTML__NEWS=news
-           .map(newItem=>{
-               const {date,name,des,avata}=newItem;
-            return ` <div class="news__item col-lg-4 col-6">
+        .then(news => {
+            if(news.length>len) news.length=len;
+            const HTML__NEWS = news
+                .map(newItem => {
+                    const { date, name, des, avata } = newItem;
+                    return ` <div class="news__item col-lg-4 col-6">
             <a class="news__item--link__container" href="">
                 <figure>
                     <div class="news__item--box__avata">
@@ -50,8 +52,8 @@ const showNewsHomePage = () => {
                 <a href="">Xem Thêm ...</a>
             </div>
         </div>`
-           }).join("");
-           $$("#news").innerHTML=HTML__NEWS;
+                }).join("");
+            $$("#news").innerHTML = HTML__NEWS;
         })
 }
 fetch(URL_BANNER)
@@ -59,7 +61,7 @@ fetch(URL_BANNER)
     .then(banners => {
         // show banner sliders
         const HTML_BANNER = banners.map((banner, index) => `<figure>
-            <img class="slider" src="${banner}" alt="Slider ${index} - HT Bakery">
+            <img class="slider" src="${banner}"  alt="Slider ${index} - HT Bakery">
         </figure>
         `).join("");
         $$('.banner_sliders').innerHTML = HTML_BANNER;
@@ -133,19 +135,22 @@ const banner_sliders = (lengthBanner = 0) => {
 
 
 //show product at home
-const showProductsViewHome = (lenProduct = 4) => {
-    fetch(API_PRODUCTS)
-        .then(res => res.json())
-        .then(data => {
-            let HTML_BAKERY = '';
-            API = data;
-            let dataBakery = data
-                .filter(bakery => bakery.kind == 1)
-                .sort((a, b) => b.Sales - a.Sales)
-            lenProduct = lenProduct > dataBakery.length ? dataBakery.length : lenProduct;
-            for (let i = 0; i < lenProduct; i++) {
-                const { id, name, avatar, priceSale, priceOrigin, size } = dataBakery[i];
-                HTML_BAKERY += `<div class="product-content col-lg-3 col-md-4 col-6">
+async function showProductsViewHome(lenProduct = 4, kind = 1) {
+    const res__products = await fetch(API_PRODUCTS);
+    const data = API=await res__products.json();
+    const res__kind=await fetch(API_KIND)
+    const kinds=await res__kind.json();
+    const {title}=kinds.find(item=>item.id==kind) ?? false;
+    if(!title) return false;
+
+    let HTML_BAKERY = '';
+    const dataBakery = data
+        .filter(bakery => bakery.kind == kind)
+        .sort((a, b) => b.Sales - a.Sales)
+    lenProduct = lenProduct > dataBakery.length ? dataBakery.length : lenProduct;
+    for (let i = 0; i < lenProduct; i++) {
+        const { id, name, avatar, priceSale, priceOrigin, size } = dataBakery[i];
+        HTML_BAKERY += `<div class="product-content col-lg-3 col-md-4 col-6">
             <figure class="product__item--des">
                 <a href="" class="product__item--avata">
                     <img  loading="lazy" src="${avatar}" alt="${name}">
@@ -170,7 +175,7 @@ const showProductsViewHome = (lenProduct = 4) => {
                                 class="fa-regular fa-eye"></i></div>
                     </div>
                     <div class="product-item__btn product-item--button__buy">
-                        <div class="item__btn--view"> Mua Hàng</div>
+                        <div class="item__btn--view" data-id="${id}"> Mua Hàng</div>
                         <div class="item__btn--view item__btn--sub_view">
                             <i class="fa-solid fa-cart-plus"></i>
                         </div>
@@ -178,14 +183,34 @@ const showProductsViewHome = (lenProduct = 4) => {
                 </div>
                 <div class="product-item--buttons__mobiles d-md-none d-flex">
                     <div onclick="openViews(${id})" class="item__btn--view"><i class="fa-regular fa-eye"></i></div>
-                    <div class="item__btn--view"><i class="fa-solid fa-cart-plus"></i></div>
+                    <div class="item__btn--view" data-id="${id}"><i class="fa-solid fa-cart-plus"></i></div>
                 </div>
 
             </figure>
         </div>`;
-            }
-            $$("#bakery").innerHTML = HTML_BAKERY;
-        })
+    }
+ 
+    
+    const products__kind = `
+    <div class="products__container--shows">
+        <div class="products__container">
+            <div class="products__kind">
+                <h2 class="products__kind--title">${title}</h2>
+            </div>
+            <div class="row product__item">
+                ${HTML_BAKERY}
+             </div>
+             <div class="button__green products__container--seeall">
+                <a href="">Xem Thêm</a>
+            </div>
+         </div>
+    </div>
+    `;
+    const container=$$("#show__products");
+    if(container.innerHTML){
+        container.insertAdjacentHTML('beforeend',products__kind)  ;
+    }else container.innerHTML=products__kind;
+
 }
 // format number đạng 100.000
 const formatNumber = (number) => {

@@ -1,6 +1,8 @@
+// xuất ra sản phẩm showProductsViewHome(Độ dài sản phẩm,Loại sản phẩm )
+showProductsViewHome(4,1);
+showProductsViewHome(2,2);
 
-showProductsViewHome();
-showNewsHomePage();
+showNewsHomePage(4);
 
 // xem sản phẩm views
 function openViews(id) {
@@ -19,5 +21,6 @@ function openViews(id) {
     $$(".modal__dialog--close").onclick = () => {
         $$(".modal__dialog").classList.add("hidden");
     }
-}())
+}());
+
 

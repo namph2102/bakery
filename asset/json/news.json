@@ -1,3 +1,4 @@
+
 [
     {
         "id": 1,
@@ -47,7 +48,49 @@
         ]
     },
     {
+        "id": 4,
+        "name": "Cách làm bánh mì nướng phô mai xúc xích bằng nồi chiên không dầu",
+        "avata": "/image/news/id3.jpg",
+        "date":"12/01",
+        "des": "Bánh mì là thực phẩm phổ biến tại Việt Nam, có thể được dùng để chế biến nhiều món ăn vặt thơm ngon. Hôm nay, hãy cùng vào bếp với Điện máy XANH học ngay cách làm bánh mì nướng phô mai xúc xích với tôm bằng nồi chiên không dầu cực hấp dẫn nhé!",
+        "material": [
+            "Bánh mì baguette 2 cái",
+            "Xúc xích 4 cái",
+            "Phô mai sợi 1 ít",
+            "Hành lá cắt nhuyễn 1 ít",
+            "Ớt chuông cắt hạt lựu nhỏ 1 ít",
+            "Tương cà 1 muỗng canh",
+            "Tương ớt 1 muỗng canh"
+        ],
+        "steps": [
+            "Đầu tiên, bạn cho lần lượt 1 muỗng canh tương ớt, 1 muỗng cà phê muối, 2 muỗng cà phê đường, 1 muỗng cà phê tiêu đen vào một cái chén. Tiếp theo, trộn đều hỗn hợp này lên để chúng tan hẳn và hòa quyện vào nhau.",
+            "Dùng dao cắt bánh mì thành những khoanh tròn xéo vừa ăn. Sau đó, phết một lớp sốt vừa làm lên bề mặt các khoanh bánh mì.",
+            "Bạn làm nóng trước nồi chiên không dầu ở nhiệt độ 180 độ C trong 5 phút. Tiếp đến, cho tất cả những lát bánh mì đã được phết sốt vào nướng 5 phút với mức nhiệt độ là 160 độ C."
+        ]
+    },
+    {
         "id": 3,
+        "name": "Cách làm bánh mì nướng phô mai xúc xích bằng nồi chiên không dầu",
+        "avata": "/image/news/id3.jpg",
+        "date":"12/01",
+        "des": "Bánh mì là thực phẩm phổ biến tại Việt Nam, có thể được dùng để chế biến nhiều món ăn vặt thơm ngon. Hôm nay, hãy cùng vào bếp với Điện máy XANH học ngay cách làm bánh mì nướng phô mai xúc xích với tôm bằng nồi chiên không dầu cực hấp dẫn nhé!",
+        "material": [
+            "Bánh mì baguette 2 cái",
+            "Xúc xích 4 cái",
+            "Phô mai sợi 1 ít",
+            "Hành lá cắt nhuyễn 1 ít",
+            "Ớt chuông cắt hạt lựu nhỏ 1 ít",
+            "Tương cà 1 muỗng canh",
+            "Tương ớt 1 muỗng canh"
+        ],
+        "steps": [
+            "Đầu tiên, bạn cho lần lượt 1 muỗng canh tương ớt, 1 muỗng cà phê muối, 2 muỗng cà phê đường, 1 muỗng cà phê tiêu đen vào một cái chén. Tiếp theo, trộn đều hỗn hợp này lên để chúng tan hẳn và hòa quyện vào nhau.",
+            "Dùng dao cắt bánh mì thành những khoanh tròn xéo vừa ăn. Sau đó, phết một lớp sốt vừa làm lên bề mặt các khoanh bánh mì.",
+            "Bạn làm nóng trước nồi chiên không dầu ở nhiệt độ 180 độ C trong 5 phút. Tiếp đến, cho tất cả những lát bánh mì đã được phết sốt vào nướng 5 phút với mức nhiệt độ là 160 độ C."
+        ]
+    },
+    {
+        "id": 5,
         "name": "Cách làm bánh mì nướng phô mai xúc xích bằng nồi chiên không dầu",
         "avata": "/image/news/id3.jpg",
         "date":"12/01",
