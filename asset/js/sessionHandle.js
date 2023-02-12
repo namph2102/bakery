@@ -18,7 +18,7 @@
     }
     return storage;
 }
- function createStoreList(key){
+ function createStoreList(key,obj=true){
     const storeList =JSON.parse(localStorage.getItem((key))) ?? [];
     const save=()=>{
         localStorage.setItem(key, JSON.stringify(storeList));
@@ -33,22 +33,33 @@
             return storeList.find(item=>item.id==id);
         },
         add(id,amount=1){
-            check(id) || storeList.push({id,amount});
+            if(obj){
+                check(id) || storeList.push({id,amount});
+            }else{
+                if(!storeList.includes(id)){
+                    storeList.push(id)
+                }
+            }
+           
             save();
         },
         check(id){
             return check(id);
         },
         update(id,amout){
-            if( storeList.find(item=>item.id==id).amount){
+            if(storeList.some(item=>item.id==id)){
                 storeList.find(item=>item.id==id).amount=amout;
             }
-            
-            console.log(storeList);
             save();
         },
         delete(id){
-            check(id) && storeList.splice(storeList.findIndex(item=>item.id==id).id,1);
+            if(obj){
+                check(id) && storeList.splice(storeList.findIndex(item=>item.id==id).id,1);
+            }else {
+                if(storeList.includes(id)){
+                    storeList.splice(storeList.indexOf(id),1)
+                }
+            }
             save();
         }
     }

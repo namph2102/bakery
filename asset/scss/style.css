@@ -1076,6 +1076,19 @@ footer .footer_copyright {
   overscroll-behavior: contain;
 }
 
+.modal__container .modal__body .modal__hearts--close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 24px;
+}
+
+.modal__container .modal__body .modal__hearts--close:hover {
+  cursor: pointer;
+  -webkit-animation: rorateHover 0.3s linear;
+          animation: rorateHover 0.3s linear;
+}
+
 .modal__container .modal__body::-webkit-scrollbar {
   width: 5px;
 }
@@ -1091,6 +1104,7 @@ footer .footer_copyright {
 }
 
 .modal__container .modal__body .modal__body--product {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1254,6 +1268,13 @@ footer .footer_copyright {
 
 .modal__userlog .form__user .form--group__footer button:hover {
   opacity: 0.8;
+}
+
+.modal__hearts {
+  position: fixed;
+  inset: 0;
+  z-index: 11;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .hidden {

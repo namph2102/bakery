@@ -919,6 +919,16 @@ footer {
         height: 100vh;
         overflow-y: auto;
         overscroll-behavior:contain;
+        .modal__hearts--close{
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 24px;
+           &:hover{
+            cursor: pointer;
+            animation: rorateHover 0.3s linear;
+           }
+        }
         &::-webkit-scrollbar{
             width: 5px;
         }
@@ -931,6 +941,7 @@ footer {
            background-color: rgb(228, 222, 222);
         }
         .modal__body--product {
+            position: relative;
             display: flex;
             align-items: center;
             margin-bottom: 12px;
@@ -1076,6 +1087,13 @@ footer {
             }
         }
     }
+}
+.modal__hearts{
+    position: fixed;
+    inset: 0;
+    z-index: 11;
+    background-color: rgba(0, 0, 0, 0.4);
+
 }
 .hidden {
     display: none !important;

@@ -2,7 +2,9 @@
 const URL_BANNER = "./asset/json/banner.json"
 const API_PRODUCTS = './asset/json/products.json';
 const API_KIND = './asset/json/kind.json';
-const totalBox=$$(".modal__body__add--total .total__cart");
+const totalBox = $$(".modal__body__add--total .total__cart");
+const totalCart = $$('.header__products-cart__count');
+const modal__container_cart = $$(".modal__container");
 let API = [];
 
 
@@ -164,7 +166,7 @@ async function showProductsViewHome(lenProduct = 4, kind = 1) {
                     </div>
                     <div class="product__item--size">${size == "fullsize" ? "S, M, L" : size}</div>
                 </figcaption>
-                <div class="product-item--stickers__love">
+                <div data-id="${id}" class="product-item--stickers__love ${hearts.show().includes(id + '') ? "hidden" : ""}">
                     <i class="fa-regular fa-heart"></i>
                     <span class="stickers--des">Thêm vào yêu thích</span>
                 </div>
@@ -210,11 +212,11 @@ async function showProductsViewHome(lenProduct = 4, kind = 1) {
     </div>
     `;
     const container = $$("#show__products");
-    if(container.innerHTML){
+    if (container.innerHTML) {
         container.insertAdjacentHTML('beforeend', products__kind);
-    }else container.innerHTML=products__kind;
-    
-    //  HandleCart();
+    } else container.innerHTML = products__kind;
+
+
 
 
 }
@@ -227,13 +229,12 @@ function openViews(id) {
 //xừ lý giỏ hàng Cart;
 function HandleCart() {
     const list__btn_adds = $$l('.addcart');
-    const modal__container_cart = $$(".modal__container");
     const btn__close = $$('.modal__head--close');
-   // Dóng mở modal
+    // Dóng mở modal
     modal__container_cart.addEventListener('click', () => {
         modal__container_cart.classList.add("hidden");
     })
-    $$(".modal__love").addEventListener('click',e=>{
+    $$(".modal__love").addEventListener('click', e => {
         e.stopPropagation();
     })
 
@@ -242,30 +243,92 @@ function HandleCart() {
     })
     list__btn_adds.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            const id=e.target.getAttribute('data-id');
-            if(carts.check(id)){
-                carts.update(id,Number(carts.getItem(id).amount)+1);
+            const id = e.target.getAttribute('data-id');
+            const kind = API.find(item => item.id == id).kind;
+            showKind(kind)
+            if (carts.check(id)) {
+                carts.update(id, Number(carts.getItem(id).amount) + 1);
             }
             else {
                 carts.add(id);
             }
             showCart();
             modal__container_cart.classList.remove("hidden");
-          
+
         })
     })
     showCart();
 }
+
+function handleHearts() {
+    const btn__loves = $$l('.product-item--stickers__love');
+    const totalHeartElement = $$('.header__products-like__count');
+    btn__loves.forEach(btnHeart => {
+        btnHeart.onclick = () => {
+            const id = btnHeart.getAttribute('data-id');
+            hearts.add(id);
+            totalHeartElement.innerText = hearts.show().length;
+            btnHeart.classList.add("hidden");
+        }
+    })
+    $$("#heart__container").innerHTML = hearts.show().map(id => {
+        const { name, avatar, priceSale } = API.find(item => item.id == id);
+        return `<div class="modal__body--product">
+        <a href="" class="modal__body--product__avata">
+            <img src="${avatar}" alt="${name}">
+        </a>
+        <div class="modal__body--product__des" id="heart__container">
+            <h3 class="product__des--title pb-2"><a href="http://">${name}</a></h3>
+            <p class="product__des--price">${coverPrice(priceSale)}<span>₫</span></p>
+            <div class="button__green">
+                <a href="">Chi Tiết</a>
+            </div>
+        </div>
+        <div data-id="${id}" class="modal__hearts--close"> 
+        <i class="fa-solid fa-xmark"></i>
+    </div>
+    </div>`
+    }).join('');
+    totalHeartElement.innerText = hearts.show().length;
+    $$('.modal__hearts .modal__head--close').onclick = () => {
+        $$(".modal__hearts").classList.add('hidden');
+    }
+    $$(".modal__hearts").onclick = () => {
+        $$(".modal__hearts").classList.add('hidden');
+    }
+    $$(".modal__hearts .modal__love").onclick = (e) => {
+        e.stopPropagation();
+    }
+
+    $$l('.modal__hearts--close').forEach(btnClose => {
+        btnClose.onclick = () => {
+            const id = btnClose.getAttribute("data-id");
+            const parentHeartBox = btnClose.closest(".modal__body--product");
+            parentHeartBox.classList.add("hidden");
+            hearts.delete(id);
+            
+            Array.from($$l('.product-item--stickers__love'))
+            .find(item =>item.getAttribute('data-id')==id).classList.remove("hidden");
+
+            totalHeartElement.innerText = hearts.show().length;
+        }
+    })
+}
+
+$$("#cartBag").onclick = () => {
+    showKind(1)
+    modal__container_cart.classList.remove("hidden");
+    HandleCart();
+}
 // Display sản phẩm
-function showCart(){
-    const CartProductsBox=$$(".modal__body--product__list");
-    const listCartItems= carts.show();
-    let total=0;
-    
-    
-    const HTML__CART=listCartItems.map(cart=>{
-        const {id,name,avatar,priceSale}=items=API.find(item=>item.id==cart.id);
-        total+=priceSale*cart.amount;
+function showCart() {
+    const CartProductsBox = $$(".modal__body--product__list");
+    const listCartItems = carts.show();
+    let total = 0;
+    totalCart.innerText = listCartItems.length;
+    const HTML__CART = listCartItems.map(cart => {
+        const { id, name, avatar, priceSale } = items = API.find(item => item.id == cart.id);
+        total += priceSale * cart.amount;
         return `<div class="modal__body--product">
         <a href="" class="modal__body--product__avata">
             <img loading="lazy" src="${avatar}" alt="${name}">
@@ -274,53 +337,74 @@ function showCart(){
             <h3 class="product__des--title pb-2"><a href="http://">${name}</a></h3>
             <p class="product__des--price">${coverPrice(priceSale)} x <span class="product__des--amount"> ${cart.amount}</span><span> ₫</span></p>
             <div class="product__des--controller">
-                <button data-id=${id} data-type="decrease" class="handleAmounts"><i class="fa-solid fa-minus"></i></button>
+                <button data-id=${id} data-type="decrease" class="handleAmounts"><i class="${cart.amount >= 2 ? 'fa-solid fa-minus' : 'fa-solid fa-trash-can'}"></i></button>
                 <input class="product__des--controller__amount" type="number" value="${cart.amount}">
                 <button data-id=${id} data-type="increase" class="handleAmounts"><i class="fa-solid fa-plus"></i></button>
             </div>
         </div>
     </div>`;
     }).join('');
-    CartProductsBox.innerHTML=HTML__CART;
-    $$(".total__cart").innerText=coverPrice(total);
+    CartProductsBox.innerHTML = HTML__CART;
+    $$(".total__cart").innerText = coverPrice(total);
     controllerCartProducts();
 }
+function showKind(kind = 1, len = 3) {
+    const listProductKinds = API.filter(item => item.kind == kind);
+    if (len < listProductKinds.length) listProductKinds.length = len;
+    $$(".modal__body__add--listporduct").innerHTML = listProductKinds.map(item => {
+        const { name, avatar, priceSale } = item;
+        return `<div class="modal__body--product">
+        <a href="" class="modal__body--product__avata">
+            <img src="${avatar}" alt="">
+        </a>
+        <div class="modal__body--product__des">
+            <h3 class="product__des--title pb-2"><a href="http://">${name}</a></h3>
+            <p class="product__des--price">${coverPrice(priceSale)}<span>₫</span></p>
+            <div class="button__green">
+                <a href="">Chi Tiết</a>
+            </div>
+        </div>
+    </div>`;
+    }).join('');
+}
 // Điều chỉnh sử lý tăng giảm số lượng sản phẩm trong giỏ hàng;
-function controllerCartProducts(){
-    const listBtnHandleAmounts=$$l('.handleAmounts');
-    listBtnHandleAmounts.forEach(item=>{
-        item.onclick=()=>{
-            const parentBox=item.closest('.modal__body--product');
-            const id=item.getAttribute('data-id');
-            const typeButton=item.getAttribute('data-type');
-            console.log(id);
-            let amount= carts.getItem(id)?.amount ?? 1;
-            
-            let totalProduct=coverNumber(totalBox.innerText)/1000;
-            const priceSale=Number(API.find(product=>product.id==id).priceSale);
-           
-            if(typeButton=='increase'){
-                totalProduct+=priceSale;
-                amount=amount<10?++amount:10;
-            }else {
-                totalProduct-=priceSale;
+function controllerCartProducts() {
+    const listBtnHandleAmounts = $$l('.handleAmounts');
+    listBtnHandleAmounts.forEach(item => {
+        item.onclick = () => {
+            const parentBox = item.closest('.modal__body--product');
+            const id = item.getAttribute('data-id');
+            const typeButton = item.getAttribute('data-type');
+            let amount = carts.getItem(id)?.amount ?? 1;
+
+            let totalProduct = coverNumber(totalBox.innerText) / 1000;
+            const priceSale = Number(API.find(product => product.id == id).priceSale);
+
+            if (typeButton == 'increase') {
+                totalProduct += priceSale;
+                amount = amount < 10 ? ++amount : 10;
+            } else {
+                totalProduct -= priceSale;
                 --amount;
-                if(amount<=0) {
+                if (amount == 1) {
+                    item.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
+                }
+                if (amount <= 0) {
+                    totalCart.innerText = Number(totalCart.innerText) - 1
                     carts.delete(id);
                     parentBox.classList.add('hidden');
-                    totalBox.innerHTML=coverPrice(totalProduct);
+                    totalBox.innerHTML = coverPrice(totalProduct);
                     return true;
                 }
             }
-   
-            carts.update(id,amount)
-            parentBox.querySelector('.product__des--amount').innerText=amount;
-            parentBox.querySelector('.product__des--controller__amount').value=amount;
-            totalBox.innerHTML=coverPrice(totalProduct);
-            console.log(totalProduct);
+
+            carts.update(id, amount)
+            parentBox.querySelector('.product__des--amount').innerText = amount;
+            parentBox.querySelector('.product__des--controller__amount').value = amount;
+            totalBox.innerHTML = coverPrice(totalProduct);
         }
     })
-   
+
 }
 // format number đạng 100.000
 const coverPrice = (number) => {
@@ -328,11 +412,11 @@ const coverPrice = (number) => {
     return new Intl.NumberFormat().format(number * 1000);
 }
 const coverNumber = (price) => {
-    if(price.includes(',')){
-        return Number(price.replaceAll(',',''));
+    if (price.includes(',')) {
+        return Number(price.replaceAll(',', ''));
     }
-    if(price.includes('.')){
-        return Number(price.replaceAll('.',''));
+    if (price.includes('.')) {
+        return Number(price.replaceAll('.', ''));
     }
 }
 
