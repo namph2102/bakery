@@ -4,7 +4,7 @@ const API_PRODUCTS = './asset/json/products.json';
 const API_KIND = './asset/json/kind.json';
 const totalBox = $$(".modal__body__add--total .total__cart");
 const totalCart = $$('.header__products-cart__count');
-const modal__container_cart = $$(".modal__container");
+const modal__container_cart = $$("#modal__cart");
 let API = [];
 
 
@@ -234,7 +234,7 @@ function HandleCart() {
     modal__container_cart.addEventListener('click', () => {
         modal__container_cart.classList.add("hidden");
     })
-    $$(".modal__love").addEventListener('click', e => {
+    $$("#modal__cart .modal__body--content").addEventListener('click', e => {
         e.stopPropagation();
     })
 
@@ -259,7 +259,7 @@ function HandleCart() {
     })
     showCart();
 }
-
+// xử lý giỏ hang yeu thich
 function handleHearts() {
     const btn__loves = $$l('.product-item--stickers__love');
     const totalHeartElement = $$('.header__products-like__count');
@@ -296,19 +296,19 @@ function handleHearts() {
     $$(".modal__hearts").onclick = () => {
         $$(".modal__hearts").classList.add('hidden');
     }
-    $$(".modal__hearts .modal__love").onclick = (e) => {
+    $$(".modal__hearts .modal__body--content").onclick = (e) => {
         e.stopPropagation();
     }
 
-    $$l('.modal__hearts--close').forEach(btnClose => {
+    $$l('.modal__hearts .modal__hearts--close').forEach(btnClose => {
         btnClose.onclick = () => {
             const id = btnClose.getAttribute("data-id");
             const parentHeartBox = btnClose.closest(".modal__body--product");
             parentHeartBox.classList.add("hidden");
             hearts.delete(id);
-            
+
             Array.from($$l('.product-item--stickers__love'))
-            .find(item =>item.getAttribute('data-id')==id).classList.remove("hidden");
+                .find(item => item.getAttribute('data-id') == id).classList.remove("hidden");
 
             totalHeartElement.innerText = hearts.show().length;
         }
@@ -319,6 +319,55 @@ $$("#cartBag").onclick = () => {
     showKind(1)
     modal__container_cart.classList.remove("hidden");
     HandleCart();
+}
+$$(".btn--login").onclick = () => {
+    $$(".modal__userlog").classList.remove("hidden");
+    const inputList = Array.from($$l("#loginform .form--group input"));
+    const form = $$("#loginform");
+    form.onsubmit = () => false;
+
+    inputList.forEach(input => {
+        input.onblur = () => {
+            handleInput(input, 'không được để trống !')
+        }
+        input.oninput = () => {
+            handleInput(input, 'không được để trống !')
+        }
+
+    })
+    // submit form 
+    $$('.btn--submitLogin').onclick = () => {
+        form.onsubmit = () => !inputList.some(input => !input.value);
+    }
+    $$('.modal__userlog').addEventListener('click', () => {
+        closeModal($$('.modal__userlog'));
+    })
+    $$(".userlog__container").onclick = (e) => {
+        e.stopPropagation();
+    }
+    $$(".userlog__container .modal__head--close").onclick = () => {
+        closeModal($$('.modal__userlog'));
+    }
+}
+function closeModal(modalParent) {
+    modalParent.classList.add("hidden");
+}
+function openModal(modalParent) {
+    modalParent.classList.remove("hidden");
+}
+
+function handleInput(input, message = '') {
+    const parentInput = input.closest(".form--group");
+    const form__input = parentInput.querySelector(".form__input");
+    const messageElement = parentInput.querySelector('.form__input--error');
+    if (!input.value) {
+        form__input.classList.add('error');
+        messageElement.innerHTML = `Trường ${input.dataset.name + message} `;
+        return false;
+    } else {
+        form__input.classList.remove('error');
+        messageElement.innerHTML = ``;
+    }
 }
 // Display sản phẩm
 function showCart() {
@@ -405,6 +454,67 @@ function controllerCartProducts() {
         }
     })
 
+}
+
+
+// Serach sản phẩm 
+
+$$('.btn--open-search').onclick = () => {
+    showModalSearch();
+}
+
+function showModalSearch() {
+    const modal__search = $$('#modal__search');
+    const searchInput = $$("#search--input");
+    modal__search.classList.remove('hidden');
+    modal__search.onclick = () => {
+        modal__search.classList.add("hidden");
+    }
+    $$(".modal__search").onclick = () => {
+        closeModal(modal__search);
+    }
+    $$('.btn--close-search').onclick = () => {
+        closeModal(modal__search);
+    }
+    $$('#modal__search .modal__body--content').onclick = e => {
+        e.stopPropagation();
+    }
+    $$("#modal__search .modal__body").innerHTML=`Chưa có sản phẩm`;
+    searchInput.focus();
+    searchInput.addEventListener('input', e => {
+        let value = e.target.value.trim().toLowerCase();
+        let listItemsSearch = [];
+        listItemsSearch = API.filter(({ name, des }) => name.toLowerCase().includes(value) || des.toLowerCase().includes(value));
+        if (listItemsSearch?.length >= 5) {
+            listItemsSearch.length = 5;
+        }
+        if (listItemsSearch.length > 0) {
+            $$("#modal__search .modal__body").innerHTML=listItemsSearch.map(item => {
+                const { id,priceSale, name, avatar } = item;
+                return `<div class="modal__body--product">
+                <a href="" class="modal__body--product__avata">
+                    <img src="${avatar}" alt="${name}">
+                </a>
+                <div class="modal__body--product__des" id="heart__container">
+                    <h3 class="product__des--title pb-2"><a href="http://">${name}</a></h3>
+                    <p class="product__des--price">${coverPrice(priceSale)}<span>₫</span></p>
+                    <div class="button__green">
+                        <a href="">Chi Tiết</a>
+                    </div>
+                </div>
+                <div data-id="${id}" class="modal__hearts--close"> 
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+            </div>`
+            }).join('');
+            $$l('#modal__search .modal__hearts--close').forEach(btnClose => {
+                btnClose.onclick = () => {
+                    const parentHeartBox = btnClose.closest(".modal__body--product");
+                    parentHeartBox.classList.add("hidden");
+                }
+            })
+        } else   $$("#modal__search .modal__body").innerHTML=`Sản phẩm không tồn tại !`;
+    })
 }
 // format number đạng 100.000
 const coverPrice = (number) => {

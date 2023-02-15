@@ -1033,7 +1033,7 @@ footer .footer_copyright {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.modal__container .modal__love {
+.modal__container .modal__body--content {
   position: absolute;
   right: 0;
   top: 0;
@@ -1071,7 +1071,7 @@ footer .footer_copyright {
 
 .modal__container .modal__body {
   padding: 20px;
-  height: 100vh;
+  height: 92vh;
   overflow-y: auto;
   overscroll-behavior: contain;
 }
@@ -1248,6 +1248,11 @@ footer .footer_copyright {
   border: 0.5px solid red;
 }
 
+.modal__userlog .form__user .form__input--error {
+  font-size: 14px;
+  margin-top: 2px;
+}
+
 .modal__userlog .form__user .form--group__footer a {
   text-decoration: none;
   color: var(--text-color);
@@ -1270,11 +1275,19 @@ footer .footer_copyright {
   opacity: 0.8;
 }
 
-.modal__hearts {
+.modal__search, .modal__hearts {
   position: fixed;
   inset: 0;
   z-index: 11;
   background-color: rgba(0, 0, 0, 0.4);
+}
+
+#modal__search input {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 1.6rem;
+  border: 1px solid #d4d0d0;
+  outline: none;
 }
 
 .hidden {
