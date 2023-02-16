@@ -453,6 +453,7 @@ main {
         color: var(--while-color);
         background-color: var(--primary-green-color);
         border-radius: 50px;
+
         &:hover {
             opacity: 0.76;
         }
@@ -917,61 +918,74 @@ footer {
 
     .modal__body {
         padding: 20px;
-        height:92vh;
+        height: 92vh;
         overflow-y: auto;
-        overscroll-behavior:contain;
-        .modal__hearts--close{
+        overscroll-behavior: contain;
+
+        .modal__hearts--close {
             position: absolute;
             top: 0;
             right: 0;
             font-size: 24px;
-           &:hover{
-            cursor: pointer;
-            animation: rorateHover 0.3s linear;
-           }
+
+            &:hover {
+                cursor: pointer;
+                animation: rorateHover 0.3s linear;
+            }
         }
-        &::-webkit-scrollbar{
+
+        &::-webkit-scrollbar {
             width: 5px;
         }
-        &::-webkit-scrollbar-thumb{
+
+        &::-webkit-scrollbar-thumb {
             height: 20px;
             border-radius: 8px;
-           background-color: var(--primary-green-color);
+            background-color: var(--primary-green-color);
         }
-         &::-webkit-scrollbar-track{
-           background-color: rgb(228, 222, 222);
+
+        &::-webkit-scrollbar-track {
+            background-color: rgb(228, 222, 222);
         }
+
         .modal__body--product {
             position: relative;
             display: flex;
             align-items: center;
             margin-bottom: 12px;
             transition: 0.3s linear;
-            &:hover{
+
+            &:hover {
                 padding-left: 12px;
             }
+
             .modal__body--product__des {
                 margin-left: 20px;
+
                 .product__des--title {
-                   a{
-                    color: #222;
-                    text-decoration: none;
-                    transition: 0.3s ease;
-                    &:hover{
-                        color: var(--primary-green-color);
+                    a {
+                        color: #222;
+                        text-decoration: none;
+                        transition: 0.3s ease;
+
+                        &:hover {
+                            color: var(--primary-green-color);
+                        }
                     }
-                   }
-                   
+
                 }
-                .product__des--price{
+
+                .product__des--price {
                     color: var(--text-light-color);
-                    span{
+
+                    span {
                         color: red;
                         font-size: 14px;
                     }
                 }
-                .button__green{
-                    a{
+
+                .button__green {
+                    a {
                         min-width: 120px;
                     }
                 }
@@ -988,7 +1002,8 @@ footer {
             }
         }
     }
-    .product__des--controller{
+
+    .product__des--controller {
         display: flex;
         justify-content: space-between;
         border: 1px solid #333;
@@ -997,135 +1012,199 @@ footer {
         font-size: 18px;
         margin-top: 12px;
         width: 150px;
-        .product__des--controller__amount{
+
+        .product__des--controller__amount {
             width: 50%;
             text-align: center;
             outline: none;
             border: none;
         }
-        button{
+
+        button {
             border: none;
             padding: 4px;
         }
     }
-    .modal__body__add--total{
-       
-    }
+
+    .modal__body__add--total {}
 }
-.modal__userlog{
+
+.modal__userlog {
     position: fixed;
     inset: 0;
     z-index: 999;
     background-color: rgba(0, 0, 0, .3);
     display: flex;
-    .userlog__container{
+
+    .userlog__container {
         margin: auto;
         width: 400px;
         height: 500px;
-      
+
         padding: 20px 12px;
         background-color: white;
         border-radius: 12px;
         position: relative;
-        .modal__head--close{
+
+        .modal__head--close {
             position: absolute;
             right: 15px;
             top: 15px;
             display: inline-block;
             font-size: 32px;
-         &:hover{
-            animation: rorateHover 0.3s linear;
-            cursor: pointer;
-           
-         }
+
+            &:hover {
+                animation: rorateHover 0.3s linear;
+                cursor: pointer;
+
+            }
         }
-        .log__title{
+
+        .log__title {
             text-align: center;
             font-weight: 600;
         }
     }
-    .form__user{
-        label{
+
+    .form__user {
+        label {
             font-weight: 500;
             font-size: 16px;
         }
-        .form__input{
+
+        .form__input {
             margin: 8px 0;
-            input{
+
+            input {
                 padding: 8px 4px;
                 width: 100%;
                 font-size: 16px;
             }
-           p{
-            color: red;
-            height: 18px;
-           }
-        }
-        .form__input.error{
-            input{
-                border:0.5px solid red;
+
+            p {
+                color: red;
+                height: 18px;
             }
-            
         }
-        .form__input--error{
+
+        .form__input.error {
+            input {
+                border: 0.5px solid red;
+            }
+
+        }
+
+        .form__input--error {
             font-size: 14px;
             margin-top: 2px;
         }
-        .form--group__footer{
-            a{
+
+        .form--group__footer {
+            a {
                 text-decoration: none;
                 color: var(--text-color);
-                &:hover{
+
+                &:hover {
                     color: var(--primary-green-color);
                 }
             }
-            button{
+
+            button {
                 width: 100%;
                 background-color: var(--primary-green-color);
                 font-size: 16px;
                 font-weight: 500;
                 color: var(--while-color);
                 border-radius: 12px;
-                &:hover{
+
+                &:hover {
                     opacity: 0.8;
                 }
             }
         }
     }
 }
-// pagination
 
-.show__products--container{
-    margin-top: 30px;
+// category navigation
+.navigation {
+    background-image: url('https://bakery.namph.tech/asset/images/source/o-BAKING-TOOLS-facebook.jpg');
+    background-size: cover;
+    height: 200px;
+    width: 100%;
 }
-.show__products--container__list{
+
+.navigation__container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.navigation__box {
     display: flex;
     justify-content: center;
     align-items: center;
-    a{
+
+    a {
+        color: var(--while-color);
+        font-size: 20px;
+        font-weight: 600;
+        text-shadow: 1px 1px 0px black;
+        text-decoration: none;
+        margin: 0 4px;
+        &:hover{
+            color: var(--primary-green-color);
+        }
+    }
+
+    li {
+        &:last-child {
+            a {
+                color: var(--primary-green-color);
+            }
+        }
+    }
+}
+
+// pagination
+
+.show__products--container {
+    margin-top: 30px;
+}
+
+.show__products--container__list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
         text-decoration: none;
         color: var(--text-color);
         padding: 12px 16px;
         font-size: 18px;
         display: inline-block;
     }
-    a.active{
-        color: #fff !important; 
+
+    a.active {
+        color: #fff !important;
         border-radius: 8px;
-        
+
         background-color: var(--primary-green-color);
     }
 }
 
-.modal__search,.modal__hearts{
+.modal__search,
+.modal__hearts {
     position: fixed;
     inset: 0;
     z-index: 11;
     background-color: rgba(0, 0, 0, 0.4);
 
 }
-#modal__search{
-    input{
+
+#modal__search {
+    input {
         width: 100%;
         padding: 8px 12px;
         font-size: 1.6rem;
@@ -1133,6 +1212,7 @@ footer {
         outline: none;
     }
 }
+
 .hidden {
     display: none !important;
 }

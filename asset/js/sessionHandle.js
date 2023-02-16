@@ -48,7 +48,8 @@
         },
         update(id,amout){
             if(storeList.some(item=>item.id==id)){
-                storeList.find(item=>item.id==id).amount=amout;
+                let item=storeList.find(item=>item.id==id);
+                item.amount=Number(item.amount)+amout;
             }
             save();
         },

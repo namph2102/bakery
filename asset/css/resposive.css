@@ -11,7 +11,9 @@
     --text-hover: #EE4D2D;
 
 }
-
+main{
+    margin-top: 90px;
+}
 @media screen and (max-width:992px) {
     nav {
         position: relative;
@@ -181,7 +183,12 @@
       
         font-size: 1.8rem;
     }
-    
+  
+}
+@media screen  and (max-width: 992px) {
+    main{
+        margin-top: 90px;
+    }
 }
 @media screen  and (max-width: 576px) {
     .footer_copyright{
@@ -189,5 +196,11 @@
     }
     .text-end,.text-start{
         text-align: center !important;
+    }
+}
+
+@media screen  and (min-width: 768px)  and (max-width: 992px){
+    .product__avata figure{
+        height: 500px;
     }
 }
