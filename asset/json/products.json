@@ -181,5 +181,39 @@
         ],
         "des": "Bia chính là sự kết hợp ấn tượng giữa hoa bia & malt, trong đó nổi bật vị mạch nha nướng thơm lừng. 1906 sở hữu màu vàng nâu hổ phách đẹp mắt, tô điểm thêm bằng lớp bọt trắng mịn tạo nên chất riêng cho bia. Cũng không thể không kể đến hậu vị thơm lừng, đậm đà và cảm giác đắng thanh quyến rũ bên trong từng ngụm bia.",
         "Sales": 10
+    },
+    {
+        "id": 11,
+        "name": "Bánh Kem Cream Cheese Layer Cake",
+        "avatar": "/image/cakes/id11.jpg",
+        "kind": 1,
+        "priceOrigin": 240,
+        "priceSale": 180,
+        "size": "fullsize",
+        "love": false,
+        "material": [
+            "Socola",
+            "Kem phomai vị coffee",
+            "Ca Cao"
+        ],
+        "des": "Bánh làm từ 3 lớp gato TRẮNG xen giữa 3 lớp kem TƯƠI PHOMAI, VỊ COFFEE. Bên ngoài phủ 1 lớp bột cacao VÀ DECOR HOA QUẢ. ",
+        "Sales": 150
+    },
+    {
+        "id": 12,
+        "name": "Bánh Kem Cream cake with Spring",
+        "avatar": "/image/cakes/id12.jpg",
+        "kind": 1,
+        "priceOrigin": 540,
+        "priceSale": 380,
+        "size": "fullsize",
+        "love": false,
+        "material": [
+            "Socola",
+            "Kem phomai vị coffee",
+            "Ca Cao"
+        ],
+        "des": "Bánh làm từ 3 lớp gato TRẮNG xen giữa 3 lớp kem TƯƠI PHOMAI, VỊ COFFEE. Bên ngoài phủ 1 lớp bột cacao VÀ DECOR HOA QUẢ. ",
+        "Sales": 150
     }
 ]

@@ -1,10 +1,13 @@
 
-const URL_BANNER = "./asset/json/banner.json"
-const API_PRODUCTS = './asset/json/products.json';
-const API_KIND = './asset/json/kind.json';
+const URL_BANNER = "/asset/json/banner.json"
+const API_PRODUCTS = '/asset/json/products.json';
+const API_KIND = '/asset/json/kind.json';
 const totalBox = $$(".modal__body__add--total .total__cart");
 const totalCart = $$('.header__products-cart__count');
 const modal__container_cart = $$("#modal__cart");
+
+const carts=createStoreList('cart');
+const hearts=createStoreList('hearts',false);
 let API = [];
 
 
@@ -61,7 +64,8 @@ function showNewsHomePage(len = 3) {
             $$("#news").innerHTML = HTML__NEWS;
         })
 }
-fetch(URL_BANNER)
+function fetchBanner(){
+    fetch(URL_BANNER)
     .then(res => res.json())
     .then(banners => {
         // show banner sliders
@@ -80,6 +84,7 @@ fetch(URL_BANNER)
         $$('.presentation__sliders').innerHTML = HTML_BTN_BANNER;
         banner_sliders(lengthBanner);
     })
+}
 
 // Banner slider
 const banner_sliders = (lengthBanner = 0) => {
@@ -215,10 +220,6 @@ async function showProductsViewHome(lenProduct = 4, kind = 1) {
     if (container.innerHTML) {
         container.insertAdjacentHTML('beforeend', products__kind);
     } else container.innerHTML = products__kind;
-
-
-
-
 }
 // xem sản phẩm views
 function openViews(id) {
@@ -258,6 +259,19 @@ function HandleCart() {
         })
     })
     showCart();
+}
+
+//
+$$('.btn_close--menu').onclick = () => {
+    $$("#openmenu").click();
+}
+// turn off modal
+$$(".modal__dialog--close").onclick = () => {
+    $$(".modal__dialog").classList.add("hidden");
+}
+$$('.header__menu--right.header-heart').onclick=()=>{
+    $$(".modal__hearts").classList.remove('hidden');
+    handleHearts();
 }
 // xử lý giỏ hang yeu thich
 function handleHearts() {
@@ -314,7 +328,6 @@ function handleHearts() {
         }
     })
 }
-
 $$("#cartBag").onclick = () => {
     showKind(1)
     modal__container_cart.classList.remove("hidden");

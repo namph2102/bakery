@@ -5,6 +5,14 @@
     },
     {
         "id":2,
-        "title":"Đồ Uống"
+        "title":"Đồ Uống / Kem Tươi"
+    },
+    {
+        "id":3,
+        "title":"Bánh Mỳ / Bánh ngọt"
+    },
+    {
+        "id":4,
+        "title":"Ăn Nhẹ / Lạnh"
     }
 ]
