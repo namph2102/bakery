@@ -14,7 +14,8 @@
             "Ca Cao"
         ],
         "des": "Bánh làm từ 3 lớp gato TRẮNG xen giữa 3 lớp kem TƯƠI PHOMAI, VỊ COFFEE. Bên ngoài phủ 1 lớp bột cacao VÀ DECOR HOA QUẢ. ",
-        "Sales": 150
+        "Sales": 150,
+        "status":true
     },
     {
         "id": 2,
@@ -35,7 +36,8 @@
             "Gateaux"
         ],
         "des": "Lớp phủ kem phô mai thơm và ngọt ngào. Với kết cấu mềm mịn như nhung và lớp sương bông xốp",
-        "Sales": 15
+        "Sales": 15,
+        "status":true
     },
     {
         "id": 3,
@@ -55,7 +57,8 @@
             "Bơ Newzea land"
         ],
         "des": "Lớp phủ kem bơ Newzea land thơm và ngọt ngào hài hòa giữa thiên nhiên đất trời",
-        "Sales": 15
+        "Sales": 15,
+        "status":true
     },
     {
         "id": 4,
@@ -73,7 +76,8 @@
             "Gateaux"
         ],
         "des": "Lớp phủ kem Chease thơm và ngọt ngào. Với kết cấu mềm mịn như nhung và lớp sương bông xốp",
-        "Sales": 65
+        "Sales": 65,
+        "status":true
     },
     {
         "id": 5,
@@ -91,7 +95,8 @@
             "Whipping cream"
         ],
         "des": "Bánh Sinh Nhật, Địa chỉ mua bánh sinh nhật tại Hà Nội, Bánh Sinh Nhật Công Ty, Bánh Sinh Nhật Cho Bé, Bánh Sinh Nhật Đẹp",
-        "Sales": 44
+        "Sales": 44,
+        "status":true
     },
     {
         "id": 6,
@@ -108,7 +113,8 @@
             "Chocolate"
         ],
         "des": "Bánh Sinh Nhật, Địa chỉ mua bánh sinh nhật tại Hà Nội, Bánh Sinh Nhật Công Ty, Bánh Sinh Nhật Cho Bé, Bánh Sinh Nhật Đẹp",
-        "Sales": 15
+        "Sales": 15,
+        "status":true
     },
     {
         "id": 7,
@@ -126,7 +132,8 @@
             "Quy cách: chai 330ml, thùng 12 chai"
         ],
         "des": "pen Doubting Thomas rất đặc biệt ? Loại Jopen này đặc biệt với 4 lần lên men, tạo hương vị độc đáo và ấn tượng cho người thưởng thức. Bia này được đặt theo tên của vị tông đồ Thomas, là người tin Chúa Giê-su đã sống lại từ cõi chết. Người ta thường lấy tên Thomas lúc rửa tội bắt đầu từ mùa đông vào ngày 21 tháng 12.",
-        "Sales": 15
+        "Sales": 15,
+        "status":true
     },
     {
         "id": 8,
@@ -144,7 +151,8 @@
             "Quy cách: Chai 500ml, thùng 6 chai"
         ],
         "des": "Schorsch Weizen là sự kết hợp tinh tế của những hương vị: Trái cây sấy khô, nho khô, mận, chuối, đào và Caramel. Với mức nồng độ cồn cao 13% – loại bia nhập khẩu này sẽ chinh phục vị giác của những người sành bia bởi độ ngon của nó.",
-        "Sales": 15
+        "Sales": 15,
+        "status":true
     },
     {
         "id": 9,
@@ -162,7 +170,8 @@
             "Quy cách: chai 330ml, thùng 24 chai"
         ],
         "des": "Bia chính là sự kết hợp ấn tượng giữa hoa bia & malt, trong đó nổi bật vị mạch nha nướng thơm lừng. 1906 sở hữu màu vàng nâu hổ phách đẹp mắt, tô điểm thêm bằng lớp bọt trắng mịn tạo nên chất riêng cho bia. Cũng không thể không kể đến hậu vị thơm lừng, đậm đà và cảm giác đắng thanh quyến rũ bên trong từng ngụm bia.",
-        "Sales": 12
+        "Sales": 12,
+        "status":true
     },
     {
         "id": 10,
@@ -180,7 +189,8 @@
             "Quy cách: chai 750ml, thùng 12 chai"
         ],
         "des": "Bia chính là sự kết hợp ấn tượng giữa hoa bia & malt, trong đó nổi bật vị mạch nha nướng thơm lừng. 1906 sở hữu màu vàng nâu hổ phách đẹp mắt, tô điểm thêm bằng lớp bọt trắng mịn tạo nên chất riêng cho bia. Cũng không thể không kể đến hậu vị thơm lừng, đậm đà và cảm giác đắng thanh quyến rũ bên trong từng ngụm bia.",
-        "Sales": 10
+        "Sales": 10,
+        "status":true
     },
     {
         "id": 11,
@@ -197,7 +207,8 @@
             "Ca Cao"
         ],
         "des": "Bánh làm từ 3 lớp gato TRẮNG xen giữa 3 lớp kem TƯƠI PHOMAI, VỊ COFFEE. Bên ngoài phủ 1 lớp bột cacao VÀ DECOR HOA QUẢ. ",
-        "Sales": 150
+        "Sales": 150,
+        "status":true
     },
     {
         "id": 12,
@@ -214,6 +225,7 @@
             "Ca Cao"
         ],
         "des": "Bánh làm từ 3 lớp gato TRẮNG xen giữa 3 lớp kem TƯƠI PHOMAI, VỊ COFFEE. Bên ngoài phủ 1 lớp bột cacao VÀ DECOR HOA QUẢ. ",
-        "Sales": 150
+        "Sales": 150,
+        "status":true
     }
 ]

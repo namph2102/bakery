@@ -1,7 +1,8 @@
 displayProduct();
 async function displayProduct(){
     const lenProduct=8;
-    const id=window.location.search.slice(4);
+    const id=window.location.search.slice(4) || 1;
+
     await showProductsViewHome(lenProduct,id);
     HandleCart();
     handleHearts();
@@ -14,13 +15,12 @@ async function panigationLink(kind=1,len=4){
    fetch(API_KIND)
    .then(res=>res.json())
    .then(data=>{
-    console.log(kind);
-    console.log(data.find(item=>item.id==kind));
-    $$('.navigation__box--kinds').innerHTML=data.find(item=>item.id==kind).title;
+    const catelory=data.find(item=>item.id==kind)
+    $$('.navigation__box--kinds').innerHTML=catelory.title;
+    document.title=`${catelory.title} tại HT Bakery`
    })
     const totalPage=Math.floor(productKinds.length/len);
     const container=$$('.show__products--container__list');
-    console.log(totalPage);
     if(totalPage>1){
         let html='';
         for(let i=2;i<=totalPage;i++){

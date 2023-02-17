@@ -26,20 +26,42 @@ function showProductModal({ id, name, avatar, priceOrigin, priceSale, des }) {
 
     $$(".product-modal--avata").src = avatar;
     $$(".modal__dialog").classList.remove("hidden");
+
+    $$('.modal__item--product_amount span').innerHTML=carts.getItem(id)?.amount || 1;
     $$('.product_add--cart').onclick = () => {
         if (carts.check(id)) {
-            carts.update(id, 1);
+            const size=$$("#sizeS").checked && 'S' || $$("#sizeM").checked && 'M' ||$$("#sizeL").checked && 'L'
+            carts.update(id, Number($$('.modal__item--product_amount span').innerText));
+            carts.update(id,null ,size);
+            $$('.product_add--cart').innerHTML=`Đã thêm vào giỏ hàng`;
+
         }
         else {
             carts.add(id);
         }
         $$(".modal__dialog").classList.add("hidden");
-        $$("#cartBag").click();
+        showKind(API.filter(item=>item.id==id).kind);
+        HandleCart();
+        $$('#modal__cart').classList.remove("hidden");
          
     }
   
 }
-
+document.querySelector('.modal__item--product_amount').addEventListener('click', function(e){
+    const amountContent=this.querySelector('span');   
+    const value=Number(amountContent.innerText);
+    console.log(e.target.closest('.product_amount--reduce'),value);
+    if(e.target.closest('.product_amount--reduce')){
+        if(value>1)  amountContent.innerHTML=value-1; 
+        
+    }
+    if(e.target.closest('.product_amount--increase')){
+        if(value<10) {
+            amountContent.innerHTML=value+1; 
+        }
+       
+    }
+})
 //Show trang tin tuc 
 function showNewsHomePage(len = 3) {
     fetch("/asset/json/news.json")
@@ -179,7 +201,7 @@ async function showProductsViewHome(lenProduct = 4, kind = 1) {
                 </a>
                 <figcaption>
                     <h3 class="product__item--title"><a href="/asset/html/productDetail.html?id=${id}">${name}</a></h3>
-                    <div class="product__item--price">${coverPrice(priceSale)} đ <del class="price--del">${coverPrice(priceOrigin)}đ</del>
+                    <div class="product__item--price">${coverPrice(priceSale)} đ <del class="price--del">${priceOrigin>priceSale?coverPrice(priceOrigin)+' đ':""}</del>
                     </div>
                     <div class="product__item--size">${size == "fullsize" ? "S, M, L" : size}</div>
                 </figcaption>
@@ -267,7 +289,6 @@ function HandleCart() {
             }
             showCart();
             modal__container_cart.classList.remove("hidden");
-
         })
     })
     showCart();
@@ -304,7 +325,7 @@ function handleHearts() {
             <img src="${avatar}" alt="${name}">
         </a>
         <div class="modal__body--product__des" id="heart__container">
-            <h3 class="product__des--title pb-2"><a href="http://">${name}</a></h3>
+            <h3 class="product__des--title pb-2"><a href="/asset/html/productDetail.html?id=${id}">${name}</a></h3>
             <p class="product__des--price">${coverPrice(priceSale)}<span>₫</span></p>
             <div class="button__green">
                 <a href="/asset/html/productDetail.html?id=${id}">Chi Tiết</a>
@@ -345,6 +366,7 @@ $$("#cartBag").onclick = () => {
     modal__container_cart.classList.remove("hidden");
     HandleCart();
 }
+
 $$(".btn--login").onclick = () => {
     $$(".modal__userlog").classList.remove("hidden");
     const inputList = Array.from($$l("#loginform .form--group input"));
@@ -408,8 +430,8 @@ function showCart() {
             <img loading="lazy" src="${avatar}" alt="${name}">
         </a>
         <div class="modal__body--product__des">
-            <h3 class="product__des--title pb-2"><a href="http://">${name}</a></h3>
-            <p class="product__des--price">${coverPrice(priceSale)} x <span class="product__des--amount"> ${cart.amount}</span><span> ₫</span></p>
+            <h3 class="product__des--title pb-2"><a href="/asset/html/productDetail.html?id=${id}">${name}</a></h3>
+            <p class="product__des--price">${coverPrice(priceSale)} đ x <span class="product__des--amount"> ${cart.amount}</span></p>
             <div class="product__des--controller">
                 <button data-id=${id} data-type="decrease" class="handleAmounts"><i class="${cart.amount >= 2 ? 'fa-solid fa-minus' : 'fa-solid fa-trash-can'}"></i></button>
                 <input class="product__des--controller__amount" type="number" value="${cart.amount}">

@@ -20,9 +20,10 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" href="/asset/css/style.css">
     <link rel="stylesheet" href="/asset/scss/style.css">
+    <link rel="stylesheet" href="/asset/css/cart.css">
     <link rel="stylesheet" href="/asset/css/resposive.css">
 
-    <title>Sản phẩm</title>
+    <title>Giỏ Hàng - HT Bakery</title>
 </head>
 
 <body>
@@ -44,7 +45,7 @@
                     <input type="checkbox" hidden id="openmenu">
                     <ul class="menu">
                         <li class="hide__of__lg">Menu <button class="btn_close--menu">X</button></li>
-                        <li><a href="./index.html" > Trang chủ</a></li>
+                        <li><a href="./index.html"> Trang chủ</a></li>
                         <li class="main__nav">
                             <a href="" class="active">Sản phẩm</a>
                             <ul class="sub__nav">
@@ -52,6 +53,7 @@
                                 <li><a href="">Đồ Uống / Kem Tươi</a></li>
                                 <li><a href="">Bánh Mì / Bánh Ngọt</a></li>
                                 <li><a href="">Ăn Nhẹ / Lạnh</a></li>
+
                             </ul>
                         </li>
                         <li><a href="">Giới thiệu</a></li>
@@ -95,29 +97,102 @@
     <main>
         <div class="container">
             <div class="navigation">
-            <div class="navigation__container">
-                <ul class="navigation__box">
-                    <li><a href="./index.html">Trang chủ /</a></li>
-                    <li><a class="navigation__box--kinds" href=""> Bánh Sinh Nhật  </a></li>
-                </ul>
-            </div>
-        </div>
+                <div class="navigation__container">
+                    <ul class="navigation__box">
+                        <li><a href="./index.html">Trang chủ</a></li>
+                        <li><a class="product__navition--kind" href="#!">/ Giỏ Hàng </a></li>
 
-            <div class="show__products" id="show__products">
-               
+                    </ul>
+                </div>
             </div>
-            <div class="show__products--pagination">
-                <nav class="show__products--container">
-                  <ul class="show__products--container__list">
-                    <li><a class="pagination pagination--item" data-page="<"  href=""><</a></li>
-                    <li><a class="pagination pagination--item active" data-page="1"  href="">1</a></li>
-                    <li><a class="pagination pagination--item" data-page="2" href="">2</a></li>
-                    <li><a class="pagination pagination--item" data-page="3" href="">3</a></li>
-                    <li><a class="pagination pagination--item" data-page="4" href="">4</a></li>
-                    <li><a class="pagination pagination--item" data-page=">" href="">></a></li>
-                  </ul>
-                </nav>
+
+            <div class="product_items_special">
+                <div class="product_items_special--container">
+                    <div class="row">
+                        <h1 class="product_items--table--title">Giỏ hàng</h1>
+                        <div class="table__content col-lg-9 col-12">
+                            <div class="table__content--head">
+                                <div class="table__content--head__product"> Sản Phẩm</div>
+                                <div class="table__content--head__amount">Số Lượng</div>
+                                <div class="table__content--head__size">Kích Thước</div>
+                                <div class="table__content--head__total">Tổng</div>
+                            </div>
+                            <div class="table__content--body">
+                                <div class="table__content--item">
+                                    <a href="" class="table__content--product">
+                                        <figure>
+                                            <img src="/image/cakes/id11.jpg" alt="">
+                                        </figure>
+                                        <div class="table__content--product__des">
+                                            <div class="product__des--name">
+                                                Bánh Sinh Nhật
+                                            </div>
+                                            <div class="product__des--price">
+                                                <span>200,222 đ</span> <del class="text-danger">200,784 đ</del>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="table__content--amount">
+                                        <div class="table__content--quantity__contain">
+                                            <button data-id="12" data-type="decrease" class="handleAmountCart"><i
+                                                    class="fa-solid fa-trash-can"></i></button>
+                                            <input class="table__content--quantity__amount" type="text" readonly
+                                                value="1">
+                                            <button data-id="12" data-type="increase" class="handleAmountCart"><i
+                                                    class="fa-solid fa-plus"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="table__content-size">
+                                        <div class="table__content--size__contain">
+                                            <input type="radio" name="size" id="sizeS"> <label for="sizeS">S</label>
+                                            <input type="radio" class="ms-3" name="size" id="sizeM"> <label class="me-3"
+                                                for="sizeM">M</label>
+                                            <input type="radio" name="size" id="sizeL"> <label for="sizeL">L</label>
+                                        </div>
+                                    </div>
+                                    <div class="table__content--total">
+                                        <div class="table__content--total__contain">
+                                            200,200 đ
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="box_bill_pay col-lg-3 mt-lg-0 mt-5 col-12">
+                            <div class="box_bill_pay_container">
+                                <div class="box_bill_pay-head ">đơn hàng của bạn</div>
+                                <div class="box_bill_pay-body">
+                                    <div class="box_bill_pay-body_flex">
+                                        <span class="box_bill_pay-subtotal">Tổng phụ</span><span
+                                            class="box_bill_pay-subtotal_coin">550,000 đ</span>
+                                    </div>
+                                    <div class="box_bill_pay-body_flex">
+                                        <span class="box_bill_pay_vat">VAT</span><span
+                                            class="box_bill_pay-subtotal_vat">5 %</span>
+                                    </div>
+                                </div>
+                                <div class="box_bill_pay-body_total">
+                                    <ol>
+                                        <li>Phí vận chuyển sẽ được tính ở trang thanh toán.</li>
+                                        <li>Bạn cũng có thể nhập mã giảm giá ở trang thanh toán.</li>
+                                    </ol>
+                                    <div class="box_bill_pay-body_flex">
+                                        <span class="box_bill_pay-total">Tạm Tính</span><span
+                                            class="box_bill_pay-total_coin">577,500 đ</span>
+                                    </div>
+                                </div>
+                                <button class="btn btn-danger btn--table__order"><a
+                                        href="https://polyfood.shop/thanhtoan">Đặt hàng</a></button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
             </div>
+
+
         </div>
     </main>
 
@@ -198,13 +273,13 @@
                         </div>
                     </div>
                 </div> -->
-               
+
             </div>
             <div class="modal__body modal__body__add">
                 <div class="modal__body--product__list">
 
                 </div>
-              
+
                 <div class="modal__body__add--total">
                     <div class="d-flex justify-content-between">
                         <h5 class="fs-3 mt-2 mb-2 fw-bold">Thành Tiền</h5>
@@ -215,7 +290,7 @@
                         <a class="w-100" href="">Xem Thêm</a>
                     </div>
                     <h6 class="fs-3">Có Thể Bạn Quan Tâm</h6>
-                    <div class="modal__body__add--listporduct mt-4">                                                                                
+                    <div class="modal__body__add--listporduct mt-4">
                         <div class="modal__body--product">
                             <a href="" class="modal__body--product__avata">
                                 <img src="/image/category1.jpg" alt="">
@@ -255,7 +330,7 @@
                     <div class="form--group">
                         <label for="password">Password</label>
                         <div class="form__input">
-                            <input id="password" type="password"  data-name="Password" placeholder="Nhập mật khẩu">
+                            <input id="password" type="password" data-name="Password" placeholder="Nhập mật khẩu">
                             <p class="form__input--error"></p>
                         </div>
                     </div>
@@ -281,18 +356,18 @@
 
             <div class="modal__body" id="heart__container">
                 <div class="modal__body--product">
-                  
+
                     <a href="" class="modal__body--product__avata">
                         <img src="/image/category1.jpg" alt="">
                     </a>
-                    <div class="modal__body--product__des" >
+                    <div class="modal__body--product__des">
                         <h3 class="product__des--title pb-2"><a href="./index.html">Bánh Sinh Nhật</a></h3>
                         <p class="product__des--price">150.000<span>₫</span></p>
                         <div class="button__green">
                             <a href="">Chi Tiết</a>
                         </div>
                     </div>
-                    <div class="modal__hearts--close"> 
+                    <div class="modal__hearts--close">
                         <i class="fa-solid fa-xmark"></i>
                     </div>
                 </div>
@@ -313,25 +388,25 @@
             </div>
             <div class="modal__body">
                 <div class="modal__body--product">
-                  
+
                     <a href="" class="modal__body--product__avata">
                         <img src="/image/category1.jpg" alt="">
                     </a>
-                    <div class="modal__body--product__des" >
+                    <div class="modal__body--product__des">
                         <h3 class="product__des--title pb-2"><a href="./index.html">Bánh Sinh Nhật</a></h3>
                         <p class="product__des--price">150.000<span>₫</span></p>
                         <div class="button__green">
                             <a href="">Chi Tiết</a>
                         </div>
                     </div>
-                    <div class="modal__hearts--close"> 
+                    <div class="modal__hearts--close">
                         <i class="fa-solid fa-xmark"></i>
                     </div>
                 </div>
             </div>
 
         </div>
-        
+
     </div>
 
     <footer>
@@ -439,5 +514,6 @@
 </script>
 <script src="/asset/js/sessionHandle.js"></script>
 <script src="/asset/js/data.js"></script>
-<script src="/asset/js/product.js"></script>
+<script src="/asset/js/cart.js"></script>
+
 </html>

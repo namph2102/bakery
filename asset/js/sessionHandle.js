@@ -32,9 +32,9 @@
         getItem(id){
             return storeList.find(item=>item.id==id);
         },
-        add(id,amount=1){
+        add(id,amount=1,size='S'){
             if(obj){
-                check(id) || storeList.push({id,amount});
+                check(id) || storeList.push({id,amount,size});
             }else{
                 if(!storeList.includes(id)){
                     storeList.push(id)
@@ -46,10 +46,17 @@
         check(id){
             return check(id);
         },
-        update(id,amout){
+        update(id,amout,size){
             if(storeList.some(item=>item.id==id)){
                 let item=storeList.find(item=>item.id==id);
-                item.amount=Number(item.amount)+amout;
+                if(size){
+                    item.size=size;
+                }
+                if(amout){
+                    let value=Number(item.amount)+Number(amout);
+                    item.amount=value>=10?10:value;
+                }
+                
             }
             save();
         },
