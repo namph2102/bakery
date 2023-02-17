@@ -1,51 +1,65 @@
-async function showPageCartBag(){
-    const res=await fetch(API_PRODUCTS)
-    const API=await res.json();
-    let total=0;
-    const vat=5;
-    const html=carts.show().map(item=>{
-        const size=item.size.toLowerCase();
-        const { id, name, avatar, priceSale, priceOrigin } =  API.find(pro=>pro.id==item.id);
-        total+=item.amount*priceSale;
-        return `<div class="table__content--item">
-        <a href="/asset/html/productDetail.html?id=${id}" class="table__content--product">
-            <figure>
-                <img src="${avatar}" alt="${name}">
-            </figure>
-            <div class="table__content--product__des">
-                <div class="product__des--name">
-                ${name}
-                </div>
-                <div class="product__des--price">
-                    <span>${coverPrice(priceSale)} đ</span> <del class="text-danger ms-2">${coverPrice(priceOrigin)} đ</del>
-                </div>
-            </div>
-        </a>
-        <div class="table__content--amount">
-            <div class="table__content--quantity__contain">
-                <button data-id="${id}" data-type="decrease" class="handleAmountCart"><i class="fa-solid fa-trash-can"></i></button>
-                <input class="table__content--quantity__amount" type="text" readonly="" value="${item.amount}">
-                <button data-id="${id}" data-type="increase" class="handleAmountCart"><i class="fa-solid fa-plus"></i></button>
-            </div>
-        </div>
-        <div class="table__content-size">
-            <div class="table__content--size__contain" data-id="${id}">
-                <input type="radio" ${size=='s' && 'checked'}  name="size${id}" id="sizes${id}"> <label for="sizeS${id}">S</label>
-                <input type="radio" ${size=='l' && 'checked'}  class="ms-3" name="sizem${id}" id="sizeM${id}"> <label class="me-3" for="sizeM${id}">M</label>
-                <input type="radio"  ${size=='m' && 'checked'}  name="size${id}" id="sizel${id}"> <label for="sizeL${id}">L</label>
-            </div>
-        </div>
-        <div class="table__content--total">
-            <div class="table__content--total__contain">
-                ${coverPrice(item.amount*priceSale)} đ
-            </div>
-        </div>
-    </div>`;
-    }).join('');
-    $$('.table__content--body').innerHTML=html;
-    $$('.box_bill_pay-subtotal_coin').textContent=coverPrice(total) + ' đ';
-    $$('.box_bill_pay-subtotal_vat').textContent=vat+' %';
-    $$('.box_bill_pay-total_coin').textContent=coverPrice(total*(1+vat/100)) + ' đ'
-    console.log(total);
+// import showProductCart from './module.js';
+
+import * as module from './module.js';
+
+console.log(module.title);
+console.log(module.head);
+
+async function showPageCartBag() {
+    const res = await fetch(API_PRODUCTS)
+    const API = await res.json();
+    await showProductsViewHome(0, 1);
+    HandleCart();
+    handleHearts();
+    module.default(API, carts.show());
+    const totalPrice = $$('.box_bill_pay-subtotal_coin');
+    document.querySelector('.table__content--body')
+        .addEventListener('click', function (e) {
+            if (e.target.closest('button')) {
+                const parentElement = e.target.closest('button');
+                const id = parentElement.dataset.id;
+                const inputEle = parentElement.parentNode.querySelector('input');
+                let amounts = Number(inputEle.value);
+                const boxItem = parentElement.closest('.table__content--item');
+                let totalOrder = coverNumber(totalPrice.innerHTML.trim()) / 1000;
+                console.log(totalOrder);
+                const { priceSale } = API.find(item => item.id == id);
+                if (parentElement.dataset.type == 'increase') {
+                    if (amounts >= 10) return;
+                    ++amounts;
+                    totalOrder += priceSale;
+                    if (amounts == 2) parentElement.parentNode
+                        .firstElementChild.innerHTML =
+                        `<i class="fa-solid fa-minus"></i>`;
+
+                    carts.update(id, 1);
+                } else {
+                    --amounts;
+                    if (amounts == 1) {
+                        parentElement.innerHTML = `<i class="fa-solid fa-trash-can"></i>`;
+                    }
+                    carts.update(id, -1);
+                    totalOrder -= priceSale;
+                }
+                if (amounts <= 0) {
+                    carts.delete(id);
+                    boxItem.classList.add('hidden');
+                }
+                console.log(totalOrder);
+                totalPrice.innerHTML = coverPrice(totalOrder) + ' đ';
+                $$('.box_bill_pay-total_coin').textContent = coverPrice(totalOrder * 1.05) + ' đ';
+                boxItem.querySelector('.table__content--total__contain').textContent = coverPrice(amounts * priceSale) + ' đ';
+                inputEle.value = amounts;
+
+            }
+        })
+
+    document.querySelector('.modal__body--product__list')
+    .addEventListener('click',function(e){
+        if (e.target.closest('button')) {
+            module.default(API, carts.show());
+        }
+    })
+
 }
 showPageCartBag();  

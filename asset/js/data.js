@@ -186,7 +186,7 @@ async function showProductsViewHome(lenProduct = 4, kind = 1) {
     const kinds = await res__kind.json();
     const { title } = kinds.find(item => item.id == kind) ?? false;
     if (!title) return false;
-
+if(lenProduct<=0) return;
     let HTML_BAKERY = '';
     const dataBakery = data
         .filter(bakery => bakery.kind == kind)
@@ -586,11 +586,15 @@ const coverPrice = (number) => {
 }
 const coverNumber = (price) => {
     if (price.includes(',')) {
-        return Number(price.replaceAll(',', ''));
+       price= price.replaceAll(',', '');
     }
     if (price.includes('.')) {
-        return Number(price.replaceAll('.', ''));
+       price= price.replaceAll('.', '');
     }
+    if (price.includes(' đ')) {
+       price= price.replaceAll(' đ', '');
+    }
+    return Number(price);
 }
 
 // sử lý %
