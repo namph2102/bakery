@@ -21,14 +21,14 @@ async function productDetail() {
     $$('.product__des--name').innerHTML=item.name;
     $$('.product__navition--name').innerHTML=item.name;
     $$('.product__buying').onclick = () => {
-        console.log('sadsad');
+    
         if (carts.check(id)) {
             carts.update(id, 1);
         }
         else {
-            carts.add(id);
+            carts.add(item);
         }
-        showKind(API.filter(item=>item.id==id).kind);
+        showKind(item.kind);
         HandleCart();
         $$('#modal__cart').classList.remove("hidden");
     }

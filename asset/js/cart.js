@@ -2,16 +2,12 @@
 
 import * as module from './module.js';
 
-console.log(module.title);
-console.log(module.head);
 
 async function showPageCartBag() {
-    const res = await fetch(API_PRODUCTS)
-    const API = await res.json();
     await showProductsViewHome(0, 1);
     HandleCart();
     handleHearts();
-    module.default(API, carts.show());
+    module.default(carts.show());
     const totalPrice = $$('.box_bill_pay-subtotal_coin');
     document.querySelector('.table__content--body')
         .addEventListener('click', function (e) {
@@ -57,7 +53,7 @@ async function showPageCartBag() {
     document.querySelector('.modal__body--product__list')
     .addEventListener('click',function(e){
         if (e.target.closest('button')) {
-            module.default(API, carts.show());
+            module.default(carts.show());
         }
     })
 

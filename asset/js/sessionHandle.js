@@ -24,7 +24,7 @@
         localStorage.setItem(key, JSON.stringify(storeList));
     }
     // kiem tra id co ton tai hay khong
-    const check=(id)=>storeList.findIndex(item=>item.id==id)>=0;
+    const check=(id)=>storeList.some(item=>item.id==id);
     return {
         show(){
             return storeList;
@@ -32,12 +32,18 @@
         getItem(id){
             return storeList.find(item=>item.id==id);
         },
-        add(id,amount=1,size='S'){
+        add(product='id',amount=1,size='S'){
+            console.log(product);
+            console.log(check(product.id));
             if(obj){
-                check(id) || storeList.push({id,amount,size});
+                if(!check(product.id)){
+                    const { id, name, avatar, priceSale, priceOrigin } = product;
+                    storeList.push({id,name,avatar,priceSale,priceOrigin,amount,size})
+                }
+               
             }else{
-                if(!storeList.includes(id)){
-                    storeList.push(id)
+                if(!storeList.includes(product)){
+                    storeList.push(product)
                 }
             }
            

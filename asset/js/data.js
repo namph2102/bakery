@@ -37,7 +37,7 @@ function showProductModal({ id, name, avatar, priceOrigin, priceSale, des }) {
 
         }
         else {
-            carts.add(id);
+            carts.add(API.find(item=>item.id==id));
         }
         $$(".modal__dialog").classList.add("hidden");
         showKind(API.filter(item=>item.id==id).kind);
@@ -285,7 +285,7 @@ function HandleCart() {
                 carts.update(id, 1);
             }
             else {
-                carts.add(id);
+                carts.add(API.find(item=>item.id==id));
             }
             showCart();
             modal__container_cart.classList.remove("hidden");
@@ -423,18 +423,18 @@ function showCart() {
     let total = 0;
     totalCart.innerText = listCartItems.length;
     const HTML__CART = listCartItems.map(cart => {
-        const { id, name, avatar, priceSale } = items = API.find(item => item.id == cart.id);
-        total += priceSale * cart.amount;
+        const { id, name, avatar, priceSale ,amount} = cart; 
+        total += priceSale * amount;
         return `<div class="modal__body--product">
         <a href="/asset/html/productDetail.html?id=${id}" class="modal__body--product__avata">
             <img loading="lazy" src="${avatar}" alt="${name}">
         </a>
         <div class="modal__body--product__des">
             <h3 class="product__des--title pb-2"><a href="/asset/html/productDetail.html?id=${id}">${name}</a></h3>
-            <p class="product__des--price">${coverPrice(priceSale)} đ x <span class="product__des--amount"> ${cart.amount}</span></p>
+            <p class="product__des--price">${coverPrice(priceSale)} đ x <span class="product__des--amount"> ${amount}</span></p>
             <div class="product__des--controller">
-                <button data-id=${id} data-type="decrease" class="handleAmounts"><i class="${cart.amount >= 2 ? 'fa-solid fa-minus' : 'fa-solid fa-trash-can'}"></i></button>
-                <input class="product__des--controller__amount" type="number" value="${cart.amount}">
+                <button data-id=${id} data-type="decrease" class="handleAmounts"><i class="${amount >= 2 ? 'fa-solid fa-minus' : 'fa-solid fa-trash-can'}"></i></button>
+                <input class="product__des--controller__amount" type="number" value="${amount}">
                 <button data-id=${id} data-type="increase" class="handleAmounts"><i class="fa-solid fa-plus"></i></button>
             </div>
         </div>
