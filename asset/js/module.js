@@ -6,11 +6,15 @@ function moduleShowCart(carts = []) {
 
     let total = 0;
     const vat = 5;
-    console.log(carts);
     const html = carts.map(item => {
         const size = item?.size.toLowerCase();
-        const { id, name, avatar, priceSale, priceOrigin, amount } = item;
+        const { id, name, avatar, priceSale, priceOrigin, amount,kind } = item;
         total += amount * priceSale;
+        const html__size=kind==1?`
+        <input type="radio" ${size == 's' ? 'checked':''} class="size" data-id="${id}" data-size="s" name="size${id}" id="sizes${id}"> <label class="size" data-id="${id}" data-size="s" for="sizes${id}">S</label>
+        <input type="radio" ${size == 'l' ? 'checked':''}  class="ms-3 size"  data-id="${id}" data-size="m" name="size${id}" id="sizem${id}"> <label class="size" data-id="${id}" data-size="s" class="me-3" for="sizem${id}">M</label>
+        <input type="radio"  ${size == 'm' ? 'checked':''}  name="size${id}" class="size" data-id="${id}" data-size="l"  id="sizel${id}"> <label class="size" data-id="${id}" data-size="s" for="sizel${id}">L</label>
+        `:'24 lon';
         return `<div class="table__content--item">
         <a href="/asset/html/productDetail.html?id=${id}" class="table__content--product">
             <figure>
@@ -34,9 +38,7 @@ function moduleShowCart(carts = []) {
         </div>
         <div class="table__content-size">
             <div class="table__content--size__contain" data-id="${id}">
-                <input type="radio" ${size == 's' && 'checked'}  name="size${id}" id="sizes${id}"> <label for="sizeS${id}">S</label>
-                <input type="radio" ${size == 'l' && 'checked'}  class="ms-3" name="sizem${id}" id="sizeM${id}"> <label class="me-3" for="sizeM${id}">M</label>
-                <input type="radio"  ${size == 'm' && 'checked'}  name="size${id}" id="sizel${id}"> <label for="sizeL${id}">L</label>
+                ${html__size}
             </div>
         </div>
         <div class="table__content--total">

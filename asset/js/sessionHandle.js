@@ -37,8 +37,8 @@
             console.log(check(product.id));
             if(obj){
                 if(!check(product.id)){
-                    const { id, name, avatar, priceSale, priceOrigin } = product;
-                    storeList.push({id,name,avatar,priceSale,priceOrigin,amount,size})
+                    const { id, name, avatar, priceSale, priceOrigin,kind } = product;
+                    storeList.push({id,name,avatar,priceSale,priceOrigin,amount,size,kind})
                 }
                
             }else{

@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="/asset/css/cart.css">
     <link rel="stylesheet" href="/asset/css/resposive.css">
 
-    <title>Giỏ Hàng - HT Bakery</title>
+    <title>Liên Hệ - HT BAKERY </title>
 </head>
 
 <body>
@@ -47,7 +47,7 @@
                         <li class="hide__of__lg">Menu <button class="btn_close--menu">X</button></li>
                         <li><a href="./index.html"> Trang chủ</a></li>
                         <li class="main__nav">
-                            <a href="" class="active">Sản phẩm</a>
+                            <a href="#!" >Sản phẩm</a>
                             <ul class="sub__nav">
                                 <li><a href="">Bánh Sinh Nhật</a></li>
                                 <li><a href="">Đồ Uống / Kem Tươi</a></li>
@@ -56,9 +56,9 @@
 
                             </ul>
                         </li>
-                        <li><a href="">Giới thiệu</a></li>
-                        <li><a href="">Tin Tức</a></li>
-                        <li><a href="./contact.html">Liên Hệ</a></li>
+                        <li><a href="./aboutus.html">Giới thiệu</a></li>
+                        <li><a href="./news.html">Tin Tức</a></li>
+                        <li><a href="#!" class="active">Liên Hệ</a></li>
                         <li class="hide__of__lg_important"><a href=""><i
                                     class="fa-regular fa-user me-3 d-inline-block"></i> Đăng Ký/ Đăng Nhập</a></li>
                         <li class="border-0 hide__of__lg_important mt-4 ps-3">
@@ -100,97 +100,12 @@
                 <div class="navigation__container">
                     <ul class="navigation__box">
                         <li><a href="./index.html">Trang chủ</a></li>
-                        <li><a class="product__navition--kind" href="#!">/ Giỏ Hàng </a></li>
+                        <li><a class="product__navition--kind" href="#!">/ Liên Hệ</a></li>
 
                     </ul>
                 </div>
             </div>
 
-            <div class="product_items_special">
-                <div class="product_items_special--container" style="background-color: white;">
-                    <div class="row">
-                        <h1 class="product_items--table--title">Giỏ Hàng Của Bạn</h1>
-                        <div class="table__content col-lg-9 col-12">
-                            <div class="table__content--head">
-                                <div class="table__content--head__product"> Sản Phẩm</div>
-                                <div class="table__content--head__amount">Số Lượng</div>
-                                <div class="table__content--head__size">Kích Thước</div>
-                                <div class="table__content--head__total">Tổng</div>
-                            </div>
-                            <div class="table__content--body">
-                                <div class="table__content--item">
-                                    <a href="" class="table__content--product">
-                                        <figure>
-                                            <img src="/image/cakes/id11.jpg" alt="">
-                                        </figure>
-                                        <div class="table__content--product__des">
-                                            <div class="product__des--name">
-                                                Bánh Sinh Nhật
-                                            </div>
-                                            <div class="product__des--price">
-                                                <span>200,222 đ</span> <del class="text-danger">200,784 đ</del>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <div class="table__content--amount">
-                                        <div class="table__content--quantity__contain">
-                                            <button data-id="12" data-type="decrease" class="handleAmountCart"><i
-                                                    class="fa-solid fa-trash-can"></i></button>
-                                            <input class="table__content--quantity__amount" type="text" readonly
-                                                value="1">
-                                            <button data-id="12" data-type="increase" class="handleAmountCart"><i
-                                                    class="fa-solid fa-plus"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="table__content-size">
-                                        <div class="table__content--size__contain">
-                                            <input type="radio" name="size" id="sizeS"> <label for="sizeS">S</label>
-                                            <input type="radio" class="ms-3" name="size" id="sizeM"> <label class="me-3"
-                                                for="sizeM">M</label>
-                                            <input type="radio" name="size" id="sizeL"> <label for="sizeL">L</label>
-                                        </div>
-                                    </div>
-                                    <div class="table__content--total">
-                                        <div class="table__content--total__contain">
-                                            200,200 đ
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="box_bill_pay col-lg-3 mt-lg-0 mt-5 col-12">
-                            <div class="box_bill_pay_container">
-                                <div class="box_bill_pay-head ">đơn hàng của bạn</div>
-                                <div class="box_bill_pay-body">
-                                    <div class="box_bill_pay-body_flex">
-                                        <span class="box_bill_pay-subtotal">Tổng phụ</span><span
-                                            class="box_bill_pay-subtotal_coin">550,000 đ</span>
-                                    </div>
-                                    <div class="box_bill_pay-body_flex">
-                                        <span class="box_bill_pay_vat">VAT</span><span
-                                            class="box_bill_pay-subtotal_vat">5 %</span>
-                                    </div>
-                                </div>
-                                <div class="box_bill_pay-body_total">
-                                    <ol>
-                                        <li>Phí vận chuyển sẽ được tính ở trang thanh toán.</li>
-                                        <li>Bạn cũng có thể nhập mã giảm giá ở trang thanh toán.</li>
-                                    </ol>
-                                    <div class="box_bill_pay-body_flex">
-                                        <span class="box_bill_pay-total">Tạm Tính</span><span
-                                            class="box_bill_pay-total_coin">577,500 đ</span>
-                                    </div>
-                                </div>
-                                <button class="btn btn-danger btn--table__order"><a
-                                        >Đặt hàng</a></button>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <div class="carts__address row">
                 <form class="form__user--address col-lg-6 col-12" action="">
@@ -198,7 +113,7 @@
                     <div class="form--group">
                         <label for="username">Họ và Tên (*)</label>
                         <div class="form__input">
-                            <input required id="fullname" type="text" data-name="Fullname" placeholder="Nhập họ và tên">
+                            <input  required id="fullname" type="text" data-name="Fullname" placeholder="Nhập họ và tên">
                             <p class="form__input--error"></p>
                         </div>
 
@@ -213,26 +128,26 @@
                     </div>
 
                     <div class="form--group">
-                        <label for="password">Địa chỉ (*)</label>
+                        <label for="password">Email (*)</label>
                         <div class="form__input">
-                            <input required id="address" type="text" data-name="address" placeholder="Địa chỉ">
+                            <input required id="email" type="email" data-name="email" placeholder="Email">
                             <p class="form__input--error"> </p>
                         </div>
                     </div>
                     <div class="form--group">
                         <label for="password">Ghi chú (*)</label>
                         <div class="form__input">
-                            <textarea  name="note" id="" rows="10" placeholder="Nội Dung liên hệ: "></textarea>
+                            <textarea required name="note" id="" rows="10" placeholder="Nội Dung liên hệ: "></textarea>
                         </div>
                     </div>
                     <div class="button__green">
-                        <button type="submit" class="btn w-100"><a class="w-100"> Đặt hàng</a></button>
+                        <button type="submit" class="w-100 btn"><a class="w-100">Gửi</a></button>
                     </div>
                 </form>
 
                 <div class="admin__address col-lg-6 col-12">
                     <h2 class="fs-2 mt-3 mb-2" style="font-weight:600;">Thông tin liên hệ</h2>
-                    <p class="mt-4 fw-500" >Mọi ý kiến về đơn hàng vui lòng liên hệ với chúng tôi qua số Điện Thoại: 087.766.9990</p>
+                    <p class="mt-4 fw-500" style="line-height: 1.5;" >Chúng tôi muốn nghe ý kiến ​​của bạn về dịch vụ khách hàng, hàng hóa, trang web của chúng tôi hoặc bất kỳ chủ đề nào bạn muốn chia sẻ với chúng tôi. Ý kiến ​​và đề xuất của bạn sẽ được đánh giá cao. Hãy hoàn thành mẫu đơn dưới dây.</p>
                     <div class="footer__body  footer__address">
                         <div class="footer__address--container">
                             <div class="address--item">
@@ -242,8 +157,7 @@
                                     </div>
                                     <div class="address--item__body--info">
                                         <h6 class="address__title"> Địa Chỉ:</h6>
-                                        <div class="address__local">C28-TT6 KĐT Văn Quán, Phường Phúc La, Hà Đông,Hà
-                                            Nội</div>
+                                        <div class="address__local">200/34 Tô ký, Phường Đông Hưng Thuận, Quận 12, TP HCM</div>
                                     </div>
                                 </div>
                                 <div class="address--item__body">
@@ -273,10 +187,15 @@
 
                 </div>
             </div>
-
+          
         </div>
     </main>
-
+    <div class="main__body mb-2">
+        <iframe class="w-100"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62696.48503067493!2d106.61001974877101!3d10.847210746085915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175297c671c5eb9%3A0x3da2e88698b9d536!2zVGnhu4dtIELDoW5oIE1pbmggQ2jDonU!5e0!3m2!1svi!2s!4v1673416544803!5m2!1svi!2s"
+            height="600" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
     <div class="modal__dialog hidden">
         <div class="row products__views-container__modal">
             <div class="col-md-6 col-12 p-0">
@@ -487,6 +406,7 @@
             </div>
         </div>
     </div>
+
     <footer>
         <div class="container">
             <div class="row footer_content">
@@ -505,8 +425,7 @@
                                         </div>
                                         <div class="address--item__body--info">
                                             <h6 class="address__title"> Địa Chỉ:</h6>
-                                            <div class="address__local">C28-TT6 KĐT Văn Quán, Phường Phúc La, Hà Đông,Hà
-                                                Nội</div>
+                                            <div class="address__local">200/34 Tô ký, Phường Đông Hưng Thuận, Quận 12, TP HCM</div>
                                         </div>
                                     </div>
                                     <div class="address--item__body">
@@ -557,9 +476,9 @@
                         <ul>
                             <li><a href="./index.html">Trang Chủ</a></li>
                             <li><a href="./product.html">Sản Phẩm</a></li>
-                            <li><a href="./index.html">Giới Thiệu</a></li>
-                            <li><a href="./index.html">Tin Tức</a></li>
-                            <li><a href="./index.html">Liên Hệ</a></li>
+                            <li><a href="./aboutus.html">Giới Thiệu</a></li>
+                            <li><a href="./news.html">Tin Tức</a></li>
+                            <li><a href="./contact.html">Liên Hệ</a></li>
                         </ul>
                     </div>
                 </div>
@@ -592,6 +511,13 @@
 </script>
 <script src="/asset/js/sessionHandle.js"></script>
 <script src="/asset/js/data.js"></script>
-<script src="/asset/js/cart.js" type="module"></script>
+<script>
+    async function contactPage() {
+        await showProductsViewHome(0, 1);
+        HandleCart();
+        handleHearts();
+    }
+    contactPage();
+</script>
 
 </html>

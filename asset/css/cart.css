@@ -48,7 +48,7 @@
     margin-bottom: 4px;
     margin-bottom: 8px;
 }
-.product__des--price{
+.table__content--product__des .product__des--price{
     font-size: 12px;
     font-weight: 600;
     word-wrap: 1.5;
@@ -199,4 +199,24 @@
 }
 .btn--table__order:hover{
     opacity: 0.9;
+}
+
+
+.carts__address {
+   padding: 40px 12px 12px;
+    background-color: white;
+    margin: 0;
+}
+.form__user--address{
+    padding: 4px 12px;
+}
+.form__user--address :where(input,textarea){
+    padding: 8px 12px;
+    width: 100%;
+    outline: none;
+    border: 1px solid rgb(216, 213, 213);
+}
+.form__user--address  label{
+    margin-top: 12px;
+    margin-bottom: 8px;
 }

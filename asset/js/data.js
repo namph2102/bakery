@@ -355,7 +355,7 @@ function handleHearts() {
             hearts.delete(id);
 
             Array.from($$l('.product-item--stickers__love'))
-                .find(item => item.getAttribute('data-id') == id).classList.remove("hidden");
+                .find(item => item.getAttribute('data-id') == id)?.classList.remove("hidden");
 
             totalHeartElement.innerText = hearts.show().length;
         }
@@ -366,22 +366,26 @@ $$("#cartBag").onclick = () => {
     modal__container_cart.classList.remove("hidden");
     HandleCart();
 }
+const inputList = Array.from($$l(".form--group input"));
+if(inputList.length!=0){
+    inputList.forEach(input => {
+        input.onblur = () => {
+            handleInput(input, ' không được để trống !')
+        }
+        input.oninput = () => {
+            handleInput(input, ' không được để trống !')
+        }
+    })
+}
+
 
 $$(".btn--login").onclick = () => {
     $$(".modal__userlog").classList.remove("hidden");
-    const inputList = Array.from($$l("#loginform .form--group input"));
+   
     const form = $$("#loginform");
     form.onsubmit = () => false;
 
-    inputList.forEach(input => {
-        input.onblur = () => {
-            handleInput(input, 'không được để trống !')
-        }
-        input.oninput = () => {
-            handleInput(input, 'không được để trống !')
-        }
-
-    })
+ 
     // submit form 
     $$('.btn--submitLogin').onclick = () => {
         form.onsubmit = () => !inputList.some(input => !input.value);

@@ -736,17 +736,17 @@ main {
   width: 100%;
 }
 
-footer .footer--title {
+.footer--title {
   border-bottom: 3px solid var(--border-color);
 }
 
-footer .footer--title h5 {
+.footer--title h5 {
   position: relative;
   padding: 8px 0;
   display: inline-block;
 }
 
-footer .footer--title h5::before {
+.footer--title h5::before {
   content: "";
   position: absolute;
   top: 100%;
@@ -757,17 +757,17 @@ footer .footer--title h5::before {
   background-color: var(--text-hover);
 }
 
-footer .footer__body {
+.footer__body {
   margin: 12px 0;
 }
 
-footer .footer__body .footer__body--title {
+.footer__body .footer__body--title {
   font-weight: 600;
   font-size: 1.4rem;
   color: var(--text-light-color);
 }
 
-footer .footer__body .address--item__body {
+.footer__body .address--item__body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -779,7 +779,7 @@ footer .footer__body .address--item__body {
           align-items: center;
 }
 
-footer .footer__body .address--item__body .address--item__body--icon {
+.footer__body .address--item__body .address--item__body--icon {
   width: 40px;
   height: 30px;
   display: -webkit-box;
@@ -797,33 +797,33 @@ footer .footer__body .address--item__body .address--item__body--icon {
   margin-right: 8px;
 }
 
-footer .footer__body .address--item__body .address--item__body--info {
+.footer__body .address--item__body .address--item__body--info {
   width: 100%;
   margin: 6px 0;
 }
 
-footer .footer__body .address--item__body .address--item__body--info .address__title {
+.footer__body .address--item__body .address--item__body--info .address__title {
   color: var(--black-color);
   font-weight: 500;
   margin: 8px 0;
 }
 
-footer .footer__body .address--item__body .address--item__body--info .address__local {
+.footer__body .address--item__body .address--item__body--info .address__local {
   font-size: 1.4rem;
   font-weight: 400;
   color: var(--text-light-color);
 }
 
-footer .footer__body .address--item__body .address--item__body--info .address__local a {
+.footer__body .address--item__body .address--item__body--info .address__local a {
   text-decoration: none;
   color: var(--text-light-color);
 }
 
-footer .footer__body .address--item__body .address--item__body--info .address__local a:hover {
+.footer__body .address--item__body .address--item__body--info .address__local a:hover {
   color: var(--text-hover);
 }
 
-footer .footer__body ul li a {
+.footer__body ul li a {
   text-decoration: none;
   color: var(--text-color);
   display: block;
@@ -831,11 +831,11 @@ footer .footer__body ul li a {
   border-bottom: 2px solid var(--border-color);
 }
 
-footer .footer__body ul li a:hover {
+.footer__body ul li a:hover {
   color: var(--text-hover);
 }
 
-footer .footer_copyright {
+.footer_copyright {
   padding: 12px 0;
   background-color: var(--border-color);
   font-size: 1.4rem;
@@ -1225,45 +1225,44 @@ footer .footer_copyright {
   font-weight: 600;
 }
 
-.modal__userlog .form__user label {
+label {
   font-weight: 500;
   font-size: 16px;
 }
 
-.modal__userlog .form__user .form__input {
+.form__input {
   margin: 8px 0;
 }
 
-.modal__userlog .form__user .form__input input {
+.form__input input {
   padding: 8px 4px;
   width: 100%;
   font-size: 16px;
 }
 
-.modal__userlog .form__user .form__input p {
+.form__input p {
   color: red;
-  height: 18px;
 }
 
-.modal__userlog .form__user .form__input.error input {
+.form__input.error input {
   border: 0.5px solid red;
 }
 
-.modal__userlog .form__user .form__input--error {
+.form__input--error {
   font-size: 14px;
   margin-top: 2px;
 }
 
-.modal__userlog .form__user .form--group__footer a {
+.form--group__footer a {
   text-decoration: none;
   color: var(--text-color);
 }
 
-.modal__userlog .form__user .form--group__footer a:hover {
+.form--group__footer a:hover {
   color: var(--primary-green-color);
 }
 
-.modal__userlog .form__user .form--group__footer button {
+.form--group__footer button {
   width: 100%;
   background-color: var(--primary-green-color);
   font-size: 16px;
@@ -1272,7 +1271,7 @@ footer .footer_copyright {
   border-radius: 12px;
 }
 
-.modal__userlog .form__user .form--group__footer button:hover {
+.form--group__footer button:hover {
   opacity: 0.8;
 }
 

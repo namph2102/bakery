@@ -48,6 +48,9 @@ async function showPageCartBag() {
                 inputEle.value = amounts;
 
             }
+            if(e.target.closest('.size')){
+                carts.update(e.target.dataset.id,null,e.target.dataset.size)
+            }
         })
 
     document.querySelector('.modal__body--product__list')
@@ -56,6 +59,10 @@ async function showPageCartBag() {
             module.default(carts.show());
         }
     })
-
+    document.querySelector('.btn--table__order').onclick=()=>{
+        const boxCart= document.querySelector('.carts__address');
+        let heightcart=boxCart.getBoundingClientRect().top+window.scrollY -100
+       window.scrollTo(0,heightcart);
+    }  
 }
 showPageCartBag();  
