@@ -7,10 +7,10 @@ showHomePage();
 async function showHomePage(){
     fetchBanner();
     await showProductsViewHome(4,1);
-    await showProductsViewHome(2,2);
+    await showProductsViewHome(4,2);
     HandleCart();
     handleHearts();
-    showNewsHomePage(4);
+    showNewsHomePage(3);
 }
 
 

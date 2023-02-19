@@ -23,6 +23,6 @@ async function contactPage() {
     await showProductsViewHome(0, 1);
     HandleCart();
     handleHearts();
-    showNewsHomePage(3);
+    showNewsHomePage(3,true);
 }
 contactPage();

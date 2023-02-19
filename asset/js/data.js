@@ -12,23 +12,23 @@ let API = [];
 
 
 // show san phẩm ở modal
-function showProductModal({ id, name, avatar, priceOrigin, priceSale, des,kind }) {
+function showProductModal({ id, name, avatar, priceOrigin, priceSale, des, kind }) {
     const box_reducer = $$(".modal__product__view--reducer");
     box_reducer.classList.remove("hidden");
     $$("#productName").innerHTML = name;
     $$(".product__views-des__price--sale").innerHTML = coverPrice(priceSale) + " đ";
     $$("del.product__views-des__price--origin").innerHTML = (priceOrigin > priceSale) ? coverPrice(priceOrigin) + " đ" : "";
     $$(".product__views--item__des").innerHTML = des;
-    if(kind!=2){
-        $$(".modal__item--product_size").innerHTML=`
+    if (kind != 2) {
+        $$(".modal__item--product_size").innerHTML = `
             <input type="radio" checked name="size" id="sizeS"> <label for="sizeS">S</label>
             <input type="radio" name="size" id="sizeM"> <label for="sizeM">M</label>
             <input type="radio" name="size" id="sizeL"> <label for="sizeL">L</label>
         `;
-    }else{
-            $$(".modal__item--product_size").innerHTML='24 lon'
+    } else {
+        $$(".modal__item--product_size").innerHTML = '24 lon'
     }
-  
+
     const redusePrice = percentReduce(priceOrigin, priceSale);
     if (redusePrice) box_reducer.innerHTML = `-${redusePrice} %`
     else box_reducer.classList.add("hidden")
@@ -36,50 +36,51 @@ function showProductModal({ id, name, avatar, priceOrigin, priceSale, des,kind }
     $$(".product-modal--avata").src = avatar;
     $$(".modal__dialog").classList.remove("hidden");
 
-    $$('.modal__item--product_amount span').innerHTML=carts.getItem(id)?.amount || 1;
+    $$('.modal__item--product_amount span').innerHTML = carts.getItem(id)?.amount || 1;
     $$('.product_add--cart').onclick = () => {
         if (carts.check(id)) {
-            const size=$$("#sizeS").checked && 'S' || $$("#sizeM").checked && 'M' ||$$("#sizeL").checked && 'L'
+            const size = $$("#sizeS").checked && 'S' || $$("#sizeM").checked && 'M' || $$("#sizeL").checked && 'L'
             carts.update(id, Number($$('.modal__item--product_amount span').innerText));
-            carts.update(id,null ,size);
-            $$('.product_add--cart').innerHTML=`Đã thêm vào giỏ hàng`;
+            carts.update(id, null, size);
+            $$('.product_add--cart').innerHTML = `Đã thêm vào giỏ hàng`;
 
         }
         else {
-            carts.add(API.find(item=>item.id==id));
+            carts.add(API.find(item => item.id == id));
         }
         $$(".modal__dialog").classList.add("hidden");
-        showKind(API.filter(item=>item.id==id).kind);
+        showKind(API.filter(item => item.id == id).kind);
         HandleCart();
         $$('#modal__cart').classList.remove("hidden");
-         
+
     }
-  
+
 }
-document.querySelector('.modal__item--product_amount').addEventListener('click', function(e){
-    const amountContent=this.querySelector('span');   
-    const value=Number(amountContent.innerText);
-    console.log(e.target.closest('.product_amount--reduce'),value);
-    if(e.target.closest('.product_amount--reduce')){
-        if(value>1)  amountContent.innerHTML=value-1; 
-        
+document.querySelector('.modal__item--product_amount').addEventListener('click', function (e) {
+    const amountContent = this.querySelector('span');
+    const value = Number(amountContent.innerText);
+    console.log(e.target.closest('.product_amount--reduce'), value);
+    if (e.target.closest('.product_amount--reduce')) {
+        if (value > 1) amountContent.innerHTML = value - 1;
+
     }
-    if(e.target.closest('.product_amount--increase')){
-        if(value<10) {
-            amountContent.innerHTML=value+1; 
+    if (e.target.closest('.product_amount--increase')) {
+        if (value < 10) {
+            amountContent.innerHTML = value + 1;
         }
-       
+
     }
 })
 //Show trang tin tuc 
-function showNewsHomePage(len = 3) {
+function showNewsHomePage(len = 3, sameViews = false) {
     fetch("/asset/json/news.json")
         .then(res => res.json())
         .then(news => {
+            if (sameViews) news = news.filter(item => item.id != window.location.search.slice(4));
             if (news.length > len) news.length = len;
             const HTML__NEWS = news
                 .map(newItem => {
-                    const { id,date, name, des, avata } = newItem;
+                    const { id, date, name, des, avata } = newItem;
                     return ` <div class="news__item col-lg-4 col-6">
             <a class="news__item--link__container" href="/asset/html/newDetail.html?id=${id}">
                 <figure>
@@ -188,63 +189,62 @@ const banner_sliders = (lengthBanner = 0) => {
 
 
 //show product at home
-async function showProductsViewHome(lenProduct = 4, kind = 1) {
+async function showProductsViewHome(lenProduct = 4, kind = 1, sameViews = false) {
     const res__products = await fetch(API_PRODUCTS);
     const data = API = await res__products.json();
     const res__kind = await fetch(API_KIND)
     const kinds = await res__kind.json();
     const { title } = kinds.find(item => item.id == kind) ?? false;
     if (!title) return false;
-if(lenProduct<=0) return;
-    let HTML_BAKERY = '';
-    const dataBakery = data
+    if (lenProduct <= 0) return;
+    let  dataBakery = data
         .filter(bakery => bakery.kind == kind)
         .sort((a, b) => b.Sales - a.Sales)
-    lenProduct = lenProduct > dataBakery.length ? dataBakery.length : lenProduct;
-    for (let i = 0; i < lenProduct; i++) {
-        const { id, name, avatar, priceSale, priceOrigin, size } = dataBakery[i];
-        HTML_BAKERY += `<div class="product-content col-lg-3 col-md-4 col-6">
-            <figure class="product__item--des">
-                <a href="/asset/html/productDetail.html?id=${id}" class="product__item--avata">
-                    <img  loading="lazy" src="${avatar}" alt="${name}">
-                </a>
-                <figcaption>
-                    <h3 class="product__item--title"><a href="/asset/html/productDetail.html?id=${id}">${name}</a></h3>
-                    <div class="product__item--price">${coverPrice(priceSale)} đ <del class="price--del">${priceOrigin>priceSale?coverPrice(priceOrigin)+' đ':""}</del>
-                    </div>
-                    <div class="product__item--size">${size == "fullsize" ? "S, M, L" : size}</div>
-                </figcaption>
-                <div data-id="${id}" class="product-item--stickers__love ${hearts.show().includes(id + '') ? "hidden" : ""}">
-                    <i class="fa-regular fa-heart"></i>
-                    <span class="stickers--des">Thêm vào yêu thích</span>
+    if(sameViews) dataBakery=dataBakery.filter(item=>item.id!=window.location.search.slice(4));
+    if (lenProduct < dataBakery.length) dataBakery.length = lenProduct;
+    const HTML_BAKERY = dataBakery.map(item => {
+        const { id, name, avatar, priceSale, priceOrigin, size } = item;
+        return `<div class="product-content col-lg-3 col-md-4 col-6">
+    <figure class="product__item--des">
+        <a href="/asset/html/productDetail.html?id=${id}" class="product__item--avata">
+            <img  loading="lazy" src="${avatar}" alt="${name}">
+        </a>
+        <figcaption>
+            <h3 class="product__item--title"><a href="/asset/html/productDetail.html?id=${id}">${name}</a></h3>
+            <div class="product__item--price">${coverPrice(priceSale)} đ <del class="price--del">${priceOrigin > priceSale ? coverPrice(priceOrigin) + ' đ' : ""}</del>
+            </div>
+            <div class="product__item--size">${size == "fullsize" ? "S, M, L" : size}</div>
+        </figcaption>
+        <div data-id="${id}" class="product-item--stickers__love ${hearts.show().includes(id + '') ? "hidden" : ""}">
+            <i class="fa-regular fa-heart"></i>
+            <span class="stickers--des">Thêm vào yêu thích</span>
+        </div>
+        <div class="product-item--stickers__del ${percentReduce(priceOrigin, priceSale) || "hidden"}">
+            -${percentReduce(priceOrigin, priceSale)}%
+        </div>
+        <div class="product-item--buttons d-md-block d-none">
+            <div onclick="openViews(${id})"  class="product-item__btn product-item--button__show">
+                <div class="item__btn--view"> Xem nhanh</div>
+                <div class="item__btn--view item__btn--sub_view"><i
+                        class="fa-regular fa-eye"></i></div>
+            </div>
+            <div class="product-item__btn product-item--button__buy">
+                <div class="item__btn--view" data-id="${id}"> Mua Hàng</div>
+                <div data-id="${id}" class="item__btn--view item__btn--sub_view addcart">
+                    <i data-id="${id}" class="fa-solid fa-cart-plus"></i>
                 </div>
-                <div class="product-item--stickers__del ${percentReduce(priceOrigin, priceSale) || "hidden"}">
-                    -${percentReduce(priceOrigin, priceSale)}%
-                </div>
-                <div class="product-item--buttons d-md-block d-none">
-                    <div onclick="openViews(${id})"  class="product-item__btn product-item--button__show">
-                        <div class="item__btn--view"> Xem nhanh</div>
-                        <div class="item__btn--view item__btn--sub_view"><i
-                                class="fa-regular fa-eye"></i></div>
-                    </div>
-                    <div class="product-item__btn product-item--button__buy">
-                        <div class="item__btn--view" data-id="${id}"> Mua Hàng</div>
-                        <div data-id="${id}" class="item__btn--view item__btn--sub_view addcart">
-                            <i data-id="${id}" class="fa-solid fa-cart-plus"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-item--buttons__mobiles d-md-none d-flex">
-                    <div onclick="openViews(${id})" class="item__btn--view"><i class="fa-regular fa-eye"></i></div>
-                    <div class="item__btn--view addcart" data-id="${id}"><i data-id="${id}" class="fa-solid fa-cart-plus"></i></div>
-                </div>
+            </div>
+        </div>
+        <div class="product-item--buttons__mobiles d-md-none d-flex">
+            <div onclick="openViews(${id})" class="item__btn--view"><i class="fa-regular fa-eye"></i></div>
+            <div class="item__btn--view addcart" data-id="${id}"><i data-id="${id}" class="fa-solid fa-cart-plus"></i></div>
+        </div>
 
-            </figure>
-        </div>`;
-    }
+    </figure>
+</div>`;
+    }).join('');
 
-
-    const products__kind = `
+const products__kind = `
     <div class="products__container--shows">
         <div class="products__container">
             <div class="products__kind">
@@ -259,10 +259,10 @@ if(lenProduct<=0) return;
          </div>
     </div>
     `;
-    const container = $$("#show__products");
-    if (container.innerHTML) {
-        container.insertAdjacentHTML('beforeend', products__kind);
-    } else container.innerHTML = products__kind;
+const container = $$("#show__products");
+if (container.innerHTML) {
+    container.insertAdjacentHTML('beforeend', products__kind);
+} else container.innerHTML = products__kind;
 }
 // xem sản phẩm views
 function openViews(id) {
@@ -294,7 +294,7 @@ function HandleCart() {
                 carts.update(id, 1);
             }
             else {
-                carts.add(API.find(item=>item.id==id));
+                carts.add(API.find(item => item.id == id));
             }
             showCart();
             modal__container_cart.classList.remove("hidden");
@@ -322,13 +322,13 @@ function handleHearts() {
     btn__loves.forEach(btnHeart => {
         btnHeart.onclick = () => {
             const id = btnHeart.getAttribute('data-id');
-            hearts.add(id);
+            hearts.add(API.find(item => item.id == id));
             totalHeartElement.innerText = hearts.show().length;
             btnHeart.classList.add("hidden");
         }
     })
-    $$("#heart__container").innerHTML = hearts.show().map(id => {
-        const { name, avatar, priceSale } = API.find(item => item.id == id);
+    $$("#heart__container").innerHTML = hearts.show().map(item => {
+        const { name, avatar, priceSale, id } = item;
         return `<div class="modal__body--product">
         <a href="/asset/html/productDetail.html?id=${id}" class="modal__body--product__avata">
             <img src="${avatar}" alt="${name}">
@@ -344,7 +344,7 @@ function handleHearts() {
         <i class="fa-solid fa-xmark"></i>
     </div>
     </div>`
-    }).join('');
+    }).join('') || 'Chưa có sản phẩm yêu thích nào';
     totalHeartElement.innerText = hearts.show().length;
     $$('.modal__hearts .modal__head--close').onclick = () => {
         $$(".modal__hearts").classList.add('hidden');
@@ -376,7 +376,7 @@ $$("#cartBag").onclick = () => {
     HandleCart();
 }
 const inputList = Array.from($$l(".form--group input"));
-if(inputList.length!=0){
+if (inputList.length != 0) {
     inputList.forEach(input => {
         input.onblur = () => {
             handleInput(input, ' không được để trống !')
@@ -390,11 +390,11 @@ if(inputList.length!=0){
 
 $$(".btn--login").onclick = () => {
     $$(".modal__userlog").classList.remove("hidden");
-   
+
     const form = $$("#loginform");
     form.onsubmit = () => false;
 
- 
+
     // submit form 
     $$('.btn--submitLogin').onclick = () => {
         form.onsubmit = () => !inputList.some(input => !input.value);
@@ -409,10 +409,10 @@ $$(".btn--login").onclick = () => {
         closeModal($$('.modal__userlog'));
     }
 }
-$$('.btn__resgester').onclick=()=>{
+$$('.btn__resgester').onclick = () => {
     openModal($$('.modal__userRegister'));
 }
-$$('.modal__head--close__register').onclick=()=>{
+$$('.modal__head--close__register').onclick = () => {
     closeModal($$('.modal__userRegister'));
 }
 function closeModal(modalParent) {
@@ -442,7 +442,7 @@ function showCart() {
     let total = 0;
     totalCart.innerText = listCartItems.length;
     const HTML__CART = listCartItems.map(cart => {
-        const { id, name, avatar, priceSale ,amount} = cart; 
+        const { id, name, avatar, priceSale, amount } = cart;
         total += priceSale * amount;
         return `<div class="modal__body--product">
         <a href="/asset/html/productDetail.html?id=${id}" class="modal__body--product__avata">
@@ -468,8 +468,8 @@ function showKind(kind = 1, len = 3) {
     const listProductKinds = API.filter(item => item.kind == kind);
     if (len < listProductKinds.length) listProductKinds.length = len;
     $$(".modal__body__add--listporduct").innerHTML = listProductKinds.map(item => {
-        const { id,name, avatar, priceSale } = item;
-        const link=`/asset/html/productDetail.html?id=${id}`;
+        const { id, name, avatar, priceSale } = item;
+        const link = `/asset/html/productDetail.html?id=${id}`;
         return `<div class="modal__body--product">
         <a href="${link}" class="modal__body--product__avata">
             <img src="${avatar}" alt="">
@@ -500,10 +500,10 @@ function controllerCartProducts() {
             if (typeButton == 'increase') {
                 totalProduct += priceSale;
                 ++amount
-                 const test=parentBox.querySelector('i.fa-trash-can');
-                 if(test){
-                    test.className=`fa-solid fa-minus`;
-                 }
+                const test = parentBox.querySelector('i.fa-trash-can');
+                if (test) {
+                    test.className = `fa-solid fa-minus`;
+                }
                 if (amount > 10) return false;
             } else {
                 totalProduct -= priceSale;
@@ -532,8 +532,8 @@ function controllerCartProducts() {
 
 // Serach sản phẩm 
 
-$$('.btn--open-search').addEventListener('click',showModalSearch)
-$$('.btn__find--search').addEventListener('click',showModalSearch)
+$$('.btn--open-search').addEventListener('click', showModalSearch)
+$$('.btn__find--search').addEventListener('click', showModalSearch)
 
 function showModalSearch() {
     const modal__search = $$('#modal__search');
@@ -604,13 +604,13 @@ const coverPrice = (number) => {
 }
 const coverNumber = (price) => {
     if (price.includes(',')) {
-       price= price.replaceAll(',', '');
+        price = price.replaceAll(',', '');
     }
     if (price.includes('.')) {
-       price= price.replaceAll('.', '');
+        price = price.replaceAll('.', '');
     }
     if (price.includes(' đ')) {
-       price= price.replaceAll(' đ', '');
+        price = price.replaceAll(' đ', '');
     }
     return Number(price);
 }

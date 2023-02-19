@@ -32,7 +32,7 @@ async function productDetail() {
         HandleCart();
         $$('#modal__cart').classList.remove("hidden");
     }
-    await showProductsViewHome(4,item.kind);
+    await showProductsViewHome(4,item.kind,true);
     $$('.products__kind--title').innerHTML = 'Sản phẩm tương tự';
 
     HandleCart();
