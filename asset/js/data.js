@@ -12,14 +12,23 @@ let API = [];
 
 
 // show san phẩm ở modal
-function showProductModal({ id, name, avatar, priceOrigin, priceSale, des }) {
+function showProductModal({ id, name, avatar, priceOrigin, priceSale, des,kind }) {
     const box_reducer = $$(".modal__product__view--reducer");
     box_reducer.classList.remove("hidden");
     $$("#productName").innerHTML = name;
     $$(".product__views-des__price--sale").innerHTML = coverPrice(priceSale) + " đ";
     $$("del.product__views-des__price--origin").innerHTML = (priceOrigin > priceSale) ? coverPrice(priceOrigin) + " đ" : "";
     $$(".product__views--item__des").innerHTML = des;
-    // $$(".modal__item--product_size").innerHTML;
+    if(kind!=2){
+        $$(".modal__item--product_size").innerHTML=`
+            <input type="radio" checked name="size" id="sizeS"> <label for="sizeS">S</label>
+            <input type="radio" name="size" id="sizeM"> <label for="sizeM">M</label>
+            <input type="radio" name="size" id="sizeL"> <label for="sizeL">L</label>
+        `;
+    }else{
+            $$(".modal__item--product_size").innerHTML='24 lon'
+    }
+  
     const redusePrice = percentReduce(priceOrigin, priceSale);
     if (redusePrice) box_reducer.innerHTML = `-${redusePrice} %`
     else box_reducer.classList.add("hidden")
@@ -523,9 +532,8 @@ function controllerCartProducts() {
 
 // Serach sản phẩm 
 
-$$('.btn--open-search').onclick = () => {
-    showModalSearch();
-}
+$$('.btn--open-search').addEventListener('click',showModalSearch)
+$$('.btn__find--search').addEventListener('click',showModalSearch)
 
 function showModalSearch() {
     const modal__search = $$('#modal__search');

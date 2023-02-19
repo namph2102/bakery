@@ -1383,6 +1383,10 @@ label {
   display: none !important;
 }
 
+.btn__resgester, .btn__find--search {
+  cursor: pointer;
+}
+
 @-webkit-keyframes ovelaytouch {
   0% {
     width: 0;

@@ -33,8 +33,6 @@
             return storeList.find(item=>item.id==id);
         },
         add(product='id',amount=1,size='S'){
-            console.log(product);
-            console.log(check(product.id));
             if(obj){
                 if(!check(product.id)){
                     const { id, name, avatar, priceSale, priceOrigin,kind } = product;

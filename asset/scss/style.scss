@@ -1221,6 +1221,9 @@ label {
 .hidden {
     display: none !important;
 }
+.btn__resgester,.btn__find--search{
+    cursor: pointer;
+}
 
 @keyframes ovelaytouch {
     0% {
