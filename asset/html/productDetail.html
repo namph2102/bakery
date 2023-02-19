@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="shortcut icon" href="/image/logo.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -35,7 +35,7 @@
         <div class="container">
             <div class="row header_container">
                 <figure class="logo col-lg-2 col-4  order-lg-1 order-2">
-                    <img src="/image/logo.png" alt="">
+                    <a href="./index.html">  <img src="/image/logo.png" alt=""></a>
                 </figure>
 
                 <nav class="col-lg-8 col-2 order-lg-2 order-1">
@@ -47,7 +47,7 @@
                         <li class="hide__of__lg">Menu <button class="btn_close--menu">X</button></li>
                         <li><a href="./index.html"> Trang chủ</a></li>
                         <li class="main__nav">
-                            <a href="" class="active">Sản phẩm</a>
+                            <a href="#!" class="active">Sản phẩm</a>
                             <ul class="sub__nav">
                                 <li><a href="">Bánh Sinh Nhật</a></li>
                                 <li><a href="">Đồ Uống / Kem Tươi</a></li>
@@ -56,10 +56,10 @@
 
                             </ul>
                         </li>
-                        <li><a href="">Giới thiệu</a></li>
-                        <li><a href="">Tin Tức</a></li>
-                        <li><a href="">Liên Hệ</a></li>
-                        <li class="hide__of__lg_important"><a href=""><i
+                        <li><a href="./aboutus.html">Giới thiệu</a></li>
+                        <li><a href="./news.html">Tin Tức</a></li>
+                        <li><a href="./contact.html">Liên Hệ</a></li>
+                        <li class="hide__of__lg_important btn__resgester"><a><i
                                     class="fa-regular fa-user me-3 d-inline-block"></i> Đăng Ký/ Đăng Nhập</a></li>
                         <li class="border-0 hide__of__lg_important mt-4 ps-3">
                             <span>Cần Hỗ Trợ ?</span>
@@ -94,17 +94,18 @@
         </div>
     </header>
 
+    <div class="navigation">
+        <div class="navigation__container">
+            <ul class="navigation__box">
+                <li><a href="./index.html">Trang chủ</a></li>
+                <li><a class="product__navition--kind" href="">/ Bánh Sinh Nhật / </a></li>
+                <li><a class="product__navition--name" href="#!">Bánh</a></li>
+            </ul>
+        </div>
+    </div>
+
     <main>
         <div class="container">
-            <div class="navigation">
-                <div class="navigation__container">
-                    <ul class="navigation__box">
-                        <li><a href="./index.html">Trang chủ</a></li>
-                        <li><a class="product__navition--kind" href="">/ Bánh Sinh Nhật / </a></li>
-                        <li><a class="product__navition--name" href="#!">Bánh</a></li>
-                    </ul>
-                </div>
-            </div>
 
             <div class="product__detail">
                 <div class="row">
@@ -177,7 +178,7 @@
                         <button class="btn  fs-3">Mô tả  sản phẩm </button> 
                         <button class="btn  fs-3">Giao hàng </button> 
                     </p>
-                    <p class="product__detail--footer_des">  
+                    <p class="product__detail--footer_des pb-4">  
                         Bánh Sinh Nhật, Địa chỉ mua bánh sinh nhật tại Hà Nội, Bánh Sinh Nhật Công Ty, Bánh Sinh Nhật Cho Bé, Bánh Sinh Nhật Đẹp
                     </p>
                 </div>
@@ -245,6 +246,8 @@
             </div>
         </div>
     </div>
+
+
 
     <div id="modal__cart" class="modal__container hidden">
         <div class="modal__body--content">
@@ -339,6 +342,51 @@
         </div>
     </div>
 
+    <div class="modal__userlog modal__userRegister hidden">
+        <div class="userlog__container">
+            <div class="modal__head--close modal__head--close__register">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+            <div class="userlog__box mt-5">
+                <h6 class="fs-1 log__title">Đăng Ký</h6>
+                <form class="form__user" id="registerForm" action="">
+                    <div class="form--group">
+                        <label for="res_username">UserName</label>
+                        <div class="form__input">
+                            <input id="res_username" type="text" data-name="UserName" placeholder="Nhập tên tài khoản">
+                            <p class="form__input--error"></p>
+                        </div>
+
+                    </div>
+
+                    <div class="form--group">
+                        <label for="res_password">Password</label>
+                        <div class="form__input">
+                            <input id="res_password" type="password"  data-name="Password" placeholder="Nhập mật khẩu">
+                            <p class="form__input--error"></p>
+                        </div>
+                    </div>
+
+                    <div class="form--group">
+                        <label for="repassword">Comfirm Password</label>
+                        <div class="form__input">
+                            <input id="repassword" type="password"  data-name="Comfirm Password" placeholder="Nhập mật khẩu">
+                            <p class="form__input--error"></p>
+                        </div>
+                    </div>
+
+
+                    <div class="form--group__footer">
+                        <a >Đăng nhập ngay?</a>
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn--submitLogin">Đăng Ký</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <div class="modal__container modal__hearts hidden">
         <div class="modal__body--content">
             <div class="modal__head">
@@ -398,9 +446,7 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
 
     <footer>
@@ -421,8 +467,7 @@
                                         </div>
                                         <div class="address--item__body--info">
                                             <h6 class="address__title"> Địa Chỉ:</h6>
-                                            <div class="address__local">C28-TT6 KĐT Văn Quán, Phường Phúc La, Hà Đông,Hà
-                                                Nội</div>
+                                            <div class="address__local">200/34 Tô ký, Phường Đông Hưng Thuận, Quận 12, TP HCM</div>
                                         </div>
                                     </div>
                                     <div class="address--item__body">
@@ -473,9 +518,9 @@
                         <ul>
                             <li><a href="./index.html">Trang Chủ</a></li>
                             <li><a href="./product.html">Sản Phẩm</a></li>
-                            <li><a href="./index.html">Giới Thiệu</a></li>
-                            <li><a href="./index.html">Tin Tức</a></li>
-                            <li><a href="./index.html">Liên Hệ</a></li>
+                            <li><a href="./aboutus.html">Giới Thiệu</a></li>
+                            <li><a href="./news.html">Tin Tức</a></li>
+                            <li><a href="./contact.html">Liên Hệ</a></li>
                         </ul>
                     </div>
                 </div>

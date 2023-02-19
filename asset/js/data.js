@@ -72,13 +72,13 @@ function showNewsHomePage(len = 3) {
                 .map(newItem => {
                     const { id,date, name, des, avata } = newItem;
                     return ` <div class="news__item col-lg-4 col-6">
-            <a class="news__item--link__container" href="/asset/html/productDetail.html?id=${id}">
+            <a class="news__item--link__container" href="/asset/html/newDetail.html?id=${id}">
                 <figure>
                     <div class="news__item--box__avata">
                         <img src="${avata}" alt="${name}">
                     </div>
                     <figcaption>
-                        <h4 class="news__item--title"><a href=/asset/html/productDetail.html?id=${id}">${name}</a></h4>
+                        <h4 class="news__item--title"><a href=/asset/html/newDetail.html?id=${id}">Cách làm ${name} siêu thơm ngon tại nhà</a></h4>
                         <p class="news__item--des">${des}</p>
                     </figcaption>
                     <div class="overlay_news">
@@ -91,7 +91,7 @@ function showNewsHomePage(len = 3) {
             </a>
 
             <div class="news__item--seeall">
-                <a href="">Xem Thêm ...</a>
+                <a href="/asset/html/newDetail.html?id=${id}">Xem Thêm ...</a>
             </div>
         </div>`
                 }).join("");
@@ -264,7 +264,7 @@ function openViews(id) {
 //xừ lý giỏ hàng Cart;
 function HandleCart() {
     const list__btn_adds = $$l('.item__btn--view.addcart');
-    const btn__close = $$('.modal__head--close');
+    const btn__close = $$('#modal__cart .modal__head--close');
     // Dóng mở modal
     modal__container_cart.addEventListener('click', () => {
         modal__container_cart.classList.add("hidden");
@@ -399,6 +399,12 @@ $$(".btn--login").onclick = () => {
     $$(".userlog__container .modal__head--close").onclick = () => {
         closeModal($$('.modal__userlog'));
     }
+}
+$$('.btn__resgester').onclick=()=>{
+    openModal($$('.modal__userRegister'));
+}
+$$('.modal__head--close__register').onclick=()=>{
+    closeModal($$('.modal__userRegister'));
 }
 function closeModal(modalParent) {
     modalParent.classList.add("hidden");

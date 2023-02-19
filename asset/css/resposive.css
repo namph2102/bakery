@@ -13,7 +13,7 @@
 }
 
 main {
-    margin-top: 90px;
+    margin-top: 32px;
 }
 
 @media screen and (max-width:992px) {
@@ -246,13 +246,10 @@ main {
 
         font-size: 1.8rem;
     }
-
-}
-
-@media screen and (max-width: 992px) {
-    main {
-        margin-top: 90px;
+    .new__detail img{
+        width:80% ;
     }
+   
 }
 
 @media screen and (max-width: 576px) {
@@ -268,10 +265,25 @@ main {
     .navigation__box a {
         font-size: 14px;
     }
+    .new__detail img {
+        width: 80%;
+        height: 300px;
+    }
 }
+
+
 
 @media screen and (min-width: 768px) and (max-width: 992px) {
     .product__avata figure {
         height: 500px;
+    }
+    .new__detail img {
+        width: 50%;
+    }
+   
+}
+@media screen and(max-width:400px) {
+    .modal__container .modal__body--content{
+        width:90% ;
     }
 }

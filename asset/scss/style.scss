@@ -674,6 +674,7 @@ main {
                 font-size: 1.4rem;
                 font-weight: 400;
                 color: var(--text-light-color);
+                line-height: 1.5;
 
                 a {
                     text-decoration: none;
@@ -1078,9 +1079,11 @@ label {
     margin: 8px 0;
 
     input {
-        padding: 8px 4px;
+        padding: 8px 12px;
         width: 100%;
         font-size: 16px;
+        outline: none;
+        border-radius: 32px;
     }
 
     p {
@@ -1096,10 +1099,11 @@ label {
 
 .form__input--error {
     font-size: 14px;
-    margin-top: 2px;
+    margin-top: 4px;
 }
 
 .form--group__footer {
+    margin-top: 20px;
     a {
         text-decoration: none;
         color: var(--text-color);
@@ -1130,6 +1134,7 @@ label {
     background-size: cover;
     height: 200px;
     width: 100%;
+    margin-top: 90px;
 }
 
 .navigation__container {

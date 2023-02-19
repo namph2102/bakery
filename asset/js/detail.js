@@ -34,4 +34,7 @@ async function productDetail() {
     }
     await showProductsViewHome(4,item.kind);
     $$('.products__kind--title').innerHTML = 'Sản phẩm tương tự';
+
+    HandleCart();
+    handleHearts();
 }

@@ -20,9 +20,10 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" href="/asset/css/style.css">
     <link rel="stylesheet" href="/asset/scss/style.css">
+    <link rel="stylesheet" href="/asset/css/cart.css">
     <link rel="stylesheet" href="/asset/css/resposive.css">
 
-    <title>Sản phẩm</title>
+    <title>Tin Tức- HT BAKERY </title>
 </head>
 
 <body>
@@ -34,7 +35,7 @@
         <div class="container">
             <div class="row header_container">
                 <figure class="logo col-lg-2 col-4  order-lg-1 order-2">
-                    <a href="./index.html">  <img src="/image/logo.png" alt=""></a>
+                   <a href="./index.html"> <img src="/image/logo.png" alt=""></a>
                 </figure>
 
                 <nav class="col-lg-8 col-2 order-lg-2 order-1">
@@ -46,16 +47,17 @@
                         <li class="hide__of__lg">Menu <button class="btn_close--menu">X</button></li>
                         <li><a href="./index.html"> Trang chủ</a></li>
                         <li class="main__nav">
-                            <a href="#!" class="active">Sản phẩm</a>
+                            <a href="#!">Sản phẩm</a>
                             <ul class="sub__nav">
                                 <li><a href="">Bánh Sinh Nhật</a></li>
                                 <li><a href="">Đồ Uống / Kem Tươi</a></li>
                                 <li><a href="">Bánh Mì / Bánh Ngọt</a></li>
                                 <li><a href="">Ăn Nhẹ / Lạnh</a></li>
+
                             </ul>
                         </li>
                         <li><a href="./aboutus.html">Giới thiệu</a></li>
-                        <li><a href="./news.html">Tin Tức</a></li>
+                        <li><a href="./news.html" class="active">Tin Tức</a></li>
                         <li><a href="./contact.html">Liên Hệ</a></li>
                         <li class="hide__of__lg_important btn__resgester"><a><i
                                     class="fa-regular fa-user me-3 d-inline-block"></i> Đăng Ký/ Đăng Nhập</a></li>
@@ -94,25 +96,48 @@
     <div class="navigation">
         <div class="navigation__container">
             <ul class="navigation__box">
-                <li><a href="./index.html">Trang chủ /</a></li>
-                <li><a class="navigation__box--kinds" href=""> Bánh Sinh Nhật </a></li>
+                <li><a href="./index.html">Trang chủ</a></li>
+                <li><a href="./news.html"> / Tin Tức /</a></li>
+                <li><a class="product__navition--kind" href="#!">Tin Tức chi tiết</a></li>            
             </ul>
         </div>
     </div>
     <main>
         <div class="container">
+            <div class="new__detail">
+                <h1 class="new__detail--title">KHÓA HỌC LÀM BÁNH DÀNH CHO CÁC BÉ!</h1>
+                <figure>
+                    <img class="new__detail--avata" src="/image/aboutus1.jpg" alt="">
+                </figure>
 
-            <div class="show__products" id="show__products">
-            </div>
-            <div class="show__products--pagination">
-                <nav class="show__products--container">
-                    <ul class="show__products--container__list">
-
+                <div class="new__detail--des">
+                    <h2 class="new__detail--des__time">13.06.2022 -  Chế biến</h2>
+                    <p class="new__detail--des__make">ancake là một món bánh có hương vị thơm ngon. Đặc biệt hơn khi được chế biến bằng bột trà xanh nguyên cám, bánh vừa ngon vừa tốt cho sức khỏe. Hãy vào bếp cùng Điện Máy XANH học ngay cách làm pancake trà xanh nguyên cám bằng chảo chống dính nhé!</p>
+                  <p class="new__detail--des__title">  I. Thành phần</p>
+                    <ul class="ms-5 ul__list" id="material">
+                       
+                        
                     </ul>
-                </nav>
+                    <p class="new__detail--des__title">  II.  Cách chế biến </p>
+                    <ol  class="ms-5 ul__list"  id="steps" type="1">
+                       
+                        
+                    </ol>
+                    <p class="new__detail--des__make text-center fw-bold fs-3">Chúc bạn làm thành công nhé ! </p>
+                </div>
             </div>
+            <div class="news__container mt-5">
+                <div class="products__kind">
+                    <h2 class="products__kind--title">Nội Dung tương tư</h2>
+                </div>
+                <div id="news" class="row news__container--content">
+                         
+                </div>
+            </div>
+
         </div>
     </main>
+
 
     <div class="modal__dialog hidden">
         <div class="row products__views-container__modal">
@@ -205,7 +230,7 @@
                                 class="text-danger">₫</span> </p>
                     </div>
                     <div class="button__green">
-                        <a class="w-100" href="/asset/html/carts.html">Xem Thêm</a>
+                        <a class="w-100" href="./carts.html">Xem Thêm</a>
                     </div>
                     <h6 class="fs-3">Có Thể Bạn Quan Tâm</h6>
                     <div class="modal__body__add--listporduct mt-4">
@@ -262,6 +287,7 @@
             </div>
         </div>
     </div>
+
     <div class="modal__userlog modal__userRegister hidden">
         <div class="userlog__container">
             <div class="modal__head--close modal__head--close__register">
@@ -282,7 +308,7 @@
                     <div class="form--group">
                         <label for="res_password">Password</label>
                         <div class="form__input">
-                            <input id="res_password" type="password" data-name="Password" placeholder="Nhập mật khẩu">
+                            <input id="res_password" type="password"  data-name="Password" placeholder="Nhập mật khẩu">
                             <p class="form__input--error"></p>
                         </div>
                     </div>
@@ -290,15 +316,14 @@
                     <div class="form--group">
                         <label for="repassword">Comfirm Password</label>
                         <div class="form__input">
-                            <input id="repassword" type="password" data-name="Comfirm Password"
-                                placeholder="Nhập mật khẩu">
+                            <input id="repassword" type="password"  data-name="Comfirm Password" placeholder="Nhập mật khẩu">
                             <p class="form__input--error"></p>
                         </div>
                     </div>
 
 
                     <div class="form--group__footer">
-                        <a>Đăng nhập ngay?</a>
+                        <a >Đăng nhập ngay?</a>
                         <div class="text-center mt-4">
                             <button type="submit" class="btn btn--submitLogin">Đăng Ký</button>
                         </div>
@@ -306,7 +331,7 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> 
 
     <div class="modal__container modal__hearts hidden">
         <div class="modal__body--content">
@@ -367,9 +392,7 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
 
     <footer>
@@ -477,6 +500,6 @@
 </script>
 <script src="/asset/js/sessionHandle.js"></script>
 <script src="/asset/js/data.js"></script>
-<script src="/asset/js/product.js"></script>
+<script src="/asset/js/newDetail.js"></script>
 
 </html>

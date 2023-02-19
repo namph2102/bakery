@@ -112,6 +112,11 @@
     background-color: #ffce3c;
 }
 .product__detail--footer_des{
-    font-size: 18px;
+    font-size: 16px;
     margin-top: 12px;
+    line-height: 1.6;
+}
+.product__material{
+    font-size: 16px;
+    line-height: 1.6;
 }
