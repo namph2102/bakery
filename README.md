@@ -1,31 +1,52 @@
 # barket
-<h1>Website bán bánh sinh nhật<h1/>
+<h1>Website bán bánh sinh nhật</h1>
 <h2>Giới thiệu</h2>
 <p>Dự án này mình chỉ làm Giao diện Fetch API từ Json. (HTML , CSS (SCSS, BootStrap 5), JavaScript (ES6), Jquery, )</p>
 
 <h2>Page</h2>
 
 <ul>
-    <li>Home
-    ![image](https://user-images.githubusercontent.com/107352059/219938965-690ea12d-cc87-4128-81c3-810b849fd70b.png)
-![image](https://user-images.githubusercontent.com/107352059/219938974-628e46a0-701d-48db-8c81-804bb308ae5c.png)
-
+    <li>
+        <p>Home</p>
+        <figure>
+            <img src="./image/homepage.png" alt="Trang Chủ"/>
+            <figcaption>Giao diện trang trang chủ</figcaption>
+        </figure>
     </li>
-    <li>Sản Phẩm
-    ![image](https://user-images.githubusercontent.com/107352059/219938996-caa26d89-c74e-4b27-bf80-cc08805963b3.png)
-
+    <li>
+     <p>Sản phẩm</p>
+        <figure>
+            <img src="./image/productpage.png" alt="Sản phẩm"/>
+            <figcaption>Giao diện trang sản phẩm</figcaption>
+        </figure>
     </li>
-    <li>Giới Thiệu
-    ![image](https://user-images.githubusercontent.com/107352059/219939011-e96a0fa8-a2d7-4e21-9b37-907e1df3e2a0.png)
-
+  <li>
+     <p>Sản phẩm chi tiết</p>
+        <figure>
+            <img src="./image/productdetailpage.png" alt="Sản phẩm chi tiết"/>
+            <figcaption>Giao diện trang sản phẩm chi tiết</figcaption>
+        </figure>
     </li>
-    <li>Tin tức
-    ![image](https://user-images.githubusercontent.com/107352059/219939021-bc608fb0-8339-4de9-b382-94acfbacca48.png)
-
+    <li>
+     <p>Giới thiệu</p>
+        <figure>
+            <img src="./image/aboutuspage.png" alt="Giới thiệu"/>
+            <figcaption>Giao diện trang Giới thiệu</figcaption>
+        </figure>
     </li>
-    <li>Liên Hệ
-    ![image](https://user-images.githubusercontent.com/107352059/219939032-87dfcb19-eb9f-4d12-81af-9a935cbf64db.png)
-
+    <li>
+       <p>Tin tức</p>
+        <figure>
+            <img src="./image/newspage.png" alt="Tin tức"/>
+            <figcaption>Giao diện trang Tin tức</figcaption>
+        </figure>
+    </li>
+     <li>
+     <p>Tin tức chi tiết</p>
+        <figure>
+            <img src="./image/newdetailpage.png" alt="Tin tức chi tiết"/>
+            <figcaption>Giao diện trang Tin tức chi tiết</figcaption>
+        </figure>
     </li>
 </ul>
 
