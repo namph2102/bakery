@@ -645,7 +645,3 @@ const percentReduce = (a, b) => {
     if (b >= a) return false;
     return ((1 - b / a) * 100).toFixed(2)
 }
-
-
-
-
