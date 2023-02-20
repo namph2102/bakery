@@ -17,11 +17,10 @@ async function productDetail() {
 
     const kind=kinds.find(kind=>kind.id==item.kind);
     $$('.product__navition--kind').innerHTML=` / ${kind.title} / `;
-    $$('.product__navition--kind').href+=kind.id;
+    $$('.product__navition--kind').href='/asset/html/product.html?id='+kind.id;
     $$('.product__des--name').innerHTML=item.name;
     $$('.product__navition--name').innerHTML=item.name;
     $$('.product__buying').onclick = () => {
-    
         if (carts.check(id)) {
             carts.update(id, 1);
         }

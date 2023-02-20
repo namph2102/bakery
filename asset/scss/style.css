@@ -1185,6 +1185,7 @@ main {
 .modal__container .product__des--controller button {
   border: none;
   padding: 4px;
+  background-color: transparent;
 }
 
 .modal__userlog {

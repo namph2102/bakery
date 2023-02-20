@@ -379,7 +379,7 @@ const inputList = Array.from($$l(".form--group input"));
 if (inputList.length != 0) {
     inputList.forEach(input => {
         input.onblur = () => {
-            handleInput(input, ' không được để trống !')
+            handleInput(input, ' không được để trống !',4)
         }
         input.oninput = () => {
             handleInput(input, ' không được để trống !')
@@ -401,12 +401,15 @@ $$(".btn--login").onclick = () => {
     }
     $$('.modal__userlog').addEventListener('click', () => {
         closeModal($$('.modal__userlog'));
+        removeInputErrorAll('#loginform ')
+       
     })
     $$(".userlog__container").onclick = (e) => {
         e.stopPropagation();
     }
     $$(".userlog__container .modal__head--close").onclick = () => {
         closeModal($$('.modal__userlog'));
+        removeInputErrorAll('#loginform ')
     }
 }
 $$('.btn__resgester').onclick = () => {
@@ -415,6 +418,21 @@ $$('.btn__resgester').onclick = () => {
 $$('.modal__head--close__register').onclick = () => {
     closeModal($$('.modal__userRegister'));
 }
+function removeInputErrorAll(formBox){
+   const listInput= document.querySelectorAll(formBox+' .form__input');
+ 
+   listInput.forEach(inputBox =>{
+    const input= inputBox.querySelector('input');
+     if(inputBox.classList.contains('error')){
+        inputBox.classList.remove('error');
+        input.value='';
+        inputBox.querySelector('.form__input--error').textContent='';
+     }
+     if(input.value){
+        input.value='';
+     }
+    })
+}
 function closeModal(modalParent) {
     modalParent.classList.add("hidden");
 }
@@ -422,15 +440,20 @@ function openModal(modalParent) {
     modalParent.classList.remove("hidden");
 }
 
-function handleInput(input, message = '') {
+function handleInput(input, message = '',len=0) {
     const parentInput = input.closest(".form--group");
     const form__input = parentInput.querySelector(".form__input");
     const messageElement = parentInput.querySelector('.form__input--error');
-    if (!input.value) {
+    if (!input.value) { 
         form__input.classList.add('error');
         messageElement.innerHTML = `Trường ${input.dataset.name + message} `;
         return false;
     } else {
+        if(input.value.length<=len){
+            form__input.classList.add('error');
+            messageElement.innerHTML = `Trường ${input.dataset.name} phải lớn hơn ${len} ký tự`;
+            return false;
+        }
         form__input.classList.remove('error');
         messageElement.innerHTML = ``;
     }
@@ -544,9 +567,11 @@ function showModalSearch() {
     }
     $$(".modal__search").onclick = () => {
         closeModal(modal__search);
+        searchInput.value=''
     }
     $$('.btn--close-search').onclick = () => {
         closeModal(modal__search);
+        searchInput.value=''
     }
     $$('#modal__search .modal__body--content').onclick = e => {
         e.stopPropagation();
