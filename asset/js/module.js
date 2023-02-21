@@ -10,7 +10,6 @@ function moduleShowCart(carts = []) {
         const size = item.size.toLowerCase();
         const { id, name, avatar, priceSale, priceOrigin, amount,kind } = item;
         total += amount * priceSale;
-        console.log(size,name);
         const html__size=(kind==1)?`
         <input type="radio" ${size == 's' ? 'checked':''} class="size" data-id="${id}" data-size="s" name="size${id}" id="sizes${id}"> <label class="size" data-id="${id}" data-size="s" for="size${id}">S</label>
         <input type="radio" ${size == 'l' ? 'checked':''}  class="ms-3 size"  data-id="${id}" data-size="m" name="size${id}" id="sizem${id}"> <label class="size" data-id="${id}" data-size="s" class="me-3" for="size${id}">M</label>

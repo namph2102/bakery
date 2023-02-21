@@ -4,6 +4,9 @@ function createStorage(key) {
         localStorage.setItem(key, JSON.stringify(store));
     }
     const storage = {
+        show(){
+            return store;
+        },
         get(key) {
             return store[key]
         },

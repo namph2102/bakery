@@ -10,7 +10,6 @@ const carts = createStoreList('cart');
 const hearts = createStoreList('hearts', false);
 let API = [];
 
-
 // show san phẩm ở modal
 function showProductModal({ id, name, avatar, priceOrigin, priceSale, des, kind }) {
     const box_reducer = $$(".modal__product__view--reducer");
@@ -202,6 +201,7 @@ async function showProductsViewHome(lenProduct = 4, kind = 1, sameViews = false)
         .sort((a, b) => b.Sales - a.Sales)
     if(sameViews) dataBakery=dataBakery.filter(item=>item.id!=window.location.search.slice(4));
     if (lenProduct < dataBakery.length) dataBakery.length = lenProduct;
+    const loveHearts=hearts.show();
     const HTML_BAKERY = dataBakery.map(item => {
         const { id, name, avatar, priceSale, priceOrigin, size } = item;
         return `<div class="product-content col-lg-3 col-md-4 col-6">
@@ -215,7 +215,7 @@ async function showProductsViewHome(lenProduct = 4, kind = 1, sameViews = false)
             </div>
             <div class="product__item--size">${size == "fullsize" ? "S, M, L" : size}</div>
         </figcaption>
-        <div data-id="${id}" class="product-item--stickers__love ${hearts.show().includes(id + '') ? "hidden" : ""}">
+        <div data-id="${id}" class="product-item--stickers__love ${loveHearts.find(item=>item.id ==id) ? "hidden" : ""}">
             <i class="fa-regular fa-heart"></i>
             <span class="stickers--des">Thêm vào yêu thích</span>
         </div>
@@ -386,41 +386,72 @@ if (inputList.length != 0) {
         }
     })
 }
-
-
-$$(".btn--login").onclick = () => {
-    $$(".modal__userlog").classList.remove("hidden");
-
-    const form = $$("#loginform");
-    form.onsubmit = () => false;
-
-
-    // submit form 
-    $$('.btn--submitLogin').onclick = () => {
-        form.onsubmit = () => !inputList.some(input => !input.value);
+// form login 
+const account= createStorage('user');
+class User{
+    constructor(
+    username = account.get('username'), 
+    password=account.get('password'),
+    fullname=account.get('fullname'),
+    phone=account.get('phone'),
+    address=account.get('address'),
+    )
+    
+    {
+        this.username=username;
+        this.password=password;
+        this.fullname=fullname;
+        this.phone=phone;
+        this.address=address;
+        this.permission='member';
     }
-    $$('.modal__userlog').addEventListener('click', () => {
-        closeModal($$('.modal__userlog'));
-        removeInputErrorAll('#loginform ')
-       
-    })
-    $$(".userlog__container").onclick = (e) => {
+}
+class admin extends User{
+    code='htbakery21022002';
+    permission='admin';
+
+}
+const user=new User();
+
+formLogin();
+function formLogin(){
+    const formContainer=user.username ? ".modal__userlog" :'.modal__userRegister';
+    const modal__log=document.querySelector(formContainer);
+    const btn__close=modal__log.querySelector('.modal__head--close');
+    const userlog__container=modal__log.querySelector('.userlog__container');
+    const listInput=modal__log.querySelectorAll('.form__input');
+    const listInputError=[...modal__log.querySelectorAll('.form__input--error')];
+    const form=modal__log.querySelector('form');
+
+    $$('.btn--login').onclick=()=>{
+        openModal(modal__log);
+    }
+    btn__close.onclick=()=>{
+        closeModal(modal__log);
+        removeInputErrorAll(listInput);
+    }
+    userlog__container.onclick=(e)=>{
         e.stopPropagation();
     }
-    $$(".userlog__container .modal__head--close").onclick = () => {
-        closeModal($$('.modal__userlog'));
-        removeInputErrorAll('#loginform ')
+    modal__log.onclick=()=>{
+        closeModal(modal__log);
+        removeInputErrorAll(listInput);
     }
+    form.onsubmit=(e)=>{
+        e.preventDefault();
+        checkInputSubmit(listInput)
+        const submit=listInputError.some(m=>m.textContent.trim())
+
+       if(!submit) {
+        const listValueInput=modal__log.querySelectorAll('input')
+        account.add('username',listValueInput[0].value)
+        account.add('password',listValueInput[1].value)
+        form.submit();
+       };
+    };
 }
-$$('.btn__resgester').onclick = () => {
-    openModal($$('.modal__userRegister'));
-}
-$$('.modal__head--close__register').onclick = () => {
-    closeModal($$('.modal__userRegister'));
-}
-function removeInputErrorAll(formBox){
-   const listInput= document.querySelectorAll(formBox+' .form__input');
- 
+
+function removeInputErrorAll(listInput){
    listInput.forEach(inputBox =>{
     const input= inputBox.querySelector('input');
      if(inputBox.classList.contains('error')){
@@ -431,6 +462,18 @@ function removeInputErrorAll(formBox){
      if(input.value){
         input.value='';
      }
+    })
+}
+function checkInputSubmit(listInput=[]){
+    listInput.forEach(groupInput=>{
+        const input=groupInput.querySelector('input');
+        if(!input.value){
+            groupInput.classList.add('error');
+            groupInput.querySelector('.form__input--error').textContent=`Trường ${input.dataset.name} không được để trống!`;
+        }else if(input.value.length <= 4){
+            groupInput.classList.add('error');
+            groupInput.querySelector('.form__input--error').textContent=`Trường ${input.dataset.name} phải lớn hơn 4 ký tự !`;
+        }
     })
 }
 function closeModal(modalParent) {
@@ -456,6 +499,7 @@ function handleInput(input, message = '',len=0) {
         }
         form__input.classList.remove('error');
         messageElement.innerHTML = ``;
+        return true;
     }
 }
 // Display sản phẩm

@@ -62,5 +62,26 @@ async function showPageCartBag() {
         let heightcart=boxCart.getBoundingClientRect().top+window.scrollY -100
        window.scrollTo(0,heightcart);
     }  
+    const listInput=document.querySelectorAll('.form__user--address input')
+    const formOrder=document.querySelector('form.form__user--address')
+    $$('.btn__submit--order').onclick=()=>{
+        listInput.forEach(input=>{
+            handleInput(input,' không được để trống !',4);
+            const submitForm=[...listInput].some(input=>handleInput(input)==false)
+            if(!submitForm){
+                const fullname=listInput[0].value;
+                const phone=listInput[1].value;
+                const address=listInput[2].value;
+                user.fullname=fullname;
+                user.phone=phone;
+                user.address=address;
+                account.add('fullname',fullname)
+                account.add('phone',phone)
+                account.add('address',address)
+                formOrder.submit();
+            }
+           
+    })
+    }
 }
 showPageCartBag();  
