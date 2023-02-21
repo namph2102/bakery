@@ -62,7 +62,10 @@ async function showPageCartBag() {
         let heightcart=boxCart.getBoundingClientRect().top+window.scrollY -100
        window.scrollTo(0,heightcart);
     }  
-    const listInput=document.querySelectorAll('.form__user--address input')
+    const listInput=document.querySelectorAll('.form__user--address input');
+    listInput[0].value=user?.username || '';
+    listInput[1].value=user?.phone || '';
+    listInput[2].value=user?.address || '';
     const formOrder=document.querySelector('form.form__user--address')
     $$('.btn__submit--order').onclick=()=>{
         listInput.forEach(input=>{
