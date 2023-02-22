@@ -63,24 +63,22 @@ async function showPageCartBag() {
        window.scrollTo(0,heightcart);
     }  
     const listInput=document.querySelectorAll('.form__user--address input');
-    listInput[0].value=user?.username || '';
-    listInput[1].value=user?.phone || '';
-    listInput[2].value=user?.address || '';
+    const [username,phone,address]=listInput;
+    username.value=user?.fullname || '';
+    phone.value=user?.phone || '';
+    address.value=user?.address || '';
     const formOrder=document.querySelector('form.form__user--address')
     $$('.btn__submit--order').onclick=()=>{
         listInput.forEach(input=>{
             handleInput(input,' không được để trống !',4);
             const submitForm=[...listInput].some(input=>handleInput(input)==false)
             if(!submitForm){
-                const fullname=listInput[0].value;
-                const phone=listInput[1].value;
-                const address=listInput[2].value;
-                user.fullname=fullname;
-                user.phone=phone;
-                user.address=address;
-                account.add('fullname',fullname)
-                account.add('phone',phone)
-                account.add('address',address)
+                user.fullname=fullname.value;
+                user.phone=phone.value;
+                user.address=address.value;
+                account.add('fullname',fullname.value)
+                account.add('phone',phone.value)
+                account.add('address',address.value)
                 formOrder.submit();
             }
            

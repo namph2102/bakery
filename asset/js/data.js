@@ -444,8 +444,9 @@ function formLogin(){
 
        if(!submit) {
         const listValueInput=modal__log.querySelectorAll('input')
-        account.add('username',listValueInput[0].value)
-        account.add('password',listValueInput[1].value)
+        const [username,passsword]=listValueInput;
+        account.add('username',username.value)
+        account.add('password',passsword.value)
         form.submit();
        };
     };
