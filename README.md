@@ -1,7 +1,7 @@
 # Bakery
 <h1>Website bán bánh sinh nhật</h1>
 <h2>Giới thiệu</h2>
-<p>Dự án này mình chỉ làm Giao diện Fetch API từ Json. (HTML , CSS (SCSS, BootStrap 5), JavaScript (ES6), Jquery, )</p>
+<p>Dự án này mình chỉ làm Giao diện Fetch API từ Json. (HTML , CSS (SCSS, BootStrap 5), JavaScript (ES6), Jquery )</p>
 
 <h2>Page</h2>
 
@@ -58,4 +58,5 @@
     <li>Slider</li>
     <li>Cart</li>
     <li>Effect</li>
+    <li>Validator</li>
 </ul>
